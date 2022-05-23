@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:max_sports/database.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('fr', null);
     return MaterialApp(
       title: 'Max Sports',
       theme: ThemeData(
