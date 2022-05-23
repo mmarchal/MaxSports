@@ -5,7 +5,7 @@ part 'poids.g.dart';
 @JsonSerializable()
 class Poids {
   final int id;
-  final DateTime datePrise;
+  final String datePrise;
   final double mesure;
   final double differenceDernierePrise;
 

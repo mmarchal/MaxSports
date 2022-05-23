@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:max_sports/database.dart';
+import 'package:max_sports/objects/poids.dart';
 
 class PoidsPage extends StatefulWidget {
   const PoidsPage({Key? key}) : super(key: key);
@@ -17,6 +20,8 @@ class PoidsPageState extends State<PoidsPage> {
   Color couleur = Colors.green;
 
   final TextEditingController controller = TextEditingController();
+
+  final db = DBProvider();
 
   OutlineInputBorder myinputborder() {
     return const OutlineInputBorder(
@@ -131,8 +136,43 @@ class PoidsPageState extends State<PoidsPage> {
     );
   }
 
-  checkAndValidate() {
+  checkAndValidate() async {
     if (date && (controller.text != '' || controller.text.isNotEmpty)) {
+      showDialog(
+        context: context,
+        builder: (BuildContext bContext) => const Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+      final lastPoids = await db.getLastData("Poids");
+      double difference = 0;
+      if (lastPoids != null) {
+        difference =
+            (lastPoids as Poids).mesure - double.parse(controller.text);
+      }
+      final retourInsert = await db.newPoids(
+        Poids(
+          id: 0,
+          datePrise: DateFormat("dd/MM/yyyy").format(selectedDate),
+          mesure: double.parse(controller.text),
+          differenceDernierePrise: difference,
+        ),
+      );
+      Navigator.pop(context);
+      if(retourInsert==0) {
+        Navigator.pop(context);
+        Fluttertoast.showToast(
+            msg: "Mesure enregistré !",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+      } else {
+        showError("Problème d'enregistrement en BDD !");
+      }
     } else {
       showError("La date et le poids doivent être renseigné !");
     }

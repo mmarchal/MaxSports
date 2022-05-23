@@ -52,7 +52,7 @@ class DBProvider {
         onCreate: (Database db, int version) async {
       await db.execute("CREATE TABLE Poids ("
           "id INTEGER PRIMARY KEY,"
-          "datePrise DATETIME,"
+          "datePrise TEXT,"
           "mesure DOUBLE,"
           "differenceDernierePrise DOUBLE"
           ")");
@@ -107,6 +107,16 @@ class DBProvider {
   getData(String table, int id) async {
     final db = await database;
     var res = await db.query(table, where: "id = ?", whereArgs: [id]);
+    if (table == "Poids") {
+      return res.isNotEmpty ? Poids.fromJson(res.first) : null;
+    } else {
+      return res.isNotEmpty ? Activite.fromJson(res.first) : null;
+    }
+  }
+
+  getLastData(String table) async {
+    final db = await database;
+    var res = await db.query(table, orderBy: "id DESC",limit: 1);
     if (table == "Poids") {
       return res.isNotEmpty ? Poids.fromJson(res.first) : null;
     } else {

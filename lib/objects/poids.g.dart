@@ -8,7 +8,7 @@ part of 'poids.dart';
 
 Poids _$PoidsFromJson(Map<String, dynamic> json) => Poids(
       id: json['id'] as int,
-      datePrise: DateTime.parse(json['datePrise'] as String),
+      datePrise: json['datePrise'] as String,
       mesure: (json['mesure'] as num).toDouble(),
       differenceDernierePrise:
           (json['differenceDernierePrise'] as num).toDouble(),
@@ -16,7 +16,7 @@ Poids _$PoidsFromJson(Map<String, dynamic> json) => Poids(
 
 Map<String, dynamic> _$PoidsToJson(Poids instance) => <String, dynamic>{
       'id': instance.id,
-      'datePrise': instance.datePrise.toIso8601String(),
+      'datePrise': instance.datePrise,
       'mesure': instance.mesure,
       'differenceDernierePrise': instance.differenceDernierePrise,
     };
