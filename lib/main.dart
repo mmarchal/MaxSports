@@ -43,6 +43,23 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () async {
+              showDialog(
+                context: context,
+                builder: (BuildContext bContext) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+              db.deleteAllData("Poids");
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.delete,
+            ),
+          )
+        ],
       ),
       body: Center(
         child: GridView.count(

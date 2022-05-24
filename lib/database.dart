@@ -116,7 +116,7 @@ class DBProvider {
 
   getLastData(String table) async {
     final db = await database;
-    var res = await db.query(table, orderBy: "id DESC",limit: 1);
+    var res = await db.query(table, orderBy: "id DESC", limit: 1);
     if (table == "Poids") {
       return res.isNotEmpty ? Poids.fromJson(res.first) : null;
     } else {
@@ -140,5 +140,10 @@ class DBProvider {
   deleteData(String table, int id) async {
     final db = await database;
     return db.delete(table, where: "id = ?", whereArgs: [id]);
+  }
+
+  deleteAllData(String table) async {
+    final db = await database;
+    return db.delete(table);
   }
 }
