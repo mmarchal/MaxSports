@@ -28,7 +28,7 @@ class DBProvider {
       icon: Icons.fitness_center,
       couleur: Colors.lightBlue,
       description: "Permet d'ajouter une activité !",
-      redirection: const ActivitePage(),
+      redirection: ActivitePage(),
     ),
     Menu(
       titre: "Statistiques",
