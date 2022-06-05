@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:max_sports/activite_page.dart';
 import 'package:max_sports/objects/activite.dart';
 import 'package:max_sports/objects/menu.dart';
 import 'package:max_sports/objects/poids.dart';
@@ -23,13 +21,13 @@ class DBProvider {
       description: "Permet d'ajouter une mesure de poids !",
       redirection: const PoidsPage(),
     ),
-    Menu(
+    /*Menu(
       titre: "Activité",
       icon: Icons.fitness_center,
       couleur: Colors.lightBlue,
       description: "Permet d'ajouter une activité !",
-      redirection: ActivitePage(),
-    ),
+      redirection: const ActivitePage(),
+    ),*/
     Menu(
       titre: "Statistiques",
       icon: Icons.query_stats,
@@ -66,6 +64,32 @@ class DBProvider {
           "duree DOUBLE"
           ")");
     });
+  }
+
+  fakeData() async {
+    final Database db = await database;
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-01', 70.0, 0.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-02', 71.0, 1.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-03', 73.0, 2.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-04', 64.0, 3.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-05', 75.0, 4.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-06', 66.0, 5.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-07', 68.0, 6.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-08', 78.0, 7.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-09', 9.0, 8.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-10', 10.0, 9.0)");
+    await db.execute(
+        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-11', 11.0, 10)");
   }
 
   newPoids(Poids newPoids) async {

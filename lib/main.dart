@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:max_sports/database.dart';
+import 'package:max_sports/widgets/show_toast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,9 +55,27 @@ class _MyHomePageState extends State<MyHomePage> {
               );
               db.deleteAllData("Poids");
               Navigator.pop(context);
+              CustomToast()
+                  .displayToast(true, "Toutes les données ont été supprimées");
             },
             icon: const Icon(
               Icons.delete,
+            ),
+          ),
+          IconButton(
+            onPressed: () async {
+              showDialog(
+                context: context,
+                builder: (BuildContext bContext) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+              db.fakeData();
+              Navigator.pop(context);
+              CustomToast().displayToast(true, "Données ajoutées");
+            },
+            icon: const Icon(
+              Icons.data_array,
             ),
           )
         ],
