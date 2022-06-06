@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:max_sports/database.dart';
-import 'package:max_sports/widgets/show_toast.dart';
+import 'package:max_sports/widgets/custom_toast.dart';
 
 void main() {
   runApp(const MyApp());

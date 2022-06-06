@@ -41,10 +41,10 @@ class StatsPageState extends State<StatsPage> {
             elevation: 10,
             child: Graphique(
               seriesList: [
-                charts.Series<Poids, int>(
+                charts.Series<Poids, DateTime>(
                   id: 'Poids',
                   colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-                  domainFn: (Poids poids, _) => poids.id,
+                  domainFn: (Poids poids, _) => DateTime.parse(poids.datePrise),
                   measureFn: (Poids poids, _) => poids.mesure,
                   data: list,
                 ),

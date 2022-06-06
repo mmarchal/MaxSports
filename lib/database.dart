@@ -51,8 +51,7 @@ class DBProvider {
       await db.execute("CREATE TABLE Poids ("
           "id INTEGER PRIMARY KEY,"
           "datePrise TEXT,"
-          "mesure DOUBLE,"
-          "differenceDernierePrise DOUBLE"
+          "mesure DOUBLE"
           ")");
       await db.execute("CREATE TABLE Activite ("
           "id INTEGER PRIMARY KEY,"
@@ -69,27 +68,23 @@ class DBProvider {
   fakeData() async {
     final Database db = await database;
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-01', 70.0, 0.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-01 12:00:00', 71.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-02', 71.0, 1.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-02 12:00:00', 72.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-03', 73.0, 2.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-03 15:00:00', 63.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-04', 64.0, 3.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-05 14:00:00', 84.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-05', 75.0, 4.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-07 09:00:00', 80.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-06', 66.0, 5.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-01-10 18:00:00', 76.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-07', 68.0, 6.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-02-11 12:00:00', 70.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-08', 78.0, 7.0)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-03-11 12:00:00', 70.0)");
     await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-09', 9.0, 8.0)");
-    await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-10', 10.0, 9.0)");
-    await db.execute(
-        "INSERT INTO Poids (datePrise, mesure, differenceDernierePrise) VALUES ('2020-01-11', 11.0, 10)");
+        "INSERT INTO Poids (datePrise, mesure) VALUES ('2022-03-16 12:00:00', 70.0)");
   }
 
   newPoids(Poids newPoids) async {
@@ -97,13 +92,12 @@ class DBProvider {
     var table = await db.rawQuery("SELECT MAX(id)+1 as id FROM Poids");
     Object id = table.first["id"] ?? 0;
     var raw = await db.rawInsert(
-        "INSERT Into Poids (id,datePrise,mesure,differenceDernierePrise)"
+        "INSERT Into Poids (id,datePrise,mesure)"
         " VALUES (?,?,?,?)",
         [
           id,
           newPoids.datePrise,
           newPoids.mesure,
-          newPoids.differenceDernierePrise
         ]);
     return raw;
   }

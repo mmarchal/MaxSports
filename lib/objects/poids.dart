@@ -7,13 +7,11 @@ class Poids {
   final int id;
   final String datePrise;
   final double mesure;
-  final double differenceDernierePrise;
 
   Poids({
     required this.id,
     required this.datePrise,
     required this.mesure,
-    required this.differenceDernierePrise,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,7 +19,6 @@ class Poids {
       'id': id,
       'datePrise': datePrise,
       'mesure': mesure,
-      'differenceDernierePrise': differenceDernierePrise,
     };
   }
 
