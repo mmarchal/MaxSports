@@ -6,22 +6,29 @@ import 'package:max_sports/objects/poids.dart';
 class BackEnd {
   final String _path = 'http://localhost:2000/';
 
-  Future<Poids> get(String path) async {
-    final response = await http.get(Uri.parse(_path + path));
+  Future<List<Poids>> getPoids() async {
+    final response = await http.get(Uri.parse(_path + 'all'));
     if (response.statusCode == 200) {
-      return Poids.fromJson(jsonDecode(response.body));
+      final json = jsonDecode(response.body);
+      return (json as List).map((e) => Poids.fromJson(e)).toList();
     } else {
-      throw Exception('Failed to load data');
+      return [];
     }
   }
 
-  Future<String> newPoids(String path, Poids poids) async {
-    final response =
-        await http.post(Uri.parse(_path + path), body: poids.toJson());
+  Future<Poids?> newPoids(Poids poids) async {
+    final response = await http.post(
+      Uri.parse(_path + 'save'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(
+        poids.toJson(),
+      ),
+    );
     if (response.statusCode == 200) {
-      return response.body;
+      final json = jsonDecode(response.body);
+      return Poids.fromJson(json);
     } else {
-      throw Exception('Failed to load data');
+      return null;
     }
   }
 }

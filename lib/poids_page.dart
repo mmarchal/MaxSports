@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/poids.dart';
-import 'package:max_sports/widgets/custom_toast.dart';
 
 class PoidsPage extends StatefulWidget {
   const PoidsPage({Key? key}) : super(key: key);
@@ -144,15 +143,13 @@ class PoidsPageState extends State<PoidsPage> {
         ),
       );
       final retourInsert = await BackEnd().newPoids(
-        'save',
         Poids(
-          id: 0,
           datePrise: DateFormat("yyyy-MM-dd hh:mm:ss").format(selectedDate),
           mesure: double.parse(controller.text),
         ),
       );
       Navigator.pop(context);
-      if (retourInsert == 0) {
+      if (retourInsert != null) {
         Navigator.pop(context);
         Fluttertoast.showToast(
             msg: "Mesure enregistré !",

@@ -7,7 +7,7 @@ part of 'poids.dart';
 // **************************************************************************
 
 Poids _$PoidsFromJson(Map<String, dynamic> json) => Poids(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       datePrise: json['datePrise'] as String,
       mesure: (json['mesure'] as num).toDouble(),
     );

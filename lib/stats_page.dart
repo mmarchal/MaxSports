@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/poids.dart';
 import 'package:max_sports/widgets/graphique.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -18,7 +19,11 @@ class StatsPageState extends State<StatsPage> {
   @override
   void initState() {
     super.initState();
-    //TODO : récupérer les poids de la base de données
+    BackEnd().getPoids().then((value) {
+      setState(() {
+        list = value;
+      });
+    });
   }
 
   @override

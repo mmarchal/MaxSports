@@ -4,12 +4,12 @@ part 'poids.g.dart';
 
 @JsonSerializable()
 class Poids {
-  final int id;
+  int? id;
   final String datePrise;
   final double mesure;
 
   Poids({
-    required this.id,
+    this.id,
     required this.datePrise,
     required this.mesure,
   });
