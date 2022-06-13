@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/poids.dart';
+import 'package:max_sports/widgets/custom_toast.dart';
 
 class PoidsPage extends StatefulWidget {
   const PoidsPage({Key? key}) : super(key: key);
@@ -146,7 +147,7 @@ class PoidsPageState extends State<PoidsPage> {
         'save',
         Poids(
           id: 0,
-          datePrise: DateFormat("dd/MM/yyyy").format(selectedDate),
+          datePrise: DateFormat("yyyy-MM-dd hh:mm:ss").format(selectedDate),
           mesure: double.parse(controller.text),
         ),
       );
