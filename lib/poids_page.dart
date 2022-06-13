@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:max_sports/database.dart';
+import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/poids.dart';
 
 class PoidsPage extends StatefulWidget {
@@ -20,8 +20,6 @@ class PoidsPageState extends State<PoidsPage> {
   Color couleur = Colors.green;
 
   final TextEditingController controller = TextEditingController();
-
-  final db = DBProvider();
 
   OutlineInputBorder myinputborder() {
     return const OutlineInputBorder(
@@ -144,22 +142,16 @@ class PoidsPageState extends State<PoidsPage> {
           child: CircularProgressIndicator(),
         ),
       );
-      final lastPoids = await db.getLastData("Poids");
-      double difference = 0;
-      if (lastPoids != null) {
-        difference =
-            (lastPoids as Poids).mesure - double.parse(controller.text);
-      }
-      final retourInsert = await db.newPoids(
+      final retourInsert = await BackEnd().newPoids(
+        'save',
         Poids(
           id: 0,
           datePrise: DateFormat("dd/MM/yyyy").format(selectedDate),
           mesure: double.parse(controller.text),
-          differenceDernierePrise: difference,
         ),
       );
       Navigator.pop(context);
-      if(retourInsert==0) {
+      if (retourInsert == 0) {
         Navigator.pop(context);
         Fluttertoast.showToast(
             msg: "Mesure enregistré !",
@@ -168,8 +160,7 @@ class PoidsPageState extends State<PoidsPage> {
             timeInSecForIosWeb: 1,
             backgroundColor: Colors.green,
             textColor: Colors.white,
-            fontSize: 16.0
-        );
+            fontSize: 16.0);
       } else {
         showError("Problème d'enregistrement en BDD !");
       }

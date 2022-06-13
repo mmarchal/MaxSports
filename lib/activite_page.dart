@@ -38,7 +38,7 @@ class ActivitePageState extends State<ActivitePage> {
             },
             buttons: activits,
           ),
-          formulaire ?? const SizedBox(),
+          formulaire ?? const SizedBox()
         ],
       ),
     );

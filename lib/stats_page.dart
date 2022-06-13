@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/database.dart';
 import 'package:max_sports/objects/poids.dart';
 
 class StatsPage extends StatefulWidget {
-
   const StatsPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return StatsPageState();
   }
-
 }
 
 class StatsPageState extends State<StatsPage> {
-  final db = DBProvider();
   List<Poids> list = [];
 
   @override

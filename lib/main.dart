@@ -1,8 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:max_sports/database.dart';
+import 'package:max_sports/activite_page.dart';
+import 'package:max_sports/objects/menu.dart';
+import 'package:max_sports/poids_page.dart';
+import 'package:max_sports/stats_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +37,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final db = DBProvider();
+  List<Menu> tables = [
+    Menu(
+      titre: "Poids",
+      icon: Icons.analytics,
+      couleur: Colors.green,
+      description: "Permet d'ajouter une mesure de poids !",
+      redirection: const PoidsPage(),
+    ),
+    Menu(
+      titre: "Activité",
+      icon: Icons.fitness_center,
+      couleur: Colors.lightBlue,
+      description: "Permet d'ajouter une activité !",
+      redirection: const ActivitePage(),
+    ),
+    Menu(
+      titre: "Statistiques",
+      icon: Icons.query_stats,
+      couleur: Colors.red.shade300,
+      description: "Permet de consulter les statistiques !",
+      redirection: const StatsPage(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              showDialog(
-                context: context,
-                builder: (BuildContext bContext) => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-              db.deleteAllData("Poids");
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.delete,
-            ),
-          )
-        ],
       ),
       body: Center(
         child: GridView.count(
@@ -68,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisSpacing: 5,
           mainAxisSpacing: 5,
           padding: const EdgeInsets.all(10.0),
-          children: db.tables
+          children: tables
               .map(
                 (data) => GestureDetector(
                   onTap: () {
