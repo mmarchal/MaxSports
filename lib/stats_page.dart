@@ -21,7 +21,7 @@ class StatsPageState extends State<StatsPage> {
     super.initState();
     BackEnd().getPoids().then((value) {
       setState(() {
-        list = value;
+        list = value.data ?? [];
       });
     });
   }

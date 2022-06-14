@@ -149,7 +149,7 @@ class PoidsPageState extends State<PoidsPage> {
         ),
       );
       Navigator.pop(context);
-      if (retourInsert != null) {
+      if (retourInsert.isSuccess) {
         Navigator.pop(context);
         Fluttertoast.showToast(
             msg: "Mesure enregistré !",
@@ -160,7 +160,7 @@ class PoidsPageState extends State<PoidsPage> {
             textColor: Colors.white,
             fontSize: 16.0);
       } else {
-        showError("Problème d'enregistrement en BDD !");
+        showError(retourInsert.error?.systemMessage ?? "Erreur inconnue");
       }
     } else {
       showError("La date et le poids doivent être renseigné !");
