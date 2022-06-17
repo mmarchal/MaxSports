@@ -4,12 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:max_sports/back-end/api_error.dart';
 import 'package:max_sports/back-end/api_response.dart';
 import 'package:max_sports/objects/poids.dart';
+import 'package:max_sports/objects/type_activite.dart';
 
 class BackEnd {
-  final String _path = 'http://10.0.2.2:2000/';
+  final String path = 'http://10.0.2.2:2000/';
+  final String imageUrl = 'http://ns329111.ip-37-187-107.eu:2500/';
 
   Future<APIResponse<List<Poids>>> getPoids() async {
-    final response = await http.get(Uri.parse(_path + 'all'));
+    final response = await http.get(Uri.parse(path + 'poids/all'));
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       return APIResponse(
@@ -29,7 +31,7 @@ class BackEnd {
   }
 
   Future<APIResponse<Poids?>> newPoids(Poids poids) async {
-    var urlSave = Uri.parse(_path + 'poids/save');
+    var urlSave = Uri.parse(path + 'poids/save');
     final response = await http.post(
       urlSave,
       headers: {
@@ -79,6 +81,28 @@ class BackEnd {
         return APIType.server;
       case 502:
         return APIType.timeout;
+    }
+  }
+
+  Future<APIResponse<List<TypeActivite>?>> getTypesActivites() async {
+    final response = await http.get(Uri.parse(path + 'typeActivite/all'));
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      return APIResponse(
+        data: json
+            .map<TypeActivite>((item) => TypeActivite.fromJson(item))
+            .toList(),
+        type: APIType.ok,
+      );
+    } else {
+      return APIResponse(
+        type: getAPIType(response.statusCode),
+        error: APIError(
+          systemMessage: response.body,
+          title: 'Erreur',
+          content: 'Une erreur est survenue',
+        ),
+      );
     }
   }
 }

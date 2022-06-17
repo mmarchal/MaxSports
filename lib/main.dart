@@ -1,10 +1,14 @@
+import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:max_sports/activite_page.dart';
+import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/menu.dart';
 import 'package:max_sports/poids_page.dart';
 import 'package:max_sports/stats_page.dart';
+import 'package:max_sports/utils/custom_shared.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,11 +66,58 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    getAllTypesAndSave();
+  }
+
+  getAllTypesAndSave() {
+    BackEnd().getTypesActivites().then((value) {
+      if (value.isSuccess && value.data != null) {
+        List<String> convertList =
+            value.data!.map((e) => jsonEncode(e)).toList();
+        CustomShared.setList("typesActivites", convertList);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.delete),
+              onPressed: () {
+                CustomShared.clear();
+                Fluttertoast.showToast(
+                  msg: "Vos données ont été supprimées !",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+              }),
+          IconButton(
+            onPressed: () {
+              getAllTypesAndSave();
+              Fluttertoast.showToast(
+                msg: "Vos données ont été récupérées !",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
       ),
       body: Center(
         child: GridView.count(

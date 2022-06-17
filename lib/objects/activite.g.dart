@@ -8,20 +8,17 @@ part of 'activite.dart';
 
 Activite _$ActiviteFromJson(Map<String, dynamic> json) => Activite(
       id: json['id'] as int,
+      distance: (json['distance'] as num).toDouble(),
+      vitesseMoyenne: (json['vitesseMoyenne'] as num).toDouble(),
       date: DateTime.parse(json['date'] as String),
-      machine: json['machine'] as String,
-      repetition: json['repetition'] as int,
-      poidsSouleve: (json['poidsSouleve'] as num).toDouble(),
-      kilometre: (json['kilometre'] as num).toDouble(),
-      duree: (json['duree'] as num).toDouble(),
+      typeActivite:
+          TypeActivite.fromJson(json['typeActivite'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ActiviteToJson(Activite instance) => <String, dynamic>{
       'id': instance.id,
+      'distance': instance.distance,
+      'vitesseMoyenne': instance.vitesseMoyenne,
       'date': instance.date.toIso8601String(),
-      'machine': instance.machine,
-      'repetition': instance.repetition,
-      'poidsSouleve': instance.poidsSouleve,
-      'kilometre': instance.kilometre,
-      'duree': instance.duree,
+      'typeActivite': instance.typeActivite,
     };
