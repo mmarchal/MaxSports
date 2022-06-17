@@ -12,6 +12,7 @@ enum APIType {
   timeout,
   conflict,
   invalidData,
+  unsupportedMediaType,
 }
 
 class APIResponse<T> {
@@ -21,7 +22,7 @@ class APIResponse<T> {
 
   APIResponse({this.data, this.type, this.error});
 
-  bool get isSuccess => error == null && type == null;
+  bool get isSuccess => error == null;
 
   bool get hasInternet => type != APIType.network;
 }

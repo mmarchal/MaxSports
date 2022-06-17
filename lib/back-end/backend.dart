@@ -6,7 +6,7 @@ import 'package:max_sports/back-end/api_response.dart';
 import 'package:max_sports/objects/poids.dart';
 
 class BackEnd {
-  final String _path = 'http://10.0.0.2:2000/';
+  final String _path = 'http://10.0.2.2:2000/';
 
   Future<APIResponse<List<Poids>>> getPoids() async {
     final response = await http.get(Uri.parse(_path + 'all'));
@@ -29,15 +29,13 @@ class BackEnd {
   }
 
   Future<APIResponse<Poids?>> newPoids(Poids poids) async {
+    var urlSave = Uri.parse(_path + 'poids/save');
     final response = await http.post(
-      Uri.parse(_path + 'save'),
+      urlSave,
       headers: {
         'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "*",
       },
-      body: jsonEncode(
-        poids.toJson(),
-      ),
+      body: jsonEncode(poids),
     );
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
@@ -73,6 +71,8 @@ class BackEnd {
         return APIType.notFound;
       case 409:
         return APIType.conflict;
+      case 415:
+        return APIType.unsupportedMediaType;
       case 422:
         return APIType.invalidData;
       case 500:

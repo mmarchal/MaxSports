@@ -5,20 +5,20 @@ part 'poids.g.dart';
 @JsonSerializable()
 class Poids {
   int? id;
-  final String datePrise;
-  final double mesure;
+  final DateTime date;
+  final double poids;
 
   Poids({
     this.id,
-    required this.datePrise,
-    required this.mesure,
+    required this.date,
+    required this.poids,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'datePrise': datePrise,
-      'mesure': mesure,
+      'date': date,
+      'poids': poids,
     };
   }
 

@@ -144,21 +144,22 @@ class PoidsPageState extends State<PoidsPage> {
       );
       final retourInsert = await BackEnd().newPoids(
         Poids(
-          datePrise: DateFormat("yyyy-MM-dd hh:mm:ss").format(selectedDate),
-          mesure: double.parse(controller.text),
+          date: selectedDate,
+          poids: double.parse(controller.text),
         ),
       );
       Navigator.pop(context);
       if (retourInsert.isSuccess) {
         Navigator.pop(context);
         Fluttertoast.showToast(
-            msg: "Mesure enregistré !",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.green,
-            textColor: Colors.white,
-            fontSize: 16.0);
+          msg: "Mesure enregistré !",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
       } else {
         showError(retourInsert.error?.systemMessage ?? "Erreur inconnue");
       }
