@@ -41,24 +41,46 @@ class ActivitePageState extends State<ActivitePage> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: (types.isNotEmpty)
-            ? GridView.builder(
-                itemCount: types.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                "Choisissez votre activité",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                itemBuilder: (context, index) {
-                  return TypeActiviteCard(
-                    type: types[index],
-                  );
-                },
-              )
-            : const Center(
-                child: CircularProgressIndicator(),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              (types.isNotEmpty)
+                  ? GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: types.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemBuilder: (context, index) {
+                        return TypeActiviteCard(
+                          type: types[index],
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            "/activite_detail",
+                            arguments: types[index],
+                          ),
+                        );
+                      },
+                    )
+                  : const CircularProgressIndicator(),
+            ],
+          ),
+        ),
       ),
     );
   }
