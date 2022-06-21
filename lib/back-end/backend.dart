@@ -8,7 +8,8 @@ import 'package:max_sports/objects/recap.dart';
 import 'package:max_sports/objects/type_activite.dart';
 
 class BackEnd {
-  final String path = 'http://10.0.2.2:2000/';
+  //final String path = 'http://10.0.2.2:2000/';
+  final String path = 'http://ns329111.ip-37-187-107.eu:3000/';
   final String imageUrl = 'http://ns329111.ip-37-187-107.eu:2500/';
 
   Future<APIResponse<List<Poids>>> getPoids() async {
