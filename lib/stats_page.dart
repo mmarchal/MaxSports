@@ -28,28 +28,22 @@ class StatsPageState extends State<StatsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Statistiques"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 2,
-          child: Card(
-            elevation: 10,
-            child: Graphique(
-              seriesList: [
-                charts.Series<Poids, DateTime>(
-                  id: 'Poids',
-                  colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-                  domainFn: (Poids poids, _) => poids.date,
-                  measureFn: (Poids poids, _) => poids.poids,
-                  data: list,
-                ),
-              ],
-              animate: true,
-            ),
+    return Center(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / 2,
+        child: Card(
+          elevation: 10,
+          child: Graphique(
+            seriesList: [
+              charts.Series<Poids, DateTime>(
+                id: 'Poids',
+                colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+                domainFn: (Poids poids, _) => poids.date,
+                measureFn: (Poids poids, _) => poids.poids,
+                data: list,
+              ),
+            ],
+            animate: true,
           ),
         ),
       ),

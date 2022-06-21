@@ -32,73 +32,66 @@ class PoidsPageState extends State<PoidsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mesure de poids"),
-        centerTitle: true,
-        backgroundColor: couleur,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          rowInit(
-            text: "Date de la mesure : ",
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                primary: couleur,
-              ),
-              onPressed: () async {
-                final DateTime? selected = await showDatePicker(
-                  context: context,
-                  initialDate: selectedDate,
-                  firstDate: DateTime.now(),
-                  lastDate: DateTime(2100),
-                );
-                if (selected != null && selected != selectedDate) {
-                  setState(() {
-                    date = true;
-                    selectedDate = selected;
-                  });
-                }
-              },
-              icon: const Icon(Icons.schedule),
-              label: Text((date)
-                  ? DateFormat("dd/MM/yyyy").format(selectedDate)
-                  : "Non défini"),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          rowInit(
-            text: "Poids mesuré : ",
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              child: TextField(
-                  keyboardType: TextInputType.number,
-                  controller: controller,
-                  decoration: InputDecoration(
-                    labelText: "Poids",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                  )),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          ElevatedButton.icon(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        rowInit(
+          text: "Date de la mesure : ",
+          child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               primary: couleur,
             ),
-            onPressed: () => checkAndValidate(),
-            icon: const Icon(
-              Icons.analytics,
-            ),
-            label: const Text("Valider"),
+            onPressed: () async {
+              final DateTime? selected = await showDatePicker(
+                context: context,
+                initialDate: selectedDate,
+                firstDate: DateTime.now(),
+                lastDate: DateTime(2100),
+              );
+              if (selected != null && selected != selectedDate) {
+                setState(() {
+                  date = true;
+                  selectedDate = selected;
+                });
+              }
+            },
+            icon: const Icon(Icons.schedule),
+            label: Text((date)
+                ? DateFormat("dd/MM/yyyy").format(selectedDate)
+                : "Non défini"),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        rowInit(
+          text: "Poids mesuré : ",
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width / 2,
+            child: TextField(
+                keyboardType: TextInputType.number,
+                controller: controller,
+                decoration: InputDecoration(
+                  labelText: "Poids",
+                  border: myinputborder(),
+                  enabledBorder: myinputborder(),
+                )),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            primary: couleur,
+          ),
+          onPressed: () => checkAndValidate(),
+          icon: const Icon(
+            Icons.analytics,
+          ),
+          label: const Text("Valider"),
+        ),
+      ],
     );
   }
 

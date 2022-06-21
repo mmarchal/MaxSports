@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/accueil_page.dart';
-import 'package:max_sports/home.dart';
 import 'package:max_sports/objects/menu.dart';
 
 import '../activite_page.dart';
@@ -46,24 +45,28 @@ final items = [
     title: homeMenu.titre,
     icon: homeMenu.icon,
     redirection: homeMenu.redirection,
+    color: homeMenu.couleur,
   ),
   NavigationBarItem(
     id: poidsMenu.id,
     title: poidsMenu.titre,
     icon: poidsMenu.icon,
     redirection: poidsMenu.redirection,
+    color: poidsMenu.couleur,
   ),
   NavigationBarItem(
     id: activiteMenu.id,
     title: activiteMenu.titre,
     icon: activiteMenu.icon,
     redirection: activiteMenu.redirection,
+    color: activiteMenu.couleur,
   ),
   NavigationBarItem(
     id: statsMenu.id,
     title: statsMenu.titre,
     icon: statsMenu.icon,
     redirection: statsMenu.redirection,
+    color: statsMenu.couleur,
   ),
 ];
 
@@ -72,11 +75,13 @@ class NavigationBarItem {
   final String title;
   final IconData icon;
   final Widget redirection;
+  final Color color;
 
   NavigationBarItem({
     required this.id,
     required this.title,
     required this.icon,
     required this.redirection,
+    required this.color,
   });
 }

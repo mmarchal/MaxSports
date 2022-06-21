@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:max_sports/back-end/api_error.dart';
 import 'package:max_sports/back-end/api_response.dart';
 import 'package:max_sports/objects/poids.dart';
+import 'package:max_sports/objects/recap.dart';
 import 'package:max_sports/objects/type_activite.dart';
 
 class BackEnd {
@@ -92,6 +93,47 @@ class BackEnd {
         data: json
             .map<TypeActivite>((item) => TypeActivite.fromJson(item))
             .toList(),
+        type: APIType.ok,
+      );
+    } else {
+      return APIResponse(
+        type: getAPIType(response.statusCode),
+        error: APIError(
+          systemMessage: response.body,
+          title: 'Erreur',
+          content: 'Une erreur est survenue',
+        ),
+      );
+    }
+  }
+
+  Future<APIResponse<Poids?>> getLastWeight() async {
+    final response = await http.get(Uri.parse(path + 'poids/last'));
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      return APIResponse(
+        data: Poids.fromJson(json),
+        type: APIType.ok,
+      );
+    } else {
+      return APIResponse(
+        type: getAPIType(response.statusCode),
+        error: APIError(
+          systemMessage: response.body,
+          title: 'Erreur',
+          content: 'Une erreur est survenue',
+        ),
+      );
+    }
+  }
+
+  //Get data from lastTwo api call
+  Future<APIResponse<Recap?>> getLastTwoWeights() async {
+    final response = await http.get(Uri.parse(path + 'poids/lastTwo'));
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      return APIResponse(
+        data: Recap.fromJson(json),
         type: APIType.ok,
       );
     } else {

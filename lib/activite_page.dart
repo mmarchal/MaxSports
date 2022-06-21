@@ -35,51 +35,45 @@ class ActivitePageState extends State<ActivitePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Activité"),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                "Choisissez votre activité",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+    return SafeArea(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              "Choisissez votre activité",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              (types.isNotEmpty)
-                  ? GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: types.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemBuilder: (context, index) {
-                        return TypeActiviteCard(
-                          type: types[index],
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            "/activite_detail",
-                            arguments: types[index],
-                          ),
-                        );
-                      },
-                    )
-                  : const CircularProgressIndicator(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            (types.isNotEmpty)
+                ? GridView.builder(
+                    shrinkWrap: true,
+                    itemCount: types.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return TypeActiviteCard(
+                        type: types[index],
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          "/activite_detail",
+                          arguments: types[index],
+                        ),
+                      );
+                    },
+                  )
+                : const CircularProgressIndicator(),
+          ],
         ),
       ),
     );
