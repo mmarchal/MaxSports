@@ -39,7 +39,7 @@ class TypeActiviteCard extends StatelessWidget {
         ),
         child: Align(
           child: Text(
-            type.type.toAccent(),
+            type.type,
             style: const TextStyle(
               color: Colors.blue,
             ),
