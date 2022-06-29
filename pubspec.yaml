@@ -24,6 +24,7 @@ dependencies:
   charts_flutter: 
   shared_preferences: ^2.0.15
   cached_network_image: ^3.2.1
+  firebase_core: any
 
 dev_dependencies:
   flutter_test:

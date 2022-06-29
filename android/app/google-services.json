@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "354695374038",
+    "project_id": "max-sports-21244",
+    "storage_bucket": "max-sports-21244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354695374038:android:ee8d5226e3bd9de41a1577",
+        "android_client_info": {
+          "package_name": "com.example.max_sports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354695374038-eemg5q3lvnv9430lu5ss50grbge2n541.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4anSyfPy1QSTTBMxuCawA-_0Df1OkcHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354695374038-eemg5q3lvnv9430lu5ss50grbge2n541.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "354695374038-07jao4rm39tqqko88hku8g833bnsdbd1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.maxSports"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
