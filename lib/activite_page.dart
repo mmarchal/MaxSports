@@ -19,6 +19,8 @@ class ActivitePage extends StatefulWidget {
 class ActivitePageState extends State<ActivitePage> {
   List<TypeActivite> types = [];
 
+  int selectedValue = 0;
+
   @override
   void initState() {
     super.initState();
@@ -39,55 +41,64 @@ class ActivitePageState extends State<ActivitePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              "Choisissez votre activité",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+        child: (types.isNotEmpty)
+            ? bodyWidget()
+            : const CircularProgressIndicator(),
+      ),
+    );
+  }
+
+  Widget bodyWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Choisissez le nombre d'activité effectué ce jour : ",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Row(
+          children: List.generate(3, (index) {
+            index++;
+            return Expanded(
+              child: ListTile(
+                title: Text(index.toString()),
+                leading: Radio(
+                  value: index,
+                  groupValue: selectedValue,
+                  onChanged: (int? changed) {
+                    setState(
+                      () {
+                        selectedValue = changed!;
+                      },
+                    );
+                  },
+                ),
+              ),
+            );
+          }),
+        ),
+        Visibility(
+          visible: selectedValue != 0,
+          child: Expanded(
+            child: GridView.count(
+              crossAxisCount: selectedValue,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 8.0,
+              children: List.generate(
+                selectedValue,
+                (index) => Card(
+                  elevation: 10,
+                  child: Text(index.toString()),
+                ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            (types.isNotEmpty)
-                ? GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: types.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemBuilder: (context, index) {
-                      return TypeActiviteCard(
-                        type: types[index],
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext bContext) =>
-                                ActiviteDetailPage(
-                              activite: Activite(
-                                id: 0,
-                                distance: 0,
-                                vitesseMoyenne: 0,
-                                date: DateTime.now(),
-                                typeActivite: types[index],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : const CircularProgressIndicator(),
-          ],
-        ),
-      ),
+          ),
+        )
+      ],
     );
   }
 }
