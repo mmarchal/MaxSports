@@ -18,6 +18,7 @@ class ActivitePage extends StatefulWidget {
 
 class ActivitePageState extends State<ActivitePage> {
   List<TypeActivite> types = [];
+  List<TypeActivite> selectedTypeList = [];
 
   int selectedValue = 0;
 
@@ -73,6 +74,7 @@ class ActivitePageState extends State<ActivitePage> {
                     setState(
                       () {
                         selectedValue = changed!;
+                        selectedTypeList = List.filled(selectedValue, types[0]);
                       },
                     );
                   },
@@ -81,22 +83,50 @@ class ActivitePageState extends State<ActivitePage> {
             );
           }),
         ),
-        Visibility(
-          visible: selectedValue != 0,
-          child: Expanded(
-            child: GridView.count(
-              crossAxisCount: selectedValue,
-              crossAxisSpacing: 4.0,
-              mainAxisSpacing: 8.0,
-              children: List.generate(
-                selectedValue,
-                (index) => Card(
-                  elevation: 10,
-                  child: Text(index.toString()),
+        (selectedValue != 0)
+            ? Expanded(
+                child: Container(
+                  margin: const EdgeInsets.all(16),
+                  child: ListView.builder(
+                    itemCount: selectedValue,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        elevation: 10,
+                        child: Column(
+                          children: [
+                            DropdownButton(
+                              value: selectedTypeList[index],
+                              items: types
+                                  .map(
+                                    (TypeActivite e) =>
+                                        DropdownMenuItem<TypeActivite>(
+                                      value: e,
+                                      child: Text(e.type),
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (TypeActivite? type) {
+                                setState(() {
+                                  selectedTypeList[index] = type!;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ),
-          ),
+              )
+            : const SizedBox(),
+        ElevatedButton.icon(
+          onPressed: () {
+            selectedTypeList.forEach((element) {
+              print(element.type);
+            });
+          },
+          icon: const Icon(Icons.verified),
+          label: Text("Voir résultat"),
         )
       ],
     );
