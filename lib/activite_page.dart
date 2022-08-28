@@ -1,11 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:max_sports/activite_detail_page.dart';
-import 'package:max_sports/objects/activite.dart';
 import 'package:max_sports/objects/type_activite.dart';
 import 'package:max_sports/utils/custom_shared.dart';
-import 'package:max_sports/widgets/type_activite_card.dart';
 
 class ActivitePage extends StatefulWidget {
   const ActivitePage({Key? key}) : super(key: key);
@@ -120,13 +117,9 @@ class ActivitePageState extends State<ActivitePage> {
               )
             : const SizedBox(),
         ElevatedButton.icon(
-          onPressed: () {
-            selectedTypeList.forEach((element) {
-              print(element.type);
-            });
-          },
+          onPressed: () {},
           icon: const Icon(Icons.verified),
-          label: Text("Voir résultat"),
+          label: const Text("Voir résultat"),
         )
       ],
     );

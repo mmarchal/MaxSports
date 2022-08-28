@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/back-end/backend.dart';
 import 'package:max_sports/objects/type_activite.dart';
-import 'package:max_sports/utils/extension.dart';
 
 class TypeActiviteCard extends StatelessWidget {
   final TypeActivite type;
