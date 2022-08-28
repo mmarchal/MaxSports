@@ -1,3 +1,9 @@
+# 1.0.1
+
+_Fix_
+
+- Redirection when poids request is success
+
 # 1.0.0
 
 _Feat_

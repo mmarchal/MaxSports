@@ -138,12 +138,17 @@ class PoidsPageState extends State<PoidsPage> {
       final retourInsert = await BackEnd().newPoids(
         Poids(
           date: selectedDate,
-          poids: double.parse(controller.text),
+          poids: double.parse(
+            controller.text.replaceAll(
+              ',',
+              '.',
+            ),
+          ),
         ),
       );
-      Navigator.pop(context);
       if (retourInsert.isSuccess) {
         Navigator.pop(context);
+        controller.clear();
         Fluttertoast.showToast(
           msg: "Mesure enregistré !",
           toastLength: Toast.LENGTH_SHORT,
