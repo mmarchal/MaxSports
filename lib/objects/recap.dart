@@ -5,10 +5,10 @@ part 'recap.g.dart';
 
 @JsonSerializable()
 class Recap {
-  final double poids0;
-  final DateTime date0;
-  final double poids1;
-  final DateTime date1;
+  final double poidsRecent;
+  final DateTime dateRecent;
+  final double poidsLate;
+  final DateTime dateLate;
   final double difference;
   final EtatPoids etat;
 
@@ -17,10 +17,10 @@ class Recap {
   Map<String, dynamic> toJson() => _$RecapToJson(this);
 
   Recap({
-    required this.poids0,
-    required this.date0,
-    required this.poids1,
-    required this.date1,
+    required this.poidsRecent,
+    required this.dateRecent,
+    required this.poidsLate,
+    required this.dateLate,
     required this.difference,
     required this.etat,
   });

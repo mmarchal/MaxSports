@@ -3,6 +3,7 @@
 _Fix_
 
 - Redirection when poids request is success
+- Resume poids card in Home Page
 
 # 1.0.0
 

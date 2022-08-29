@@ -37,13 +37,13 @@ class RecapWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Poids : ${recap!.poids0} kg",
+                  "Poids : ${recap!.poidsRecent} kg",
                   style: const TextStyle(
                     fontSize: 15,
                   ),
                 ),
                 Text(
-                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.date1)}",
+                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateRecent)}",
                   style: const TextStyle(
                     fontSize: 15,
                   ),
@@ -54,13 +54,13 @@ class RecapWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Poids : ${recap!.poids1} kg",
+                  "Poids : ${recap!.poidsLate} kg",
                   style: const TextStyle(
                     fontSize: 15,
                   ),
                 ),
                 Text(
-                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.date1)}",
+                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateLate)}",
                   style: const TextStyle(
                     fontSize: 15,
                   ),
@@ -71,7 +71,7 @@ class RecapWidget extends StatelessWidget {
               height: 20,
             ),
             Text(
-              "Etat : ${recap!.etat.name} de ${recap!.difference.toStringAsFixed(2)} kg",
+              "Etat : ${recap!.etat.name} de ${recap!.difference} kg",
               style: const TextStyle(
                 fontSize: 15,
               ),
