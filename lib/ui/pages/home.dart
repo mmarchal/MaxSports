@@ -1,31 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:max_sports/back-end/backend.dart';
-import 'package:max_sports/utils/custom_shared.dart';
-import 'package:max_sports/utils/menu_list.dart';
+import 'package:max_sports/core/utils/menu_list.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    BackEnd().getTypesActivites().then((value) {
-      if (value.isSuccess && value.data != null) {
-        List<String> convertList =
-            value.data!.map((e) => jsonEncode(e)).toList();
-        CustomShared.setList("typesActivites", convertList);
-      }
-    });
-  }
-
+// ignore: must_be_immutable
+class HomePage extends StatelessWidget {
   int selectedIndex = 0;
+
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +53,5 @@ class _HomePageState extends State<HomePage> {
             .toList(),
       ),
     );
-  }
-
-  _onTap(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
   }
 }

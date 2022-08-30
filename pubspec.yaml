@@ -24,12 +24,14 @@ dependencies:
   charts_flutter: 
   shared_preferences: ^2.0.15
   cached_network_image: ^3.2.1
-  firebase_core: any
+  flutter_bloc: ^8.1.1
+  freezed_annotation: ^2.1.0
 
 dev_dependencies:
+  freezed: ^2.1.0
   flutter_test:
     sdk: flutter
-
+  
   flutter_lints: ^1.0.0
 
 

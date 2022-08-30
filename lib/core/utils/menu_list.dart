@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/accueil_page.dart';
-import 'package:max_sports/objects/menu.dart';
-
-import '../activite_page.dart';
-import '../poids_page.dart';
-import '../stats_page.dart';
+import 'package:max_sports/data/objects/menu.dart';
+import 'package:max_sports/ui/pages/accueil_page.dart';
+import 'package:max_sports/ui/pages/activite_page.dart';
+import 'package:max_sports/ui/pages/poids_page.dart';
+import 'package:max_sports/ui/pages/stats_page.dart';
 
 var homeMenu = Menu(
   id: 1,

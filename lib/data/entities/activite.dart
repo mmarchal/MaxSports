@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:max_sports/objects/type_activite.dart';
+import 'package:max_sports/data/entities/type_activite.dart';
 
 part 'activite.g.dart';
 

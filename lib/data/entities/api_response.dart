@@ -1,4 +1,4 @@
-import 'package:max_sports/back-end/api_error.dart';
+import 'package:max_sports/data/entities/api_error.dart';
 
 enum APIType {
   ok,

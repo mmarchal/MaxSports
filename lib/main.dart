@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:max_sports/home.dart';
+import 'package:max_sports/ui/pages/home.dart';
 
 void main() {
   runApp(const MyApp());
