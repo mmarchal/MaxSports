@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:max_sports/back-end/api_error.dart';
-import 'package:max_sports/back-end/api_response.dart';
-import 'package:max_sports/objects/poids.dart';
-import 'package:max_sports/objects/recap.dart';
-import 'package:max_sports/objects/type_activite.dart';
+import 'package:max_sports/data/entities/api_error.dart';
+import 'package:max_sports/data/entities/api_response.dart';
+import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/recap.dart';
+import 'package:max_sports/data/entities/type_activite.dart';
 
 class BackEnd {
   //final String path = 'http://10.0.2.2:8080/';

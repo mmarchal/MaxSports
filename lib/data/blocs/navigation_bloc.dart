@@ -7,7 +7,12 @@ class NavigationBloc extends Cubit<NavigationState> {
 
 //https://medium.com/@antoniodominikovic/implementing-in-app-navigation-with-the-flutter-bottom-navigation-bar-using-the-bloc-architecture-84cda9c74dda
 
+  void reinitState() => emit(
+        NavigationState.initial(),
+      );
+
   void getNavBarItem(NavbarItem item) {
+    reinitState();
     int indexReturn = 0;
     switch (item) {
       case NavbarItem.home:

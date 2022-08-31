@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/back-end/api_response.dart';
-import 'package:max_sports/back-end/backend.dart';
-import 'package:max_sports/objects/poids.dart';
-import 'package:max_sports/objects/recap.dart';
-import 'package:max_sports/widgets/last_weight_widget.dart';
-import 'package:max_sports/widgets/recap_widget.dart';
+import 'package:max_sports/ui/widgets/recap_widget.dart';
 
 class AccueilPage extends StatefulWidget {
   const AccueilPage({Key? key}) : super(key: key);

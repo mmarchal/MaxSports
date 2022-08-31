@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:max_sports/core/utils/menu_list.dart';
+import 'package:max_sports/core/utils/navbar_item.dart';
+import 'package:max_sports/data/blocs/navigation_bloc.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   int selectedIndex = 0;
 
   HomePage({Key? key}) : super(key: key);
+
+  NavbarItem _getNavItem(int index) {
+    switch (index) {
+      case 0:
+        return NavbarItem.home;
+      case 1:
+        return NavbarItem.poids;
+      case 2:
+        return NavbarItem.activite;
+      case 3:
+        return NavbarItem.statistiques;
+      default:
+        return NavbarItem.home;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +38,9 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.black,
         selectedItemColor: Colors.black,
         currentIndex: selectedIndex,
-        onTap: (index) => _onTap(index),
+        onTap: (index) => context.read<NavigationBloc>().getNavBarItem(
+              _getNavItem(index),
+            ),
         unselectedLabelStyle: const TextStyle(
           fontSize: 16,
           color: Colors.black,

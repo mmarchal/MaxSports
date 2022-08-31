@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:max_sports/back-end/backend.dart';
-import 'package:max_sports/objects/poids.dart';
+import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/data/entities/poids.dart';
 
 class PoidsPage extends StatefulWidget {
   const PoidsPage({Key? key}) : super(key: key);
