@@ -1,3 +1,9 @@
+# 1.1.0
+
+_Feat_
+
+- Navigation management by bloc and state
+
 # 1.0.1
 
 _Fix_

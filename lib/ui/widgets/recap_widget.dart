@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:max_sports/objects/recap.dart';
+import 'package:max_sports/data/entities/recap.dart';
 
 class RecapWidget extends StatelessWidget {
   final Recap? recap;

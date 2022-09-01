@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/back-end/backend.dart';
-import 'package:max_sports/objects/type_activite.dart';
+import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/data/entities/type_activite.dart';
 
 class ActiviteWidget extends StatelessWidget {
   final TypeActivite typeActivite;

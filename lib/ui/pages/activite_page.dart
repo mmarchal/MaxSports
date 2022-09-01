@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:max_sports/objects/type_activite.dart';
-import 'package:max_sports/utils/custom_shared.dart';
+
+import '../../core/utils/custom_shared.dart';
+import '../../data/entities/type_activite.dart';
 
 class ActivitePage extends StatefulWidget {
   const ActivitePage({Key? key}) : super(key: key);

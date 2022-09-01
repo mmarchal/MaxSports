@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/back-end/backend.dart';
-import 'package:max_sports/objects/poids.dart';
-import 'package:max_sports/widgets/graphique.dart';
+import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/ui/widgets/graphique.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+
 
 class StatsPage extends StatefulWidget {
   const StatsPage({Key? key}) : super(key: key);
