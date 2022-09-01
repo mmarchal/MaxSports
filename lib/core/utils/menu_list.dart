@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/data/entities/menu.dart';
-import 'package:max_sports/ui/pages/accueil_page.dart';
+import 'package:max_sports/ui/pages/accueil/accueil_page.dart';
 import 'package:max_sports/ui/pages/activite_page.dart';
 import 'package:max_sports/ui/pages/poids_page.dart';
 import 'package:max_sports/ui/pages/stats_page.dart';

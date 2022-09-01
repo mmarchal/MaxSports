@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/ui/widgets/recap_widget.dart';
 
-import '../../data/backend.dart';
-import '../../data/entities/api_response.dart';
-import '../../data/entities/poids.dart';
-import '../../data/entities/recap.dart';
-import '../widgets/last_weight_widget.dart';
+import '../../../data/backend.dart';
+import '../../../data/entities/api_response.dart';
+import '../../../data/entities/poids.dart';
+import '../../../data/entities/recap.dart';
+import '../../widgets/last_weight_widget.dart';
 
 class AccueilPage extends StatefulWidget {
   const AccueilPage({Key? key}) : super(key: key);

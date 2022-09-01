@@ -3,9 +3,10 @@ import 'package:max_sports/core/utils/navbar_item.dart';
 import 'package:max_sports/data/states/navigation_state.dart';
 
 class NavigationBloc extends Cubit<NavigationState> {
-  NavigationBloc() : super(NavigationState.initial());
-
-//https://medium.com/@antoniodominikovic/implementing-in-app-navigation-with-the-flutter-bottom-navigation-bar-using-the-bloc-architecture-84cda9c74dda
+  NavigationBloc()
+      : super(
+          NavigationState.initial(),
+        );
 
   void reinitState() => emit(
         NavigationState.initial(),
