@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:max_sports/data/blocs/backend_bloc.dart';
 import 'package:max_sports/data/states/backend_state.dart';
+import 'package:max_sports/ui/widgets/app_loader.dart';
 
 class AccueilPageListener extends StatelessWidget {
   final Widget child;
@@ -17,13 +18,8 @@ class AccueilPageListener extends StatelessWidget {
       listeners: [
         BlocListener<BackendBloc, BackendState>(
           listener: (context, state) => state.maybeMap(
-            getWeightLoading: (value) => showDialog(
-              context: context,
-              builder: ((context) => const Center(
-                    child: CircularProgressIndicator(),
-                  )),
-            ),
-            getWeightLoaded: (value) => Navigator.pop(context),
+            getWeightLoading: (value) => showLoaderOverlay(context),
+            getWeightLoaded: (value) => hideLoaderOverlay(),
             orElse: () => null,
           ),
         ),

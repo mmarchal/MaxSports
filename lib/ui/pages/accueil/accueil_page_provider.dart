@@ -15,7 +15,7 @@ class AccueilPageProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<BackendBloc>(
-          create: ((context) => BackendBloc()..getWeights()),
+          create: (context) => BackendBloc()..getWeights(),
         ),
       ],
       child: child,

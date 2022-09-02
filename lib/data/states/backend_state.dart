@@ -21,4 +21,19 @@ class BackendState with _$BackendState {
   factory BackendState.failed({
     APIError? error,
   }) = BackendStateFailed;
+
+
+  Poids? get currentLastPoids => maybeMap(
+    getWeightLoading: (value) => null,
+    getWeightLoaded: (value) => value.poids,
+    failed: (value) => value.currentLastPoids,
+    orElse: () => null,
+  );
+
+  Recap? get currentRecap => maybeMap(
+    getWeightLoading: (value) => null,
+    getWeightLoaded: (value) => value.recap,
+    failed: (value) => value.currentRecap,
+    orElse: () => null,
+  );
 }
