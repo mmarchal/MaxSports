@@ -1,8 +1,18 @@
+# 1.1.0
+
+_Feat_
+
+- Navigation management by bloc and state
+- Backend management by bloc
+- Add provider and listener to Accueil page
+- Add bloc to Poids page
+
 # 1.0.1
 
 _Fix_
 
 - Redirection when poids request is success
+- Resume poids card in Home Page
 
 # 1.0.0
 
