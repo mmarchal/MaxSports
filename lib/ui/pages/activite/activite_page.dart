@@ -1,53 +1,32 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/data/blocs/type_activite_bloc.dart';
+import 'package:max_sports/data/entities/type_activite.dart';
+import 'package:max_sports/data/states/type_activite_state.dart';
+import 'package:max_sports/ui/pages/activite/activite_page_provider.dart';
 
-import '../../core/utils/custom_shared.dart';
-import '../../data/entities/type_activite.dart';
-
-class ActivitePage extends StatefulWidget {
+class ActivitePage extends StatelessWidget {
   const ActivitePage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return ActivitePageState();
-  }
-}
-
-class ActivitePageState extends State<ActivitePage> {
-  List<TypeActivite> types = [];
-  List<TypeActivite> selectedTypeList = [];
-
-  int selectedValue = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    CustomShared.getList("typesActivites").then((value) {
-      if (value != null) {
-        setState(() {
-          types = value.map(
-            (e) {
-              return TypeActivite.fromJson(jsonDecode(e));
-            },
-          ).toList();
-        });
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: (types.isNotEmpty)
-            ? bodyWidget()
-            : const CircularProgressIndicator(),
+    return ActivitePageProvider(
+      child: SafeArea(
+        child: Center(
+          child: BlocBuilder<TypeActiviteBloc, TypeActiviteState>(
+              builder: (context, state) {
+            if (state.currentListOfActivitesTypes != null) {
+              return bodyWidget(state.currentListOfActivitesTypes!);
+            } else {
+              return const CircularProgressIndicator();
+            }
+          }),
+        ),
       ),
     );
   }
 
-  Widget bodyWidget() {
+  Widget bodyWidget(List<TypeActivite> list) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -65,23 +44,16 @@ class ActivitePageState extends State<ActivitePage> {
             return Expanded(
               child: ListTile(
                 title: Text(index.toString()),
-                leading: Radio(
+                /*leading: Radio(
                   value: index,
                   groupValue: selectedValue,
-                  onChanged: (int? changed) {
-                    setState(
-                      () {
-                        selectedValue = changed!;
-                        selectedTypeList = List.filled(selectedValue, types[0]);
-                      },
-                    );
-                  },
-                ),
+                  onChanged: (int? changed) {},
+                ),*/
               ),
             );
           }),
         ),
-        (selectedValue != 0)
+        /*(selectedValue != 0)
             ? Expanded(
                 child: Container(
                   margin: const EdgeInsets.all(16),
@@ -93,8 +65,8 @@ class ActivitePageState extends State<ActivitePage> {
                         child: Column(
                           children: [
                             DropdownButton(
-                              value: selectedTypeList[index],
-                              items: types
+                              value: list[index],
+                              items: list
                                   .map(
                                     (TypeActivite e) =>
                                         DropdownMenuItem<TypeActivite>(
@@ -103,11 +75,7 @@ class ActivitePageState extends State<ActivitePage> {
                                     ),
                                   )
                                   .toList(),
-                              onChanged: (TypeActivite? type) {
-                                setState(() {
-                                  selectedTypeList[index] = type!;
-                                });
-                              },
+                              onChanged: (TypeActivite? type) {},
                             ),
                           ],
                         ),
@@ -116,7 +84,7 @@ class ActivitePageState extends State<ActivitePage> {
                   ),
                 ),
               )
-            : const SizedBox(),
+            : const SizedBox(),*/
         ElevatedButton.icon(
           onPressed: () {},
           icon: const Icon(Icons.verified),
