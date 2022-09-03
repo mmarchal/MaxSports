@@ -1,33 +1,33 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:max_sports/data/backend.dart';
-import 'package:max_sports/data/states/backend_state.dart';
+import 'package:max_sports/data/states/home_state.dart';
 
-class BackendBloc extends Cubit<BackendState> {
-  BackendBloc()
+class HomeBloc extends Cubit<HomeState> {
+  HomeBloc()
       : super(
-          BackendState.initial(),
+          HomeState.initial(),
         );
 
   void idle() => emit(
-        BackendState.initial(),
+        HomeState.initial(),
       );
 
   void getWeights() async {
     emit(
-      BackendState.getWeightLoading(),
+      HomeState.getWeightLoading(),
     );
     final response = await BackEnd().getLastWeight();
     final recap = await BackEnd().getLastTwoWeights();
     if (response.isSuccess && recap.isSuccess) {
       emit(
-        BackendState.getWeightLoaded(
+        HomeState.getWeightLoaded(
           poids: response.data!,
           recap: recap.data!,
         ),
       );
     } else {
       emit(
-        BackendState.failed(
+        HomeState.failed(
           error: response.error,
         ),
       );

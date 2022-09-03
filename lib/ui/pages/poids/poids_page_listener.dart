@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/blocs/home_bloc.dart';
-import 'package:max_sports/data/states/home_state.dart';
+import 'package:max_sports/data/blocs/poids_bloc.dart';
+import 'package:max_sports/data/states/poids_state.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
 import 'package:max_sports/ui/widgets/custom_toast.dart';
 
-class AccueilPageListener extends StatelessWidget {
+class PoidsPageListener extends StatelessWidget {
   final Widget child;
 
-  const AccueilPageListener({
+  const PoidsPageListener({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -17,14 +17,18 @@ class AccueilPageListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        BlocListener<HomeBloc, HomeState>(
+        BlocListener<PoidsBloc, PoidsState>(
           listener: (context, state) => state.maybeMap(
-            getWeightLoading: (value) => showLoaderOverlay(context),
-            getWeightLoaded: (value) => hideLoaderOverlay(),
+            sendPoidsLoading: (value) => showLoaderOverlay(context),
+            sendPoidsLoaded: (value) {
+              hideLoaderOverlay();
+              CustomToast().displayToast(true, "Mesure enregistré !");
+              return null;
+            },
             failed: (value) {
               hideLoaderOverlay();
-              CustomToast().displayToast(false,
-                  value.error?.systemMessage ?? 'Une erreur est survenu !');
+              CustomToast().displayToast(
+                  true, value.error?.content ?? 'Une erreur est survenu !');
               return null;
             },
             orElse: () => null,

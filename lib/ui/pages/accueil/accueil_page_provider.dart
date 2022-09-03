@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/blocs/backend_bloc.dart';
+import 'package:max_sports/data/blocs/home_bloc.dart';
 
 class AccueilPageProvider extends StatelessWidget {
   final Widget child;
@@ -14,8 +14,8 @@ class AccueilPageProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<BackendBloc>(
-          create: (context) => BackendBloc()..getWeights(),
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc()..getWeights(),
         ),
       ],
       child: child,

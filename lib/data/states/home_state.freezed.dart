@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'backend_state.dart';
+part of 'home_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$BackendState {
+mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -43,82 +43,79 @@ mixin _$BackendState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BackendStateInitial value) initial,
-    required TResult Function(BackendStateGetWeightLoading value)
-        getWeightLoading,
-    required TResult Function(BackendStateGetWeightLoaded value)
-        getWeightLoaded,
-    required TResult Function(BackendStateFailed value) failed,
+    required TResult Function(HomeStateInitial value) initial,
+    required TResult Function(HomeStateGetWeightLoading value) getWeightLoading,
+    required TResult Function(HomeStateGetWeightLoaded value) getWeightLoaded,
+    required TResult Function(HomeStateFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BackendStateCopyWith<$Res> {
-  factory $BackendStateCopyWith(
-          BackendState value, $Res Function(BackendState) then) =
-      _$BackendStateCopyWithImpl<$Res>;
+abstract class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+      _$HomeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BackendStateCopyWithImpl<$Res> implements $BackendStateCopyWith<$Res> {
-  _$BackendStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._value, this._then);
 
-  final BackendState _value;
+  final HomeState _value;
   // ignore: unused_field
-  final $Res Function(BackendState) _then;
+  final $Res Function(HomeState) _then;
 }
 
 /// @nodoc
-abstract class _$$BackendStateInitialCopyWith<$Res> {
-  factory _$$BackendStateInitialCopyWith(_$BackendStateInitial value,
-          $Res Function(_$BackendStateInitial) then) =
-      __$$BackendStateInitialCopyWithImpl<$Res>;
+abstract class _$$HomeStateInitialCopyWith<$Res> {
+  factory _$$HomeStateInitialCopyWith(
+          _$HomeStateInitial value, $Res Function(_$HomeStateInitial) then) =
+      __$$HomeStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$BackendStateInitialCopyWithImpl<$Res>
-    extends _$BackendStateCopyWithImpl<$Res>
-    implements _$$BackendStateInitialCopyWith<$Res> {
-  __$$BackendStateInitialCopyWithImpl(
-      _$BackendStateInitial _value, $Res Function(_$BackendStateInitial) _then)
-      : super(_value, (v) => _then(v as _$BackendStateInitial));
+class __$$HomeStateInitialCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$$HomeStateInitialCopyWith<$Res> {
+  __$$HomeStateInitialCopyWithImpl(
+      _$HomeStateInitial _value, $Res Function(_$HomeStateInitial) _then)
+      : super(_value, (v) => _then(v as _$HomeStateInitial));
 
   @override
-  _$BackendStateInitial get _value => super._value as _$BackendStateInitial;
+  _$HomeStateInitial get _value => super._value as _$HomeStateInitial;
 }
 
 /// @nodoc
 
-class _$BackendStateInitial extends BackendStateInitial {
-  _$BackendStateInitial() : super._();
+class _$HomeStateInitial extends HomeStateInitial {
+  _$HomeStateInitial() : super._();
 
   @override
   String toString() {
-    return 'BackendState.initial()';
+    return 'HomeState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BackendStateInitial);
+        (other.runtimeType == runtimeType && other is _$HomeStateInitial);
   }
 
   @override
@@ -164,12 +161,10 @@ class _$BackendStateInitial extends BackendStateInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BackendStateInitial value) initial,
-    required TResult Function(BackendStateGetWeightLoading value)
-        getWeightLoading,
-    required TResult Function(BackendStateGetWeightLoaded value)
-        getWeightLoaded,
-    required TResult Function(BackendStateFailed value) failed,
+    required TResult Function(HomeStateInitial value) initial,
+    required TResult Function(HomeStateGetWeightLoading value) getWeightLoading,
+    required TResult Function(HomeStateGetWeightLoaded value) getWeightLoaded,
+    required TResult Function(HomeStateFailed value) failed,
   }) {
     return initial(this);
   }
@@ -177,10 +172,10 @@ class _$BackendStateInitial extends BackendStateInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
   }) {
     return initial?.call(this);
   }
@@ -188,10 +183,10 @@ class _$BackendStateInitial extends BackendStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -201,48 +196,47 @@ class _$BackendStateInitial extends BackendStateInitial {
   }
 }
 
-abstract class BackendStateInitial extends BackendState {
-  factory BackendStateInitial() = _$BackendStateInitial;
-  BackendStateInitial._() : super._();
+abstract class HomeStateInitial extends HomeState {
+  factory HomeStateInitial() = _$HomeStateInitial;
+  HomeStateInitial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$BackendStateGetWeightLoadingCopyWith<$Res> {
-  factory _$$BackendStateGetWeightLoadingCopyWith(
-          _$BackendStateGetWeightLoading value,
-          $Res Function(_$BackendStateGetWeightLoading) then) =
-      __$$BackendStateGetWeightLoadingCopyWithImpl<$Res>;
+abstract class _$$HomeStateGetWeightLoadingCopyWith<$Res> {
+  factory _$$HomeStateGetWeightLoadingCopyWith(
+          _$HomeStateGetWeightLoading value,
+          $Res Function(_$HomeStateGetWeightLoading) then) =
+      __$$HomeStateGetWeightLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$BackendStateGetWeightLoadingCopyWithImpl<$Res>
-    extends _$BackendStateCopyWithImpl<$Res>
-    implements _$$BackendStateGetWeightLoadingCopyWith<$Res> {
-  __$$BackendStateGetWeightLoadingCopyWithImpl(
-      _$BackendStateGetWeightLoading _value,
-      $Res Function(_$BackendStateGetWeightLoading) _then)
-      : super(_value, (v) => _then(v as _$BackendStateGetWeightLoading));
+class __$$HomeStateGetWeightLoadingCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$$HomeStateGetWeightLoadingCopyWith<$Res> {
+  __$$HomeStateGetWeightLoadingCopyWithImpl(_$HomeStateGetWeightLoading _value,
+      $Res Function(_$HomeStateGetWeightLoading) _then)
+      : super(_value, (v) => _then(v as _$HomeStateGetWeightLoading));
 
   @override
-  _$BackendStateGetWeightLoading get _value =>
-      super._value as _$BackendStateGetWeightLoading;
+  _$HomeStateGetWeightLoading get _value =>
+      super._value as _$HomeStateGetWeightLoading;
 }
 
 /// @nodoc
 
-class _$BackendStateGetWeightLoading extends BackendStateGetWeightLoading {
-  _$BackendStateGetWeightLoading() : super._();
+class _$HomeStateGetWeightLoading extends HomeStateGetWeightLoading {
+  _$HomeStateGetWeightLoading() : super._();
 
   @override
   String toString() {
-    return 'BackendState.getWeightLoading()';
+    return 'HomeState.getWeightLoading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BackendStateGetWeightLoading);
+            other is _$HomeStateGetWeightLoading);
   }
 
   @override
@@ -288,12 +282,10 @@ class _$BackendStateGetWeightLoading extends BackendStateGetWeightLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BackendStateInitial value) initial,
-    required TResult Function(BackendStateGetWeightLoading value)
-        getWeightLoading,
-    required TResult Function(BackendStateGetWeightLoaded value)
-        getWeightLoaded,
-    required TResult Function(BackendStateFailed value) failed,
+    required TResult Function(HomeStateInitial value) initial,
+    required TResult Function(HomeStateGetWeightLoading value) getWeightLoading,
+    required TResult Function(HomeStateGetWeightLoaded value) getWeightLoaded,
+    required TResult Function(HomeStateFailed value) failed,
   }) {
     return getWeightLoading(this);
   }
@@ -301,10 +293,10 @@ class _$BackendStateGetWeightLoading extends BackendStateGetWeightLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
   }) {
     return getWeightLoading?.call(this);
   }
@@ -312,10 +304,10 @@ class _$BackendStateGetWeightLoading extends BackendStateGetWeightLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (getWeightLoading != null) {
@@ -325,39 +317,37 @@ class _$BackendStateGetWeightLoading extends BackendStateGetWeightLoading {
   }
 }
 
-abstract class BackendStateGetWeightLoading extends BackendState {
-  factory BackendStateGetWeightLoading() = _$BackendStateGetWeightLoading;
-  BackendStateGetWeightLoading._() : super._();
+abstract class HomeStateGetWeightLoading extends HomeState {
+  factory HomeStateGetWeightLoading() = _$HomeStateGetWeightLoading;
+  HomeStateGetWeightLoading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$BackendStateGetWeightLoadedCopyWith<$Res> {
-  factory _$$BackendStateGetWeightLoadedCopyWith(
-          _$BackendStateGetWeightLoaded value,
-          $Res Function(_$BackendStateGetWeightLoaded) then) =
-      __$$BackendStateGetWeightLoadedCopyWithImpl<$Res>;
+abstract class _$$HomeStateGetWeightLoadedCopyWith<$Res> {
+  factory _$$HomeStateGetWeightLoadedCopyWith(_$HomeStateGetWeightLoaded value,
+          $Res Function(_$HomeStateGetWeightLoaded) then) =
+      __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>;
   $Res call({Poids poids, Recap recap});
 }
 
 /// @nodoc
-class __$$BackendStateGetWeightLoadedCopyWithImpl<$Res>
-    extends _$BackendStateCopyWithImpl<$Res>
-    implements _$$BackendStateGetWeightLoadedCopyWith<$Res> {
-  __$$BackendStateGetWeightLoadedCopyWithImpl(
-      _$BackendStateGetWeightLoaded _value,
-      $Res Function(_$BackendStateGetWeightLoaded) _then)
-      : super(_value, (v) => _then(v as _$BackendStateGetWeightLoaded));
+class __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$$HomeStateGetWeightLoadedCopyWith<$Res> {
+  __$$HomeStateGetWeightLoadedCopyWithImpl(_$HomeStateGetWeightLoaded _value,
+      $Res Function(_$HomeStateGetWeightLoaded) _then)
+      : super(_value, (v) => _then(v as _$HomeStateGetWeightLoaded));
 
   @override
-  _$BackendStateGetWeightLoaded get _value =>
-      super._value as _$BackendStateGetWeightLoaded;
+  _$HomeStateGetWeightLoaded get _value =>
+      super._value as _$HomeStateGetWeightLoaded;
 
   @override
   $Res call({
     Object? poids = freezed,
     Object? recap = freezed,
   }) {
-    return _then(_$BackendStateGetWeightLoaded(
+    return _then(_$HomeStateGetWeightLoaded(
       poids: poids == freezed
           ? _value.poids
           : poids // ignore: cast_nullable_to_non_nullable
@@ -372,8 +362,8 @@ class __$$BackendStateGetWeightLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
-  _$BackendStateGetWeightLoaded({required this.poids, required this.recap})
+class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
+  _$HomeStateGetWeightLoaded({required this.poids, required this.recap})
       : super._();
 
   @override
@@ -383,14 +373,14 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
 
   @override
   String toString() {
-    return 'BackendState.getWeightLoaded(poids: $poids, recap: $recap)';
+    return 'HomeState.getWeightLoaded(poids: $poids, recap: $recap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BackendStateGetWeightLoaded &&
+            other is _$HomeStateGetWeightLoaded &&
             const DeepCollectionEquality().equals(other.poids, poids) &&
             const DeepCollectionEquality().equals(other.recap, recap));
   }
@@ -403,9 +393,10 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
 
   @JsonKey(ignore: true)
   @override
-  _$$BackendStateGetWeightLoadedCopyWith<_$BackendStateGetWeightLoaded>
-      get copyWith => __$$BackendStateGetWeightLoadedCopyWithImpl<
-          _$BackendStateGetWeightLoaded>(this, _$identity);
+  _$$HomeStateGetWeightLoadedCopyWith<_$HomeStateGetWeightLoaded>
+      get copyWith =>
+          __$$HomeStateGetWeightLoadedCopyWithImpl<_$HomeStateGetWeightLoaded>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -447,12 +438,10 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BackendStateInitial value) initial,
-    required TResult Function(BackendStateGetWeightLoading value)
-        getWeightLoading,
-    required TResult Function(BackendStateGetWeightLoaded value)
-        getWeightLoaded,
-    required TResult Function(BackendStateFailed value) failed,
+    required TResult Function(HomeStateInitial value) initial,
+    required TResult Function(HomeStateGetWeightLoading value) getWeightLoading,
+    required TResult Function(HomeStateGetWeightLoaded value) getWeightLoaded,
+    required TResult Function(HomeStateFailed value) failed,
   }) {
     return getWeightLoaded(this);
   }
@@ -460,10 +449,10 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
   }) {
     return getWeightLoaded?.call(this);
   }
@@ -471,10 +460,10 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (getWeightLoaded != null) {
@@ -484,43 +473,43 @@ class _$BackendStateGetWeightLoaded extends BackendStateGetWeightLoaded {
   }
 }
 
-abstract class BackendStateGetWeightLoaded extends BackendState {
-  factory BackendStateGetWeightLoaded(
+abstract class HomeStateGetWeightLoaded extends HomeState {
+  factory HomeStateGetWeightLoaded(
       {required final Poids poids,
-      required final Recap recap}) = _$BackendStateGetWeightLoaded;
-  BackendStateGetWeightLoaded._() : super._();
+      required final Recap recap}) = _$HomeStateGetWeightLoaded;
+  HomeStateGetWeightLoaded._() : super._();
 
   Poids get poids;
   Recap get recap;
   @JsonKey(ignore: true)
-  _$$BackendStateGetWeightLoadedCopyWith<_$BackendStateGetWeightLoaded>
+  _$$HomeStateGetWeightLoadedCopyWith<_$HomeStateGetWeightLoaded>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BackendStateFailedCopyWith<$Res> {
-  factory _$$BackendStateFailedCopyWith(_$BackendStateFailed value,
-          $Res Function(_$BackendStateFailed) then) =
-      __$$BackendStateFailedCopyWithImpl<$Res>;
+abstract class _$$HomeStateFailedCopyWith<$Res> {
+  factory _$$HomeStateFailedCopyWith(
+          _$HomeStateFailed value, $Res Function(_$HomeStateFailed) then) =
+      __$$HomeStateFailedCopyWithImpl<$Res>;
   $Res call({APIError? error});
 }
 
 /// @nodoc
-class __$$BackendStateFailedCopyWithImpl<$Res>
-    extends _$BackendStateCopyWithImpl<$Res>
-    implements _$$BackendStateFailedCopyWith<$Res> {
-  __$$BackendStateFailedCopyWithImpl(
-      _$BackendStateFailed _value, $Res Function(_$BackendStateFailed) _then)
-      : super(_value, (v) => _then(v as _$BackendStateFailed));
+class __$$HomeStateFailedCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$$HomeStateFailedCopyWith<$Res> {
+  __$$HomeStateFailedCopyWithImpl(
+      _$HomeStateFailed _value, $Res Function(_$HomeStateFailed) _then)
+      : super(_value, (v) => _then(v as _$HomeStateFailed));
 
   @override
-  _$BackendStateFailed get _value => super._value as _$BackendStateFailed;
+  _$HomeStateFailed get _value => super._value as _$HomeStateFailed;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$BackendStateFailed(
+    return _then(_$HomeStateFailed(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -531,22 +520,22 @@ class __$$BackendStateFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BackendStateFailed extends BackendStateFailed {
-  _$BackendStateFailed({this.error}) : super._();
+class _$HomeStateFailed extends HomeStateFailed {
+  _$HomeStateFailed({this.error}) : super._();
 
   @override
   final APIError? error;
 
   @override
   String toString() {
-    return 'BackendState.failed(error: $error)';
+    return 'HomeState.failed(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BackendStateFailed &&
+            other is _$HomeStateFailed &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -556,9 +545,8 @@ class _$BackendStateFailed extends BackendStateFailed {
 
   @JsonKey(ignore: true)
   @override
-  _$$BackendStateFailedCopyWith<_$BackendStateFailed> get copyWith =>
-      __$$BackendStateFailedCopyWithImpl<_$BackendStateFailed>(
-          this, _$identity);
+  _$$HomeStateFailedCopyWith<_$HomeStateFailed> get copyWith =>
+      __$$HomeStateFailedCopyWithImpl<_$HomeStateFailed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -600,12 +588,10 @@ class _$BackendStateFailed extends BackendStateFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BackendStateInitial value) initial,
-    required TResult Function(BackendStateGetWeightLoading value)
-        getWeightLoading,
-    required TResult Function(BackendStateGetWeightLoaded value)
-        getWeightLoaded,
-    required TResult Function(BackendStateFailed value) failed,
+    required TResult Function(HomeStateInitial value) initial,
+    required TResult Function(HomeStateGetWeightLoading value) getWeightLoading,
+    required TResult Function(HomeStateGetWeightLoaded value) getWeightLoaded,
+    required TResult Function(HomeStateFailed value) failed,
   }) {
     return failed(this);
   }
@@ -613,10 +599,10 @@ class _$BackendStateFailed extends BackendStateFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
   }) {
     return failed?.call(this);
   }
@@ -624,10 +610,10 @@ class _$BackendStateFailed extends BackendStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BackendStateInitial value)? initial,
-    TResult Function(BackendStateGetWeightLoading value)? getWeightLoading,
-    TResult Function(BackendStateGetWeightLoaded value)? getWeightLoaded,
-    TResult Function(BackendStateFailed value)? failed,
+    TResult Function(HomeStateInitial value)? initial,
+    TResult Function(HomeStateGetWeightLoading value)? getWeightLoading,
+    TResult Function(HomeStateGetWeightLoaded value)? getWeightLoaded,
+    TResult Function(HomeStateFailed value)? failed,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -637,12 +623,12 @@ class _$BackendStateFailed extends BackendStateFailed {
   }
 }
 
-abstract class BackendStateFailed extends BackendState {
-  factory BackendStateFailed({final APIError? error}) = _$BackendStateFailed;
-  BackendStateFailed._() : super._();
+abstract class HomeStateFailed extends HomeState {
+  factory HomeStateFailed({final APIError? error}) = _$HomeStateFailed;
+  HomeStateFailed._() : super._();
 
   APIError? get error;
   @JsonKey(ignore: true)
-  _$$BackendStateFailedCopyWith<_$BackendStateFailed> get copyWith =>
+  _$$HomeStateFailedCopyWith<_$HomeStateFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

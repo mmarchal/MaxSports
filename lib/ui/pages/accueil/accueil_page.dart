@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/blocs/backend_bloc.dart';
-import 'package:max_sports/data/states/backend_state.dart';
+import 'package:max_sports/data/blocs/home_bloc.dart';
+import 'package:max_sports/data/states/home_state.dart';
 import 'package:max_sports/ui/pages/accueil/accueil_page_listener.dart';
 import 'package:max_sports/ui/pages/accueil/accueil_page_provider.dart';
 import 'package:max_sports/ui/widgets/recap_widget.dart';
 
-import '../../../data/backend.dart';
-import '../../../data/entities/api_response.dart';
-import '../../../data/entities/poids.dart';
-import '../../../data/entities/recap.dart';
 import '../../widgets/last_weight_widget.dart';
 
 class AccueilPage extends StatelessWidget {
-
   const AccueilPage({Key? key}) : super(key: key);
 
   @override
@@ -44,23 +39,19 @@ class AccueilPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              BlocBuilder<BackendBloc, BackendState>(
-                  builder: (context, state) {
-                    return LastWeightWidget(
-                      poids: state.currentLastPoids,
-                    );
-                  }
-              ),
+              BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                return LastWeightWidget(
+                  poids: state.currentLastPoids,
+                );
+              }),
               const SizedBox(
                 height: 20,
               ),
-              BlocBuilder<BackendBloc, BackendState>(
-                  builder: (context, state) {
-                    return RecapWidget(
-                      recap: state.currentRecap,
-                    );
-                  }
-              ),
+              BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                return RecapWidget(
+                  recap: state.currentRecap,
+                );
+              }),
             ],
           ),
         ),
