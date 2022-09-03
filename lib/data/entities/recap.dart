@@ -27,25 +27,25 @@ class Recap {
 }
 
 enum EtatPoids {
-  gain,
-  perte,
+  GAIN,
+  PERTE,
 }
 
 extension EtatPoidsExtension on EtatPoids {
   String get name {
     switch (this) {
-      case EtatPoids.gain:
+      case EtatPoids.GAIN:
         return 'Gain';
-      case EtatPoids.perte:
+      case EtatPoids.PERTE:
         return 'Perte';
     }
   }
 
   Color get color {
     switch (this) {
-      case EtatPoids.gain:
+      case EtatPoids.GAIN:
         return Colors.red;
-      case EtatPoids.perte:
+      case EtatPoids.PERTE:
         return Colors.green;
     }
   }
