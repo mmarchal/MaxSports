@@ -4,7 +4,6 @@ import 'package:max_sports/core/utils/dialog.dart';
 import 'package:max_sports/data/blocs/poids_bloc.dart';
 import 'package:max_sports/data/states/poids_state.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
-import 'package:max_sports/ui/widgets/custom_toast.dart';
 
 class PoidsPageListener extends StatelessWidget {
   final Widget child;
@@ -23,16 +22,12 @@ class PoidsPageListener extends StatelessWidget {
             sendPoidsLoading: (value) => showLoaderOverlay(context),
             sendPoidsLoaded: (value) {
               hideLoaderOverlay();
-              CustomToast().displayToast(true, "Mesure enregistré !");
+              successToast('Mesure enregistré !');
               return null;
             },
             failed: (value) {
               hideLoaderOverlay();
-              errorDialog(
-                context: context,
-                title: value.error?.title ?? 'Erreur',
-                message: value.error?.content ?? 'Une erreur est survenu !',
-              );
+              defaultErrorDialog(context: context, error: value.error);
               return null;
             },
             orElse: () => null,

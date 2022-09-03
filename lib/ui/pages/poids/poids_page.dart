@@ -15,7 +15,6 @@ class PoidsPage extends StatefulWidget {
 }
 
 class PoidsPageState extends State<PoidsPage> {
-  bool date = false;
   DateTime selectedDate = DateTime.now();
 
   Color couleur = Colors.green;
@@ -52,15 +51,14 @@ class PoidsPageState extends State<PoidsPage> {
                 );
                 if (selected != null && selected != selectedDate) {
                   setState(() {
-                    date = true;
                     selectedDate = selected;
                   });
                 }
               },
               icon: const Icon(Icons.schedule),
-              label: Text((date)
-                  ? DateFormat("dd/MM/yyyy").format(selectedDate)
-                  : "Non défini"),
+              label: Text(
+                DateFormat("dd/MM/yyyy").format(selectedDate),
+              ),
             ),
           ),
           const SizedBox(

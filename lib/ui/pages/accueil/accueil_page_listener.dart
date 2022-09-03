@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/core/utils/dialog.dart';
 import 'package:max_sports/data/blocs/home_bloc.dart';
 import 'package:max_sports/data/states/home_state.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
-import 'package:max_sports/ui/widgets/custom_toast.dart';
 
 class AccueilPageListener extends StatelessWidget {
   final Widget child;
@@ -23,8 +23,7 @@ class AccueilPageListener extends StatelessWidget {
             getWeightLoaded: (value) => hideLoaderOverlay(),
             failed: (value) {
               hideLoaderOverlay();
-              CustomToast().displayToast(false,
-                  value.error?.systemMessage ?? 'Une erreur est survenu !');
+              defaultErrorDialog(context: context, error: value.error);
               return null;
             },
             orElse: () => null,
