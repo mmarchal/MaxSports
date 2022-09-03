@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/core/utils/dialog.dart';
 import 'package:max_sports/data/blocs/poids_bloc.dart';
 import 'package:max_sports/data/states/poids_state.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
@@ -27,8 +28,11 @@ class PoidsPageListener extends StatelessWidget {
             },
             failed: (value) {
               hideLoaderOverlay();
-              CustomToast().displayToast(
-                  true, value.error?.content ?? 'Une erreur est survenu !');
+              errorDialog(
+                context: context,
+                title: value.error?.title ?? 'Erreur',
+                message: value.error?.content ?? 'Une erreur est survenu !',
+              );
               return null;
             },
             orElse: () => null,
