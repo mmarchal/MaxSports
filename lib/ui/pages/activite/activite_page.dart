@@ -4,6 +4,7 @@ import 'package:max_sports/data/backend.dart';
 import 'package:max_sports/data/blocs/activite_bloc.dart';
 import 'package:max_sports/data/blocs/type_activite_bloc.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
+import 'package:max_sports/data/states/activite_state.dart';
 import 'package:max_sports/data/states/type_activite_state.dart';
 import 'package:max_sports/ui/pages/activite/activite_page_provider.dart';
 import 'package:max_sports/ui/pages/activite/widgets/buttons_time.dart';
@@ -43,33 +44,53 @@ class _ActivitePageState extends State<ActivitePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          child: Container(
-            margin: const EdgeInsets.all(16),
-            child: Row(
-              children: generateRadioList(list, defaultType, bloc),
-            ),
+        Container(
+          margin: const EdgeInsets.all(16),
+          child: Row(
+            children: generateRadioList(list, defaultType, bloc),
           ),
         ),
         ButtonsTime(
-          onButtonSelected: () {},
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width / 2,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Temps personnalisé : '),
-              Expanded(
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                ),
-              ),
-            ],
+          onButtonSelected: (int value) => bloc.selectTime(
+            value,
           ),
         ),
+        BlocBuilder<ActiviteBloc, ActiviteState>(
+          builder: (context, state) {
+            if (state.currentTime != null && state.currentTime == 0) {
+              return SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Temps personnalisé : '),
+                    Expanded(
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return Container(
+                margin: const EdgeInsets.all(16),
+                width: MediaQuery.of(context).size.width / 2,
+                child: Text(
+                  (state.currentTime != null)
+                      ? 'Temps de l\'exercice : ${state.currentTime} min'
+                      : 'Aucun temps sélectionné !',
+                  textAlign: TextAlign.center,
+                ),
+              );
+            }
+          },
+        ),
         ElevatedButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            print(bloc.state.currentSelectedType);
+            print(bloc.state.currentTime);
+          },
           icon: const Icon(Icons.verified),
           label: const Text("Voir résultat"),
         )

@@ -18,6 +18,7 @@ class ActiviteState with _$ActiviteState {
   }) = ActiviteStateInputTimeOfPractice;
 
   int? get currentTime => maybeMap(
+        initial: (value) => null,
         inputTimeOfPractice: (value) => value.time,
         orElse: () => null,
       );

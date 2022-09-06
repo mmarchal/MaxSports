@@ -22,4 +22,12 @@ class ActiviteBloc extends Cubit<ActiviteState> {
       ),
     );
   }
+
+  void selectTime(int time) async {
+    emit(
+      ActiviteState.inputTimeOfPractice(
+        time: time,
+      ),
+    );
+  }
 }
