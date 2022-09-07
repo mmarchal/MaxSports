@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/core/constants.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
 
 class ActiviteWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class ActiviteWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundImage:
-                NetworkImage("${BackEnd().imageUrl}/${typeActivite.imagePath}"),
+                NetworkImage("$imageUrl/${typeActivite.imagePath}"),
           ),
           Text("Vous avez fais : ${typeActivite.type}"),
         ],

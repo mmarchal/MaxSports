@@ -8,6 +8,7 @@ _Feat_
 - Add bloc to Poids page
 - Add bloc to Activite page
 - Activite page OK
+- Add retrofit to project + migration of http to Retrofit
 
 # 1.0.1
 
