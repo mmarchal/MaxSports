@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/core/constants.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
 
 class TypeActiviteCard extends StatelessWidget {
@@ -22,7 +22,7 @@ class TypeActiviteCard extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              "${BackEnd().imageUrl}/${type.imagePath}",
+              "$imageUrl/${type.imagePath}",
             ),
             fit: BoxFit.cover,
           ),

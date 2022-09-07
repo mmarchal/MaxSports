@@ -16,10 +16,14 @@ class ActivitePageProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ActiviteBloc>(
-          create: (context) => ActiviteBloc(),
+          create: (context) => ActiviteBloc(
+            activiteRepository: context.read(),
+          ),
         ),
         BlocProvider<TypeActiviteBloc>(
-          create: (context) => TypeActiviteBloc()..getAllTypes(),
+          create: (context) => TypeActiviteBloc(
+            activiteRepository: context.read(),
+          )..getAllTypes(),
         ),
       ],
       child: child,

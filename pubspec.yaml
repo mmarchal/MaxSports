@@ -27,9 +27,11 @@ dependencies:
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.1.0
   flutter_animated_dialog: ^2.0.1
+  retrofit: ^3.0.1+1
 
 dev_dependencies:
   freezed: ^2.1.0
+  retrofit_generator: ^4.0.1
   flutter_test:
     sdk: flutter
   
