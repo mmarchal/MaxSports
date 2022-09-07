@@ -6,6 +6,8 @@ _Feat_
 - Backend management by bloc
 - Add provider and listener to Accueil page
 - Add bloc to Poids page
+- Add bloc to Activite page
+- Activite page OK
 
 # 1.0.1
 
