@@ -15,7 +15,9 @@ class StatsPageProvider extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<StatsBloc>(
-          create: (context) => StatsBloc()..getAllWeights(),
+          create: (context) => StatsBloc(
+            poidsRepository: context.read(),
+          )..getAllWeights(),
         ),
       ],
       child: child,

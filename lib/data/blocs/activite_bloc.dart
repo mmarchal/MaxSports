@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
-import 'package:max_sports/data/backend.dart';
 import 'package:max_sports/data/entities/activite.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
+import 'package:max_sports/data/repositories/activite_repository.dart';
 import 'package:max_sports/data/states/activite_state.dart';
 
 class ActiviteBloc extends Cubit<ActiviteState> {
-  ActiviteBloc()
-      : super(
+  final ActiviteRepository activiteRepository;
+  ActiviteBloc({
+    required this.activiteRepository,
+  }) : super(
           ActiviteState.initial(),
         );
 
@@ -54,7 +56,7 @@ class ActiviteBloc extends Cubit<ActiviteState> {
       ),
     );
 
-    final response = await BackEnd().postActivite(activite);
+    final response = await activiteRepository.postActivite(activite);
 
     if (response.isSuccess) {
       emit(

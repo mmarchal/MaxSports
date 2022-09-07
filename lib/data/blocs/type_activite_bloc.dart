@@ -1,9 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/backend.dart';
+import 'package:max_sports/data/repositories/activite_repository.dart';
 import 'package:max_sports/data/states/type_activite_state.dart';
 
 class TypeActiviteBloc extends Cubit<TypeActiviteState> {
-  TypeActiviteBloc() : super(TypeActiviteState.initial());
+  final ActiviteRepository activiteRepository;
+  TypeActiviteBloc({
+    required this.activiteRepository,
+  }) : super(TypeActiviteState.initial());
 
   void idle() => emit(
         TypeActiviteState.initial(),
@@ -14,7 +17,7 @@ class TypeActiviteBloc extends Cubit<TypeActiviteState> {
       TypeActiviteState.getDatasLoading(),
     );
 
-    final response = await BackEnd().getTypesActivites();
+    final response = await activiteRepository.getTypesActivites();
 
     if (response.isSuccess && response.data!.isNotEmpty) {
       emit(
