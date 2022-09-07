@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:max_sports/data/entities/activite.dart';
 import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/entities/poids.dart';
@@ -144,6 +145,37 @@ class BackEnd {
           systemMessage: response.body,
           title: 'Erreur',
           content: 'Une erreur est survenue',
+        ),
+      );
+    }
+  }
+
+  //Activite post
+
+  Future<APIResponse<Activite?>> postActivite(Activite activite) async {
+    var urlSave = Uri.parse(path + 'activite/save');
+    final response = await http.post(
+      urlSave,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(activite),
+    );
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      return APIResponse(
+        data: Activite.fromJson(json),
+        type: APIType.ok,
+      );
+    } else {
+      return APIResponse(
+        error: APIError(
+          systemMessage: response.body,
+          title: 'Erreur',
+          content: 'Une erreur est survenue',
+        ),
+        type: getAPIType(
+          response.statusCode,
         ),
       );
     }

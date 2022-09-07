@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/core/utils/dialog.dart';
 import 'package:max_sports/data/backend.dart';
 import 'package:max_sports/data/blocs/activite_bloc.dart';
 import 'package:max_sports/data/blocs/type_activite_bloc.dart';
+import 'package:max_sports/data/entities/activite.dart';
+import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
 import 'package:max_sports/data/states/activite_state.dart';
 import 'package:max_sports/data/states/type_activite_state.dart';
+import 'package:max_sports/ui/pages/activite/activite_page_listener.dart';
 import 'package:max_sports/ui/pages/activite/activite_page_provider.dart';
 import 'package:max_sports/ui/pages/activite/widgets/buttons_time.dart';
+import 'package:max_sports/ui/pages/activite/widgets/distance_widget.dart';
 
 class ActivitePage extends StatefulWidget {
   const ActivitePage({Key? key}) : super(key: key);
@@ -20,7 +25,7 @@ class _ActivitePageState extends State<ActivitePage> {
   @override
   Widget build(BuildContext context) {
     return ActivitePageProvider(
-      child: SafeArea(
+      child: ActivitePageListener(
         child: Center(
           child: BlocBuilder<TypeActiviteBloc, TypeActiviteState>(
               buildWhen: (previous, current) =>
@@ -50,6 +55,7 @@ class _ActivitePageState extends State<ActivitePage> {
             children: generateRadioList(list, defaultType, bloc),
           ),
         ),
+        const DistanceWidget(),
         ButtonsTime(
           onButtonSelected: (int value) => bloc.selectTime(
             value,
@@ -67,29 +73,59 @@ class _ActivitePageState extends State<ActivitePage> {
                     Expanded(
                       child: TextFormField(
                         keyboardType: TextInputType.number,
+                        onFieldSubmitted: (String? s) =>
+                            context.read<ActiviteBloc>().selectTime(
+                                  int.tryParse(s!) ?? 0,
+                                ),
                       ),
                     ),
                   ],
                 ),
               );
             } else {
+              return const SizedBox();
+            }
+          },
+        ),
+        BlocBuilder<ActiviteBloc, ActiviteState>(
+          builder: (context, state) {
+            int? timeSelected = state.currentTime;
+            double? distanceSelected = state.currentDistance;
+            if (timeSelected != null && distanceSelected != null) {
               return Container(
                 margin: const EdgeInsets.all(16),
-                width: MediaQuery.of(context).size.width / 2,
                 child: Text(
-                  (state.currentTime != null)
-                      ? 'Temps de l\'exercice : ${state.currentTime} min'
-                      : 'Aucun temps sélectionné !',
-                  textAlign: TextAlign.center,
-                ),
+                    'Activite : $distanceSelected km en $timeSelected min'),
               );
+            } else {
+              return const SizedBox();
             }
           },
         ),
         ElevatedButton.icon(
           onPressed: () {
-            print(bloc.state.currentSelectedType);
-            print(bloc.state.currentTime);
+            TypeActivite? type = bloc.state.currentSelectedType;
+            int? time = bloc.state.currentTime;
+            double? distance = bloc.state.currentDistance;
+            if (type != null && time != null && distance != null) {
+              Activite activite = Activite(
+                distance: distance,
+                temps: time.toDouble(),
+                date: DateTime.now(),
+                typeActivite: bloc.state.currentSelectedType!,
+              );
+              bloc.addActivite(activite);
+            } else {
+              defaultErrorDialog(
+                context: context,
+                error: APIError(
+                  systemMessage: '',
+                  title: 'Erreur',
+                  content:
+                      'Le type, le temps d\'exercice et la distance doivent être renseigné !',
+                ),
+              );
+            }
           },
           icon: const Icon(Icons.verified),
           label: const Text("Voir résultat"),
@@ -111,23 +147,21 @@ class _ActivitePageState extends State<ActivitePage> {
             child: Column(
               children: [
                 Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
                   semanticContainer: true,
+                  color: Colors.transparent,
                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                  elevation: 10,
-                  child: Column(
-                    children: [
-                      Image.network(
-                        "${BackEnd().imageUrl}${type.imagePath}",
-                        width: 200,
-                        height: 200,
-                      ),
-                      Text(type.type)
-                    ],
+                  child: ClipRRect(
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(10.0)),
+                    child: Image.network(
+                      "${BackEnd().imageUrl}${type.imagePath}",
+                      fit: BoxFit.fill,
+                    ),
                   ),
+                  elevation: 10,
+                  margin: const EdgeInsets.all(10),
                 ),
+                Text(type.type),
                 Radio(
                   value: type,
                   groupValue: defaultType,
