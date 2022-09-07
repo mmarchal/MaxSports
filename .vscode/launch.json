@@ -8,7 +8,11 @@
             "name": "max_sports",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main.dart"
+            "program": "lib/main.dart",
+            "args": [
+                "--web-renderer",
+                "html",
+            ]
         },
         {
             "name": "max_sports (profile mode)",

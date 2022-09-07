@@ -5,9 +5,10 @@ part 'activite.g.dart';
 
 @JsonSerializable()
 class Activite {
-  final int id;
+  final int? id;
   final double distance;
-  final double vitesseMoyenne;
+  final double temps;
+  final double? vitesseMoyenne;
   final DateTime date;
   final TypeActivite typeActivite;
 
@@ -17,9 +18,10 @@ class Activite {
   Map<String, dynamic> toJson() => _$ActiviteToJson(this);
 
   Activite({
-    required this.id,
+    this.id,
     required this.distance,
-    required this.vitesseMoyenne,
+    required this.temps,
+    this.vitesseMoyenne,
     required this.date,
     required this.typeActivite,
   });

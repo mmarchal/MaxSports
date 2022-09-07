@@ -12,6 +12,7 @@ void successToast(String message) {
     backgroundColor: Colors.green,
     textColor: Colors.white,
     fontSize: 16.0,
+    webPosition: "center",
   );
 }
 

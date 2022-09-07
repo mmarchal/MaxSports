@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/data/blocs/activite_bloc.dart';
 import 'package:max_sports/data/blocs/type_activite_bloc.dart';
 
 class ActivitePageProvider extends StatelessWidget {
@@ -14,6 +15,9 @@ class ActivitePageProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<ActiviteBloc>(
+          create: (context) => ActiviteBloc(),
+        ),
         BlocProvider<TypeActiviteBloc>(
           create: (context) => TypeActiviteBloc()..getAllTypes(),
         ),
