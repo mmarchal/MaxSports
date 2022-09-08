@@ -21,7 +21,7 @@ Map<String, dynamic> _$RecapToJson(Recap instance) => <String, dynamic>{
       'poidsLate': instance.poidsLate,
       'dateLate': instance.dateLate.toIso8601String(),
       'difference': instance.difference,
-      'etat': _$EtatPoidsEnumMap[instance.etat],
+      'etat': _$EtatPoidsEnumMap[instance.etat]!,
     };
 
 const _$EtatPoidsEnumMap = {

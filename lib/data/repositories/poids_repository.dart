@@ -3,7 +3,6 @@ import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/entities/poids.dart';
 import 'package:max_sports/data/entities/recap.dart';
-import 'package:max_sports/data/error_type.dart';
 import 'package:retrofit/dio.dart';
 
 class PoidsRepository {
@@ -16,9 +15,9 @@ class PoidsRepository {
   Future<APIResponse<List<Poids>>> getPoids() async {
     final response = await api.getPoids();
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: response.data.map<Poids>((item) => Poids.fromJson(item)).toList(),
-        type: APIType.ok,
+      return SuccessResponse(
+        200,
+        response.data.map<Poids>((item) => Poids.fromJson(item)).toList(),
       );
     } else {
       return _errorFunction(response);
@@ -28,11 +27,11 @@ class PoidsRepository {
   Future<APIResponse<Poids?>> postPoids(Poids poids) async {
     final response = await api.savePoids(poids: poids);
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: Poids.fromJson(
+      return SuccessResponse(
+        200,
+        Poids.fromJson(
           response.data as Map<String, dynamic>,
         ),
-        type: APIType.ok,
       );
     } else {
       return _errorFunction(response);
@@ -42,11 +41,11 @@ class PoidsRepository {
   Future<APIResponse<Poids?>> getLastWeight() async {
     final response = await api.getLastPoids();
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: Poids.fromJson(
+      return SuccessResponse(
+        200,
+        Poids.fromJson(
           response.data as Map<String, dynamic>,
         ),
-        type: APIType.ok,
       );
     } else {
       return _errorFunction(response);
@@ -56,11 +55,11 @@ class PoidsRepository {
   Future<APIResponse<Recap?>> getLastTwoWeight() async {
     final response = await api.getLastTwoPoids();
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: Recap.fromJson(
+      return SuccessResponse(
+        200,
+        Recap.fromJson(
           response.data as Map<String, dynamic>,
         ),
-        type: APIType.ok,
       );
     } else {
       return _errorFunction(response);
@@ -68,8 +67,8 @@ class PoidsRepository {
   }
 
   _errorFunction(HttpResponse<dynamic> error) {
-    return APIResponse(
-      type: getAPIType(error.response.statusCode!),
+    return FailResponse(
+      error.response.statusCode!,
       error: APIError(
         systemMessage: error.data,
         title: 'Erreur',

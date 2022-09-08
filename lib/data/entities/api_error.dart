@@ -4,12 +4,12 @@ part 'api_error.g.dart';
 
 @JsonSerializable()
 class APIError {
-  final String systemMessage;
+  final String? systemMessage;
   final String title;
   final String content;
 
   APIError({
-    required this.systemMessage,
+    this.systemMessage,
     required this.title,
     required this.content,
   });

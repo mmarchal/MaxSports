@@ -3,7 +3,6 @@ import 'package:max_sports/data/entities/activite.dart';
 import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
-import 'package:max_sports/data/error_type.dart';
 import 'package:retrofit/retrofit.dart';
 
 class ActiviteRepository {
@@ -16,11 +15,11 @@ class ActiviteRepository {
   Future<APIResponse<List<TypeActivite>?>> getTypesActivites() async {
     final response = await api.getTypesActivites();
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: response.data
+      return SuccessResponse(
+        200,
+        response.data
             .map<TypeActivite>((item) => TypeActivite.fromJson(item))
             .toList(),
-        type: APIType.ok,
       );
     } else {
       return _errorFunction(response);
@@ -30,11 +29,11 @@ class ActiviteRepository {
   Future<APIResponse<Activite?>> postActivite(Activite activite) async {
     final response = await api.saveActivite(activite: activite);
     if (response.response.statusCode == 200) {
-      return APIResponse(
-        data: Activite.fromJson(
+      return SuccessResponse(
+        200,
+        Activite.fromJson(
           response.data as Map<String, dynamic>,
         ),
-        type: APIType.ok,
       );
     } else {
       return _errorFunction(response);
@@ -42,10 +41,9 @@ class ActiviteRepository {
   }
 
   _errorFunction(HttpResponse<dynamic> error) {
-    return APIResponse(
-      type: getAPIType(error.response.statusCode!),
+    return FailResponse(
+      error.response.statusCode!,
       error: APIError(
-        systemMessage: error.data,
         title: 'Erreur',
         content: 'Une erreur est survenue',
       ),
