@@ -1,29 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'recap.freezed.dart';
 part 'recap.g.dart';
 
-@JsonSerializable()
-class Recap {
-  final double poidsRecent;
-  final DateTime dateRecent;
-  final double poidsLate;
-  final DateTime dateLate;
-  final double difference;
-  final EtatPoids etat;
-
+@Freezed(makeCollectionsUnmodifiable: false)
+class Recap with _$Recap {
+  const factory Recap({
+    required double poidsRecent,
+    required DateTime dateRecent,
+    required double poidsLate,
+    required DateTime dateLate,
+    required double difference,
+    required EtatPoids etat,
+  }) = _Recap;
+  const Recap._();
   factory Recap.fromJson(Map<String, dynamic> json) => _$RecapFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RecapToJson(this);
-
-  Recap({
-    required this.poidsRecent,
-    required this.dateRecent,
-    required this.poidsLate,
-    required this.dateLate,
-    required this.difference,
-    required this.etat,
-  });
 }
 
 enum EtatPoids {

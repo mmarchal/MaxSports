@@ -6,7 +6,7 @@ part of 'recap.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Recap _$RecapFromJson(Map<String, dynamic> json) => Recap(
+_$_Recap _$$_RecapFromJson(Map<String, dynamic> json) => _$_Recap(
       poidsRecent: (json['poidsRecent'] as num).toDouble(),
       dateRecent: DateTime.parse(json['dateRecent'] as String),
       poidsLate: (json['poidsLate'] as num).toDouble(),
@@ -15,7 +15,7 @@ Recap _$RecapFromJson(Map<String, dynamic> json) => Recap(
       etat: $enumDecode(_$EtatPoidsEnumMap, json['etat']),
     );
 
-Map<String, dynamic> _$RecapToJson(Recap instance) => <String, dynamic>{
+Map<String, dynamic> _$$_RecapToJson(_$_Recap instance) => <String, dynamic>{
       'poidsRecent': instance.poidsRecent,
       'dateRecent': instance.dateRecent.toIso8601String(),
       'poidsLate': instance.poidsLate,

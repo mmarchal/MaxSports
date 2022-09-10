@@ -69,21 +69,33 @@ void main() {
         },
       );
 
-      test(
-        "Failed",
-        () async {
-          //GIVEN
-          when(
-            backendApiMock.getTypesActivites(),
-          ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
-          when(httpResponseMock.response).thenReturn(responseMock);
-          when(responseMock.statusCode).thenReturn(500);
+      group(
+        'Post activite',
+        () {
+          test(
+            'Success',
+            () async {
+              when(backendApiMock.saveActivite(
+                activite: fakeActiviteSuccess,
+              )).thenAnswer(
+                (realInvocation) => Future.value(
+                  httpResponseMock,
+                ),
+              );
+              when(httpResponseMock.response).thenReturn(responseMock);
+              when(responseMock.statusCode).thenReturn(200);
+              when(httpResponseMock.data).thenReturn(
+                fakeActiviteSuccess.toJson(),
+              );
+              //WHEN
+              final result =
+                  await activiteRepository.postActivite(fakeActiviteSuccess);
 
-          //WHEN
-          final result = await activiteRepository.getTypesActivites();
-
-          //THEN
-          expect(result is FailResponse, true);
+              //THEN
+              expect(result is SuccessResponse, true);
+              expect(result.data, fakeActiviteSuccess);
+            },
+          );
         },
       );
     },

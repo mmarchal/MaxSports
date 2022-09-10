@@ -290,6 +290,8 @@ abstract class _$$ActiviteStateSelectActiviteInDropDownCopyWith<$Res> {
           $Res Function(_$ActiviteStateSelectActiviteInDropDown) then) =
       __$$ActiviteStateSelectActiviteInDropDownCopyWithImpl<$Res>;
   $Res call({TypeActivite type, int? time, double? distance});
+
+  $TypeActiviteCopyWith<$Res> get type;
 }
 
 /// @nodoc
@@ -326,6 +328,13 @@ class __$$ActiviteStateSelectActiviteInDropDownCopyWithImpl<$Res>
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
     ));
+  }
+
+  @override
+  $TypeActiviteCopyWith<$Res> get type {
+    return $TypeActiviteCopyWith<$Res>(_value.type, (value) {
+      return _then(_value.copyWith(type: value));
+    });
   }
 }
 
@@ -511,6 +520,8 @@ abstract class _$$ActiviteStateInputTimeOfPracticeCopyWith<$Res> {
           $Res Function(_$ActiviteStateInputTimeOfPractice) then) =
       __$$ActiviteStateInputTimeOfPracticeCopyWithImpl<$Res>;
   $Res call({int time, TypeActivite? type, double? distance});
+
+  $TypeActiviteCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -546,6 +557,17 @@ class __$$ActiviteStateInputTimeOfPracticeCopyWithImpl<$Res>
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
     ));
+  }
+
+  @override
+  $TypeActiviteCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $TypeActiviteCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value));
+    });
   }
 }
 
@@ -731,6 +753,8 @@ abstract class _$$ActiviteStateInputDistanceOfPracticeCopyWith<$Res> {
           $Res Function(_$ActiviteStateInputDistanceOfPractice) then) =
       __$$ActiviteStateInputDistanceOfPracticeCopyWithImpl<$Res>;
   $Res call({double distance, int? time, TypeActivite? type});
+
+  $TypeActiviteCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -767,6 +791,17 @@ class __$$ActiviteStateInputDistanceOfPracticeCopyWithImpl<$Res>
           : type // ignore: cast_nullable_to_non_nullable
               as TypeActivite?,
     ));
+  }
+
+  @override
+  $TypeActiviteCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $TypeActiviteCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value));
+    });
   }
 }
 
@@ -952,6 +987,8 @@ abstract class _$$ActiviteStatePostActiviteLoadingCopyWith<$Res> {
           $Res Function(_$ActiviteStatePostActiviteLoading) then) =
       __$$ActiviteStatePostActiviteLoadingCopyWithImpl<$Res>;
   $Res call({Activite activite});
+
+  $ActiviteCopyWith<$Res> get activite;
 }
 
 /// @nodoc
@@ -977,6 +1014,13 @@ class __$$ActiviteStatePostActiviteLoadingCopyWithImpl<$Res>
           : activite // ignore: cast_nullable_to_non_nullable
               as Activite,
     ));
+  }
+
+  @override
+  $ActiviteCopyWith<$Res> get activite {
+    return $ActiviteCopyWith<$Res>(_value.activite, (value) {
+      return _then(_value.copyWith(activite: value));
+    });
   }
 }
 
@@ -1147,6 +1191,8 @@ abstract class _$$ActiviteStatePostActiviteLoadedCopyWith<$Res> {
           $Res Function(_$ActiviteStatePostActiviteLoaded) then) =
       __$$ActiviteStatePostActiviteLoadedCopyWithImpl<$Res>;
   $Res call({Activite activite});
+
+  $ActiviteCopyWith<$Res> get activite;
 }
 
 /// @nodoc
@@ -1172,6 +1218,13 @@ class __$$ActiviteStatePostActiviteLoadedCopyWithImpl<$Res>
           : activite // ignore: cast_nullable_to_non_nullable
               as Activite,
     ));
+  }
+
+  @override
+  $ActiviteCopyWith<$Res> get activite {
+    return $ActiviteCopyWith<$Res>(_value.activite, (value) {
+      return _then(_value.copyWith(activite: value));
+    });
   }
 }
 
@@ -1339,6 +1392,8 @@ abstract class _$$ActiviteStateFailedCopyWith<$Res> {
           $Res Function(_$ActiviteStateFailed) then) =
       __$$ActiviteStateFailedCopyWithImpl<$Res>;
   $Res call({APIError? error});
+
+  $APIErrorCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -1362,6 +1417,17 @@ class __$$ActiviteStateFailedCopyWithImpl<$Res>
           : error // ignore: cast_nullable_to_non_nullable
               as APIError?,
     ));
+  }
+
+  @override
+  $APIErrorCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $APIErrorCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 

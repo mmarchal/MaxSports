@@ -490,6 +490,8 @@ abstract class _$$StatsStateFailedCopyWith<$Res> {
           _$StatsStateFailed value, $Res Function(_$StatsStateFailed) then) =
       __$$StatsStateFailedCopyWithImpl<$Res>;
   $Res call({APIError? error});
+
+  $APIErrorCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -513,6 +515,17 @@ class __$$StatsStateFailedCopyWithImpl<$Res>
           : error // ignore: cast_nullable_to_non_nullable
               as APIError?,
     ));
+  }
+
+  @override
+  $APIErrorCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $APIErrorCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
