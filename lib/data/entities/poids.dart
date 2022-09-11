@@ -1,28 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'poids.freezed.dart';
 part 'poids.g.dart';
 
-@JsonSerializable()
-class Poids {
-  int? id;
-  final DateTime date;
-  final double poids;
-
-  Poids({
-    this.id,
-    required this.date,
-    required this.poids,
-  });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'date': date,
-      'poids': poids,
-    };
-  }
-
+@Freezed(makeCollectionsUnmodifiable: false)
+class Poids with _$Poids {
+  const factory Poids({
+    int? id,
+    required DateTime date,
+    required double poids,
+  }) = _Poids;
+  const Poids._();
   factory Poids.fromJson(Map<String, dynamic> json) => _$PoidsFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PoidsToJson(this);
 }

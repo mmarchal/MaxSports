@@ -328,6 +328,9 @@ abstract class _$$HomeStateGetWeightLoadedCopyWith<$Res> {
           $Res Function(_$HomeStateGetWeightLoaded) then) =
       __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>;
   $Res call({Poids poids, Recap recap});
+
+  $PoidsCopyWith<$Res> get poids;
+  $RecapCopyWith<$Res> get recap;
 }
 
 /// @nodoc
@@ -357,6 +360,20 @@ class __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>
           : recap // ignore: cast_nullable_to_non_nullable
               as Recap,
     ));
+  }
+
+  @override
+  $PoidsCopyWith<$Res> get poids {
+    return $PoidsCopyWith<$Res>(_value.poids, (value) {
+      return _then(_value.copyWith(poids: value));
+    });
+  }
+
+  @override
+  $RecapCopyWith<$Res> get recap {
+    return $RecapCopyWith<$Res>(_value.recap, (value) {
+      return _then(_value.copyWith(recap: value));
+    });
   }
 }
 
@@ -492,6 +509,8 @@ abstract class _$$HomeStateFailedCopyWith<$Res> {
           _$HomeStateFailed value, $Res Function(_$HomeStateFailed) then) =
       __$$HomeStateFailedCopyWithImpl<$Res>;
   $Res call({APIError? error});
+
+  $APIErrorCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -515,6 +534,17 @@ class __$$HomeStateFailedCopyWithImpl<$Res>
           : error // ignore: cast_nullable_to_non_nullable
               as APIError?,
     ));
+  }
+
+  @override
+  $APIErrorCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $APIErrorCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 

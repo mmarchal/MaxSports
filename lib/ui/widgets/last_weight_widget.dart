@@ -7,7 +7,7 @@ class LastWeightWidget extends StatelessWidget {
 
   const LastWeightWidget({
     Key? key,
-    required this.poids,
+    this.poids,
   }) : super(key: key);
 
   @override

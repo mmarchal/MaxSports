@@ -9,6 +9,7 @@ _Feat_
 - Add bloc to Activite page
 - Activite page OK
 - Add retrofit to project + migration of http to Retrofit
+- Add units tests and coverage above 80%
 
 # 1.0.1
 

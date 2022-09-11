@@ -1,4 +1,6 @@
+import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
+import 'package:retrofit/retrofit.dart';
 
 getAPIType(int statusCode) {
   switch (statusCode) {
@@ -23,4 +25,14 @@ getAPIType(int statusCode) {
     case 502:
       return APIType.timeout;
   }
+}
+
+errorFunction(HttpResponse<dynamic> error) {
+  return FailResponse(
+    error.response.statusCode!,
+    error: const APIError(
+      title: 'Erreur',
+      content: 'Une erreur est survenue',
+    ),
+  );
 }

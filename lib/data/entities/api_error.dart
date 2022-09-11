@@ -1,21 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'api_error.freezed.dart';
 part 'api_error.g.dart';
 
-@JsonSerializable()
-class APIError {
-  final String systemMessage;
-  final String title;
-  final String content;
-
-  APIError({
-    required this.systemMessage,
-    required this.title,
-    required this.content,
-  });
-
+@Freezed(makeCollectionsUnmodifiable: false)
+class APIError with _$APIError {
+  const factory APIError({
+    String? systemMessage,
+    required String title,
+    required String content,
+  }) = _APIError;
+  const APIError._();
   factory APIError.fromJson(Map<String, dynamic> json) =>
       _$APIErrorFromJson(json);
-
-  Map<String, dynamic> toJson() => _$APIErrorToJson(this);
 }

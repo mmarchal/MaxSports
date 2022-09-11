@@ -497,6 +497,8 @@ abstract class _$$TypeActiviteStateFailedCopyWith<$Res> {
           $Res Function(_$TypeActiviteStateFailed) then) =
       __$$TypeActiviteStateFailedCopyWithImpl<$Res>;
   $Res call({APIError? error});
+
+  $APIErrorCopyWith<$Res>? get error;
 }
 
 /// @nodoc
@@ -521,6 +523,17 @@ class __$$TypeActiviteStateFailedCopyWithImpl<$Res>
           : error // ignore: cast_nullable_to_non_nullable
               as APIError?,
     ));
+  }
+
+  @override
+  $APIErrorCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $APIErrorCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
