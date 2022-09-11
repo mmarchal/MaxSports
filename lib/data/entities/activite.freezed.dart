@@ -168,7 +168,8 @@ class __$$_ActiviteCopyWithImpl<$Res> extends _$ActiviteCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_Activite extends _Activite {
   const _$_Activite(
       {this.id,

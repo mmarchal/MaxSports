@@ -38,7 +38,7 @@ class PoidsBloc extends Cubit<PoidsState> {
     } else {
       emit(
         PoidsState.failed(
-          error: APIError(
+          error: const APIError(
             title: 'Erreur',
             content: "La date et le poids doivent être renseigné !",
             systemMessage: '',

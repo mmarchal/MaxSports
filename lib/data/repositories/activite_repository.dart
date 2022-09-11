@@ -1,9 +1,8 @@
 import 'package:max_sports/data/backend_api.dart';
 import 'package:max_sports/data/entities/activite.dart';
-import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
-import 'package:retrofit/retrofit.dart';
+import 'package:max_sports/data/error_type.dart';
 
 class ActiviteRepository {
   final BackendApi api;
@@ -22,7 +21,7 @@ class ActiviteRepository {
             .toList(),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
   }
 
@@ -36,17 +35,7 @@ class ActiviteRepository {
         ),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
-  }
-
-  _errorFunction(HttpResponse<dynamic> error) {
-    return FailResponse(
-      error.response.statusCode!,
-      error: APIError(
-        title: 'Erreur',
-        content: 'Une erreur est survenue',
-      ),
-    );
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
 
 void main() {
-  final globalKey = GlobalKey(debugLabel: "elevatedButton");
   testWidgets(
     'app loader widget',
     (tester) async {

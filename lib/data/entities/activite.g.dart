@@ -23,5 +23,5 @@ Map<String, dynamic> _$$_ActiviteToJson(_$_Activite instance) =>
       'temps': instance.temps,
       'vitesseMoyenne': instance.vitesseMoyenne,
       'date': instance.date.toIso8601String(),
-      'typeActivite': instance.typeActivite,
+      'typeActivite': instance.typeActivite.toJson(),
     };

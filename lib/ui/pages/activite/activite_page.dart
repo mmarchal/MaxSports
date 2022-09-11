@@ -118,7 +118,7 @@ class _ActivitePageState extends State<ActivitePage> {
             } else {
               defaultErrorDialog(
                 context: context,
-                error: APIError(
+                error: const APIError(
                   systemMessage: '',
                   title: 'Erreur',
                   content:

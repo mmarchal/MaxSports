@@ -1,9 +1,8 @@
 import 'package:max_sports/data/backend_api.dart';
-import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/entities/poids.dart';
 import 'package:max_sports/data/entities/recap.dart';
-import 'package:retrofit/dio.dart';
+import 'package:max_sports/data/error_type.dart';
 
 class PoidsRepository {
   final BackendApi api;
@@ -20,7 +19,7 @@ class PoidsRepository {
         response.data.map<Poids>((item) => Poids.fromJson(item)).toList(),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
   }
 
@@ -34,7 +33,7 @@ class PoidsRepository {
         ),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
   }
 
@@ -48,7 +47,7 @@ class PoidsRepository {
         ),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
   }
 
@@ -62,18 +61,7 @@ class PoidsRepository {
         ),
       );
     } else {
-      return _errorFunction(response);
+      return errorFunction(response);
     }
-  }
-
-  _errorFunction(HttpResponse<dynamic> error) {
-    return FailResponse(
-      error.response.statusCode!,
-      error: APIError(
-        systemMessage: error.data,
-        title: 'Erreur',
-        content: 'Une erreur est survenue',
-      ),
-    );
   }
 }
