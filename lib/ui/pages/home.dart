@@ -6,7 +6,6 @@ import 'package:max_sports/data/blocs/navigation_bloc.dart';
 import 'package:max_sports/data/states/navigation_state.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   NavbarItem _getNavItem(int index) {
@@ -28,7 +27,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
       builder: (blocContext, blocState) {
-        int selectedIndex = blocContext.read<NavigationBloc>().state.currentIndex;
+        int selectedIndex =
+            blocContext.read<NavigationBloc>().state.currentIndex;
         return Scaffold(
           appBar: AppBar(
             title: Text(items[selectedIndex].title),
@@ -40,8 +40,7 @@ class HomePage extends StatelessWidget {
             unselectedItemColor: Colors.black,
             selectedItemColor: Colors.black,
             currentIndex: selectedIndex,
-            onTap: (index) =>
-                context.read<NavigationBloc>().getNavBarItem(
+            onTap: (index) => context.read<NavigationBloc>().getNavBarItem(
                   _getNavItem(index),
                 ),
             unselectedLabelStyle: const TextStyle(
@@ -54,8 +53,7 @@ class HomePage extends StatelessWidget {
             ),
             items: items
                 .map(
-                  (item) =>
-                  BottomNavigationBarItem(
+                  (item) => BottomNavigationBarItem(
                     icon: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -73,7 +71,7 @@ class HomePage extends StatelessWidget {
                     ),
                     label: item.title,
                   ),
-            )
+                )
                 .toList(),
           ),
         );

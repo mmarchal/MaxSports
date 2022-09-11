@@ -1,4 +1,5 @@
 import 'package:max_sports/data/entities/api_error.dart';
+import 'package:max_sports/data/error_type.dart';
 
 enum APIType {
   ok,
@@ -15,7 +16,7 @@ enum APIType {
   unsupportedMediaType,
 }
 
-class APIResponse<T> {
+abstract class APIResponse<T> {
   final T? data;
   final APIError? error;
   final APIType? type;
@@ -25,4 +26,14 @@ class APIResponse<T> {
   bool get isSuccess => error == null;
 
   bool get hasInternet => type != APIType.network;
+}
+
+class SuccessResponse<T> extends APIResponse<T> {
+  SuccessResponse(int apiStatus, T data)
+      : super(type: getAPIType(apiStatus), data: data);
+}
+
+class FailResponse<T> extends APIResponse<T> {
+  FailResponse(int apiStatus, {APIError? error})
+      : super(type: getAPIType(apiStatus), error: error);
 }

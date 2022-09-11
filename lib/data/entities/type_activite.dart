@@ -1,21 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'type_activite.freezed.dart';
 part 'type_activite.g.dart';
 
-@JsonSerializable()
-class TypeActivite {
-  final int id;
-  final String type;
-  final String imagePath;
-
+@Freezed(makeCollectionsUnmodifiable: false)
+class TypeActivite with _$TypeActivite {
+  const factory TypeActivite({
+    int? id,
+    required String type,
+    required String imagePath,
+  }) = _TypeActivite;
+  const TypeActivite._();
   factory TypeActivite.fromJson(Map<String, dynamic> json) =>
       _$TypeActiviteFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TypeActiviteToJson(this);
-
-  TypeActivite({
-    required this.id,
-    required this.type,
-    required this.imagePath,
-  });
 }
