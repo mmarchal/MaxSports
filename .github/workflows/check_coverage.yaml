@@ -1,0 +1,21 @@
+name: Check coverage ratio
+on: pull_request
+jobs:
+  check-coverage:
+    name: Check coverage ratio with very_good_cli
+    runs-on: ubuntu-20.04
+    steps: 
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.4'
+          channel: 'stable'    
+      - name: Check coverage ratio
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          flutter pub get
+          dart pub global activate very_good_cli
+          very_good test --coverage \
+            --exclude-coverage "{**/*.g.dart,**/*.freezed.dart,**/entities/**,**/*_state.dart,**/core/**}" \
+            --min-coverage 80
