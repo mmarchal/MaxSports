@@ -10,6 +10,7 @@ _Feat_
 - Activite page OK
 - Add retrofit to project + migration of http to Retrofit
 - Add units tests and coverage above 80%
+- Add github actions
 
 # 1.0.1
 
