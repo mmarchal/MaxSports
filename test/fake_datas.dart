@@ -38,7 +38,7 @@ final Recap fakeRecap = Recap(
   poidsLate: 75,
   dateLate: DateTime(2022, 1, 2),
   difference: 5,
-  etat: EtatPoids.PERTE,
+  etat: EtatPoids.perte,
 );
 
 const APIError genericError = APIError(

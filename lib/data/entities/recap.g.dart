@@ -25,6 +25,6 @@ Map<String, dynamic> _$$_RecapToJson(_$_Recap instance) => <String, dynamic>{
     };
 
 const _$EtatPoidsEnumMap = {
-  EtatPoids.GAIN: 'GAIN',
-  EtatPoids.PERTE: 'PERTE',
+  EtatPoids.gain: 'gain',
+  EtatPoids.perte: 'perte',
 };
