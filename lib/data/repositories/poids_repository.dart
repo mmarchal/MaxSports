@@ -54,11 +54,17 @@ class PoidsRepository {
   Future<APIResponse<Recap?>> getLastTwoWeight() async {
     final response = await api.getLastTwoPoids();
     if (response.response.statusCode == 200) {
+      Map<String, dynamic> json = {
+        'poidsRecent': response.data['poidsRecent'],
+        'dateRecent': response.data['dateRecent'],
+        'poidsLate': response.data['poidsLate'],
+        'dateLate': response.data['dateLate'],
+        'difference': response.data['difference'],
+        'etat': response.data['etat'].toString().toLowerCase(),
+      };
       return SuccessResponse(
         200,
-        Recap.fromJson(
-          response.data as Map<String, dynamic>,
-        ),
+        Recap.fromJson(json),
       );
     } else {
       return errorFunction(response);

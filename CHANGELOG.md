@@ -12,6 +12,10 @@ _Feat_
 - Add units tests and coverage above 80%
 - Add github actions
 
+_Fix_
+
+- Fix all warnings
+
 # 1.0.1
 
 _Fix_

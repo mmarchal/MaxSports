@@ -10,7 +10,7 @@ void main() {
     poidsLate: 75,
     dateLate: DateTime(2022, 1, 2),
     difference: 5,
-    etat: EtatPoids.GAIN,
+    etat: EtatPoids.gain,
   );
   testWidgets(
     'recap widget not null',

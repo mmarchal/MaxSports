@@ -128,7 +128,7 @@ class _ActivitePageState extends State<ActivitePage> {
             }
           },
           icon: const Icon(Icons.verified),
-          label: const Text("Voir résultat"),
+          label: const Text("Valider l'activité"),
         )
       ],
     );
