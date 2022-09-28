@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/core/constants.dart';
+import 'package:max_sports/core/source/config_service.dart';
 import 'package:max_sports/core/utils/dialog.dart';
 import 'package:max_sports/data/blocs/activite_bloc.dart';
 import 'package:max_sports/data/blocs/type_activite_bloc.dart';
@@ -154,7 +154,7 @@ class _ActivitePageState extends State<ActivitePage> {
                     borderRadius:
                         const BorderRadius.vertical(top: Radius.circular(10.0)),
                     child: Image.network(
-                      "$imageUrl${type.imagePath}",
+                      "${context.read<ConfigService>().imageUrl}${type.imagePath}",
                       fit: BoxFit.fill,
                     ),
                   ),

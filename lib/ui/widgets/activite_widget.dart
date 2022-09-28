@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/core/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_sports/core/source/config_service.dart';
 import 'package:max_sports/data/entities/type_activite.dart';
 
 class ActiviteWidget extends StatelessWidget {
@@ -18,8 +19,9 @@ class ActiviteWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CircleAvatar(
-            backgroundImage:
-                NetworkImage("$imageUrl/${typeActivite.imagePath}"),
+            backgroundImage: NetworkImage(
+              "${context.read<ConfigService>().imageUrl}${typeActivite.imagePath}",
+            ),
           ),
           Text("Vous avez fais : ${typeActivite.type}"),
         ],
