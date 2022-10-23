@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:max_design/objects/charts_data.dart';
+import 'package:max_design/widgets/others/design_charts.dart';
 import 'package:max_sports/data/blocs/stats_bloc.dart';
 import 'package:max_sports/data/entities/poids.dart';
 import 'package:max_sports/data/states/stats_state.dart';
 import 'package:max_sports/ui/pages/statistique/stats_page_provider.dart';
-import 'package:max_sports/ui/widgets/graphique.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class StatsPage extends StatelessWidget {
-  const StatsPage({Key? key}) : super(key: key);
+  const StatsPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,23 +20,20 @@ class StatsPage extends StatelessWidget {
         builder: (context, state) {
           List<Poids>? _list = state.currentListOfWeight;
           if (_list != null) {
+            DateFormat format = DateFormat('dd/MM/yyyy');
+            List<ChartData> datas = _list
+                .map(
+                  (e) => ChartData(format.format(e.date), e.poids),
+                )
+                .toList();
             return Center(
               child: SizedBox(
                 height: MediaQuery.of(context).size.height / 2,
                 child: Card(
                   elevation: 10,
-                  child: Graphique(
-                    seriesList: [
-                      charts.Series<Poids, DateTime>(
-                        id: 'Poids',
-                        colorFn: (_, __) =>
-                            charts.MaterialPalette.blue.shadeDefault,
-                        domainFn: (Poids poids, _) => poids.date,
-                        measureFn: (Poids poids, _) => poids.poids,
-                        data: _list,
-                      ),
-                    ],
-                    animate: true,
+                  child: DesignCharts(
+                    datas: datas,
+                    chartType: ChartType.line,
                   ),
                 ),
               ),
