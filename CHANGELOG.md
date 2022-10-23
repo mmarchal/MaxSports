@@ -1,3 +1,9 @@
+# 1.1.1
+
+_Fix_
+
+- Remove firebase folder
+
 # 1.1.0
 
 _Feat_
