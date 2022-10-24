@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:max_sports/data/entities/activite.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'backend_api.g.dart';
@@ -14,21 +14,21 @@ abstract class BackendApi {
   }) = _BackendApi;
 
   @GET('poids/all')
-  Future<HttpResponse> getPoids();
+  Future<HttpResponse> getWeight();
 
   @POST('poids/save')
-  Future<HttpResponse> savePoids({
-    @Body() required Poids poids,
+  Future<HttpResponse> saveWeight({
+    @Body() required Weight weight,
   });
 
   @GET('typeActivite/all')
   Future<HttpResponse> getTypesActivites();
 
   @GET('poids/last')
-  Future<HttpResponse> getLastPoids();
+  Future<HttpResponse> getLastWeight();
 
   @GET('poids/lastTwo')
-  Future<HttpResponse> getLastTwoPoids();
+  Future<HttpResponse> getLastTwoWeight();
 
   @POST('activite/save')
   Future<HttpResponse> saveActivite({

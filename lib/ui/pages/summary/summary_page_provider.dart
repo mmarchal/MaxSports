@@ -16,7 +16,7 @@ class SummaryPageProvider extends StatelessWidget {
       providers: [
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(
-            poidsRepository: context.read(),
+            weightRepository: context.read(),
           )..getWeights(),
         ),
       ],

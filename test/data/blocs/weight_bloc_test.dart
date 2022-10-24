@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:max_sports/data/blocs/poids_bloc.dart';
+import 'package:max_sports/data/blocs/weight_bloc.dart';
 import 'package:max_sports/data/entities/api_response.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
-import 'package:max_sports/data/states/poids_state.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
+import 'package:max_sports/data/states/weight_state.dart';
 import 'package:mockito/annotations.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
@@ -11,20 +11,20 @@ import '../../fake_datas.dart';
 import 'poids_bloc_test.mocks.dart';
 
 @GenerateMocks([
-  PoidsRepository,
+  WeightRepository,
 ])
 void main() {
   group(
     'Poids bloc',
     () {
       late MockPoidsRepository repository;
-      late PoidsBloc poidsBloc;
+      late WeightBloc weightBloc;
 
       setUp(
         () {
           repository = MockPoidsRepository();
-          poidsBloc = PoidsBloc(
-            poidsRepository: repository,
+          weightBloc = WeightBloc(
+            weightRepository: repository,
           );
         },
       );
@@ -33,50 +33,50 @@ void main() {
         'initial state is idle',
         () {
           expect(
-            poidsBloc.state,
-            PoidsState.initial(),
+            weightBloc.state,
+            WeightState.initial(),
           );
         },
       );
 
-      blocTest<PoidsBloc, PoidsState>(
+      blocTest<WeightBloc, WeightState>(
         'Set bloc idle',
-        build: () => poidsBloc,
+        build: () => weightBloc,
         act: (bloc) => bloc.idle(),
         expect: () => [
-          PoidsState.initial(),
+          WeightState.initial(),
         ],
       );
 
       group(
         'Post poids',
         () {
-          blocTest<PoidsBloc, PoidsState>(
+          blocTest<WeightBloc, WeightState>(
             'Success',
-            build: () => poidsBloc,
+            build: () => weightBloc,
             setUp: () {
-              when(repository.postPoids(
-                fakePoidsLast,
+              when(repository.postWeight(
+                fakeWeightLast,
               )).thenAnswer(
                 (realInvocation) => Future.value(
-                  SuccessResponse(200, fakePoidsLast),
+                  SuccessResponse(200, fakeWeightLast),
                 ),
               );
             },
-            act: (bloc) => bloc.sendPoids(fakePoidsLast),
+            act: (bloc) => bloc.sendWeight(fakeWeightLast),
             expect: () => [
-              PoidsState.sendPoidsLoading(),
-              PoidsState.sendPoidsLoaded(),
+              WeightState.sendWeightLoading(),
+              WeightState.sendWeightLoaded(),
             ],
           );
 
-          blocTest<PoidsBloc, PoidsState>(
+          blocTest<WeightBloc, WeightState>(
             'Poids 0.0',
-            build: () => poidsBloc,
-            act: (bloc) => bloc.sendPoids(fakePoidsWithZero),
+            build: () => weightBloc,
+            act: (bloc) => bloc.sendWeight(fakePoidsWithZero),
             expect: () => [
-              PoidsState.sendPoidsLoading(),
-              PoidsState.failed(
+              WeightState.sendWeightLoading(),
+              WeightState.failed(
                 error: genericError,
               ),
             ],

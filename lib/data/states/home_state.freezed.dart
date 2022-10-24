@@ -20,7 +20,7 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightLoading,
-    required TResult Function(Poids poids, Recap recap) getWeightLoaded,
+    required TResult Function(Weight weight, Recap recap) getWeightLoaded,
     required TResult Function(APIError? error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$HomeStateInitial extends HomeStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightLoading,
-    required TResult Function(Poids poids, Recap recap) getWeightLoaded,
+    required TResult Function(Weight weight, Recap recap) getWeightLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$HomeStateInitial extends HomeStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$HomeStateInitial extends HomeStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
@@ -247,7 +247,7 @@ class _$HomeStateGetWeightLoading extends HomeStateGetWeightLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightLoading,
-    required TResult Function(Poids poids, Recap recap) getWeightLoaded,
+    required TResult Function(Weight weight, Recap recap) getWeightLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return getWeightLoading();
@@ -258,7 +258,7 @@ class _$HomeStateGetWeightLoading extends HomeStateGetWeightLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return getWeightLoading?.call();
@@ -269,7 +269,7 @@ class _$HomeStateGetWeightLoading extends HomeStateGetWeightLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
@@ -327,9 +327,9 @@ abstract class _$$HomeStateGetWeightLoadedCopyWith<$Res> {
   factory _$$HomeStateGetWeightLoadedCopyWith(_$HomeStateGetWeightLoaded value,
           $Res Function(_$HomeStateGetWeightLoaded) then) =
       __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>;
-  $Res call({Poids poids, Recap recap});
+  $Res call({Weight weight, Recap recap});
 
-  $PoidsCopyWith<$Res> get poids;
+  $WeightCopyWith<$Res> get weight;
   $RecapCopyWith<$Res> get recap;
 }
 
@@ -347,14 +347,14 @@ class __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? poids = freezed,
+    Object? weight = freezed,
     Object? recap = freezed,
   }) {
     return _then(_$HomeStateGetWeightLoaded(
-      poids: poids == freezed
-          ? _value.poids
-          : poids // ignore: cast_nullable_to_non_nullable
-              as Poids,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as Weight,
       recap: recap == freezed
           ? _value.recap
           : recap // ignore: cast_nullable_to_non_nullable
@@ -363,9 +363,9 @@ class __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>
   }
 
   @override
-  $PoidsCopyWith<$Res> get poids {
-    return $PoidsCopyWith<$Res>(_value.poids, (value) {
-      return _then(_value.copyWith(poids: value));
+  $WeightCopyWith<$Res> get weight {
+    return $WeightCopyWith<$Res>(_value.weight, (value) {
+      return _then(_value.copyWith(weight: value));
     });
   }
 
@@ -380,17 +380,17 @@ class __$$HomeStateGetWeightLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
-  _$HomeStateGetWeightLoaded({required this.poids, required this.recap})
+  _$HomeStateGetWeightLoaded({required this.weight, required this.recap})
       : super._();
 
   @override
-  final Poids poids;
+  final Weight weight;
   @override
   final Recap recap;
 
   @override
   String toString() {
-    return 'HomeState.getWeightLoaded(poids: $poids, recap: $recap)';
+    return 'HomeState.getWeightLoaded(weight: $weight, recap: $recap)';
   }
 
   @override
@@ -398,14 +398,14 @@ class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateGetWeightLoaded &&
-            const DeepCollectionEquality().equals(other.poids, poids) &&
+            const DeepCollectionEquality().equals(other.weight, weight) &&
             const DeepCollectionEquality().equals(other.recap, recap));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(poids),
+      const DeepCollectionEquality().hash(weight),
       const DeepCollectionEquality().hash(recap));
 
   @JsonKey(ignore: true)
@@ -420,10 +420,10 @@ class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightLoading,
-    required TResult Function(Poids poids, Recap recap) getWeightLoaded,
+    required TResult Function(Weight weight, Recap recap) getWeightLoaded,
     required TResult Function(APIError? error) failed,
   }) {
-    return getWeightLoaded(poids, recap);
+    return getWeightLoaded(weight, recap);
   }
 
   @override
@@ -431,10 +431,10 @@ class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
   }) {
-    return getWeightLoaded?.call(poids, recap);
+    return getWeightLoaded?.call(weight, recap);
   }
 
   @override
@@ -442,12 +442,12 @@ class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
     if (getWeightLoaded != null) {
-      return getWeightLoaded(poids, recap);
+      return getWeightLoaded(weight, recap);
     }
     return orElse();
   }
@@ -492,11 +492,11 @@ class _$HomeStateGetWeightLoaded extends HomeStateGetWeightLoaded {
 
 abstract class HomeStateGetWeightLoaded extends HomeState {
   factory HomeStateGetWeightLoaded(
-      {required final Poids poids,
+      {required final Weight weight,
       required final Recap recap}) = _$HomeStateGetWeightLoaded;
   HomeStateGetWeightLoaded._() : super._();
 
-  Poids get poids;
+  Weight get weight;
   Recap get recap;
   @JsonKey(ignore: true)
   _$$HomeStateGetWeightLoadedCopyWith<_$HomeStateGetWeightLoaded>
@@ -583,7 +583,7 @@ class _$HomeStateFailed extends HomeStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightLoading,
-    required TResult Function(Poids poids, Recap recap) getWeightLoaded,
+    required TResult Function(Weight weight, Recap recap) getWeightLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return failed(error);
@@ -594,7 +594,7 @@ class _$HomeStateFailed extends HomeStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return failed?.call(error);
@@ -605,7 +605,7 @@ class _$HomeStateFailed extends HomeStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightLoading,
-    TResult Function(Poids poids, Recap recap)? getWeightLoaded,
+    TResult Function(Weight weight, Recap recap)? getWeightLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {

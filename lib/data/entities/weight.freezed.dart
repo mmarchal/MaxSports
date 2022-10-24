@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'poids.dart';
+part of 'weight.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Poids _$PoidsFromJson(Map<String, dynamic> json) {
-  return _Poids.fromJson(json);
+Weight _$WeightFromJson(Map<String, dynamic> json) {
+  return _Weight.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Poids {
+mixin _$Weight {
   int? get id => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   double get poids => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PoidsCopyWith<Poids> get copyWith => throw _privateConstructorUsedError;
+  $WeightCopyWith<Weight> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PoidsCopyWith<$Res> {
-  factory $PoidsCopyWith(Poids value, $Res Function(Poids) then) =
-      _$PoidsCopyWithImpl<$Res>;
+abstract class $WeightCopyWith<$Res> {
+  factory $WeightCopyWith(Weight value, $Res Function(Weight) then) =
+      _$WeightCopyWithImpl<$Res>;
   $Res call({int? id, DateTime date, double poids});
 }
 
 /// @nodoc
-class _$PoidsCopyWithImpl<$Res> implements $PoidsCopyWith<$Res> {
-  _$PoidsCopyWithImpl(this._value, this._then);
+class _$WeightCopyWithImpl<$Res> implements $WeightCopyWith<$Res> {
+  _$WeightCopyWithImpl(this._value, this._then);
 
-  final Poids _value;
+  final Weight _value;
   // ignore: unused_field
-  final $Res Function(Poids) _then;
+  final $Res Function(Weight) _then;
 
   @override
   $Res call({
@@ -68,21 +68,21 @@ class _$PoidsCopyWithImpl<$Res> implements $PoidsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_PoidsCopyWith<$Res> implements $PoidsCopyWith<$Res> {
-  factory _$$_PoidsCopyWith(_$_Poids value, $Res Function(_$_Poids) then) =
-      __$$_PoidsCopyWithImpl<$Res>;
+abstract class _$$_WeightCopyWith<$Res> implements $WeightCopyWith<$Res> {
+  factory _$$_WeightCopyWith(_$_Weight value, $Res Function(_$_Weight) then) =
+      __$$_WeightCopyWithImpl<$Res>;
   @override
   $Res call({int? id, DateTime date, double poids});
 }
 
 /// @nodoc
-class __$$_PoidsCopyWithImpl<$Res> extends _$PoidsCopyWithImpl<$Res>
-    implements _$$_PoidsCopyWith<$Res> {
-  __$$_PoidsCopyWithImpl(_$_Poids _value, $Res Function(_$_Poids) _then)
-      : super(_value, (v) => _then(v as _$_Poids));
+class __$$_WeightCopyWithImpl<$Res> extends _$WeightCopyWithImpl<$Res>
+    implements _$$_WeightCopyWith<$Res> {
+  __$$_WeightCopyWithImpl(_$_Weight _value, $Res Function(_$_Weight) _then)
+      : super(_value, (v) => _then(v as _$_Weight));
 
   @override
-  _$_Poids get _value => super._value as _$_Poids;
+  _$_Weight get _value => super._value as _$_Weight;
 
   @override
   $Res call({
@@ -90,7 +90,7 @@ class __$$_PoidsCopyWithImpl<$Res> extends _$PoidsCopyWithImpl<$Res>
     Object? date = freezed,
     Object? poids = freezed,
   }) {
-    return _then(_$_Poids(
+    return _then(_$_Weight(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -109,12 +109,12 @@ class __$$_PoidsCopyWithImpl<$Res> extends _$PoidsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Poids extends _Poids {
-  const _$_Poids({this.id, required this.date, required this.poids})
+class _$_Weight extends _Weight {
+  const _$_Weight({this.id, required this.date, required this.poids})
       : super._();
 
-  factory _$_Poids.fromJson(Map<String, dynamic> json) =>
-      _$$_PoidsFromJson(json);
+  factory _$_Weight.fromJson(Map<String, dynamic> json) =>
+      _$$_WeightFromJson(json);
 
   @override
   final int? id;
@@ -125,14 +125,14 @@ class _$_Poids extends _Poids {
 
   @override
   String toString() {
-    return 'Poids(id: $id, date: $date, poids: $poids)';
+    return 'Weight(id: $id, date: $date, poids: $poids)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Poids &&
+            other is _$_Weight &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.poids, poids));
@@ -148,25 +148,25 @@ class _$_Poids extends _Poids {
 
   @JsonKey(ignore: true)
   @override
-  _$$_PoidsCopyWith<_$_Poids> get copyWith =>
-      __$$_PoidsCopyWithImpl<_$_Poids>(this, _$identity);
+  _$$_WeightCopyWith<_$_Weight> get copyWith =>
+      __$$_WeightCopyWithImpl<_$_Weight>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PoidsToJson(
+    return _$$_WeightToJson(
       this,
     );
   }
 }
 
-abstract class _Poids extends Poids {
-  const factory _Poids(
+abstract class _Weight extends Weight {
+  const factory _Weight(
       {final int? id,
       required final DateTime date,
-      required final double poids}) = _$_Poids;
-  const _Poids._() : super._();
+      required final double poids}) = _$_Weight;
+  const _Weight._() : super._();
 
-  factory _Poids.fromJson(Map<String, dynamic> json) = _$_Poids.fromJson;
+  factory _Weight.fromJson(Map<String, dynamic> json) = _$_Weight.fromJson;
 
   @override
   int? get id;
@@ -176,6 +176,6 @@ abstract class _Poids extends Poids {
   double get poids;
   @override
   @JsonKey(ignore: true)
-  _$$_PoidsCopyWith<_$_Poids> get copyWith =>
+  _$$_WeightCopyWith<_$_Weight> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 
 class LastWeightWidget extends StatelessWidget {
-  final Poids? poids;
+  final Weight? poids;
 
   const LastWeightWidget({
     Key? key,

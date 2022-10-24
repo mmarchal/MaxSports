@@ -2,28 +2,28 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:max_sports/data/blocs/home_bloc.dart';
 import 'package:max_sports/data/entities/api_response.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
 import 'package:max_sports/data/states/home_state.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../fake_datas.dart';
-import 'home_bloc_test.mocks.dart';
+import 'weight_bloc_test.mocks.dart';
 
 @GenerateMocks([
-  PoidsRepository,
+  WeightRepository,
 ])
 void main() {
   group(
     'Home bloc',
     () {
-      late MockPoidsRepository poidsRepository;
+      late MockWeightRepository weightRepository;
       late HomeBloc homeBloc;
 
       setUp(
         () {
-          poidsRepository = MockPoidsRepository();
-          homeBloc = HomeBloc(poidsRepository: poidsRepository);
+          weightRepository = MockWeightRepository();
+          homeBloc = HomeBloc(weightRepository: weightRepository);
         },
       );
 
@@ -48,15 +48,15 @@ void main() {
         'get Weight',
         build: () => homeBloc,
         setUp: () {
-          when(poidsRepository.getLastWeight()).thenAnswer(
+          when(weightRepository.getLastWeight()).thenAnswer(
             (realInvocation) => Future.value(
               SuccessResponse(
                 200,
-                fakePoidsLast,
+                fakeWeightLast,
               ),
             ),
           );
-          when(poidsRepository.getLastTwoWeight()).thenAnswer(
+          when(weightRepository.getLastTwoWeight()).thenAnswer(
             (realInvocation) => Future.value(
               SuccessResponse(
                 200,
@@ -69,7 +69,7 @@ void main() {
         expect: () => [
           HomeState.getWeightLoading(),
           HomeState.getWeightLoaded(
-            poids: fakePoidsLast,
+            weight: fakeWeightLast,
             recap: fakeRecap,
           ),
         ],

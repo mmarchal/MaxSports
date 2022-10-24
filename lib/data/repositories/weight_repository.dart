@@ -1,34 +1,34 @@
 import 'package:max_sports/data/backend_api.dart';
 import 'package:max_sports/data/entities/api_response.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/entities/recap.dart';
 import 'package:max_sports/data/error_type.dart';
 
-class PoidsRepository {
+class WeightRepository {
   final BackendApi api;
 
-  PoidsRepository({
+  WeightRepository({
     required this.api,
   });
 
-  Future<APIResponse<List<Poids>>> getPoids() async {
-    final response = await api.getPoids();
+  Future<APIResponse<List<Weight>>> getWeight() async {
+    final response = await api.getWeight();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
         200,
-        response.data.map<Poids>((item) => Poids.fromJson(item)).toList(),
+        response.data.map<Weight>((item) => Weight.fromJson(item)).toList(),
       );
     } else {
       return errorFunction(response);
     }
   }
 
-  Future<APIResponse<Poids?>> postPoids(Poids poids) async {
-    final response = await api.savePoids(poids: poids);
+  Future<APIResponse<Weight?>> postWeight(Weight weight) async {
+    final response = await api.saveWeight(weight: weight);
     if (response.response.statusCode == 200) {
       return SuccessResponse(
         200,
-        Poids.fromJson(
+        Weight.fromJson(
           response.data as Map<String, dynamic>,
         ),
       );
@@ -37,12 +37,12 @@ class PoidsRepository {
     }
   }
 
-  Future<APIResponse<Poids?>> getLastWeight() async {
-    final response = await api.getLastPoids();
+  Future<APIResponse<Weight?>> getLastWeight() async {
+    final response = await api.getLastWeight();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
         200,
-        Poids.fromJson(
+        Weight.fromJson(
           response.data as Map<String, dynamic>,
         ),
       );
@@ -52,7 +52,7 @@ class PoidsRepository {
   }
 
   Future<APIResponse<Recap?>> getLastTwoWeight() async {
-    final response = await api.getLastTwoPoids();
+    final response = await api.getLastTwoWeight();
     if (response.response.statusCode == 200) {
       Map<String, dynamic> json = {
         'poidsRecent': response.data['poidsRecent'],

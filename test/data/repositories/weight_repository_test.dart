@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:max_sports/data/backend_api.dart';
 import 'package:max_sports/data/entities/api_response.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:retrofit/dio.dart';
 
 import '../../fake_datas.dart';
-import 'poids_repository_test.mocks.dart';
+import 'weight_repository_test.mocks.dart';
 
 @GenerateMocks(
   [
@@ -30,7 +30,7 @@ void main() {
   late MockHttpResponse httpResponseMock;
   late MockHttpResponseList httpResponseMockList;
 
-  late PoidsRepository poidsRepository;
+  late WeightRepository poidsRepository;
 
   setUpAll(() {
     backendApiMock = MockBackendApi();
@@ -39,30 +39,30 @@ void main() {
   setUp(() {
     httpResponseMock = MockHttpResponse();
     httpResponseMockList = MockHttpResponseList();
-    poidsRepository = PoidsRepository(
+    poidsRepository = WeightRepository(
       api: backendApiMock,
     );
     responseMock = MockResponse();
   });
 
   group(
-    'Poids repository',
+    'Weight repository',
     () {
       test(
-        'getPoids',
+        'getWeight',
         () async {
           when(
-            backendApiMock.getPoids(),
+            backendApiMock.getWeight(),
           ).thenAnswer((realInvocation) => Future.value(httpResponseMockList));
           when(httpResponseMockList.response).thenReturn(responseMock);
           when(responseMock.statusCode).thenReturn(200);
           when(httpResponseMockList.data).thenReturn(
             [
-              fakePoidsLast.toJson(),
+              fakeWeightLast.toJson(),
             ],
           );
           //WHEN
-          final result = await poidsRepository.getPoids();
+          final result = await poidsRepository.getWeight();
 
           //THEN
           expect(result is SuccessResponse, true);
@@ -72,7 +72,7 @@ void main() {
       test(
         'postPoids success',
         () async {
-          when(backendApiMock.savePoids(poids: fakePoidsLast)).thenAnswer(
+          when(backendApiMock.saveWeight(weight: fakeWeightLast)).thenAnswer(
             (realInvocation) => Future.value(
               httpResponseMock,
             ),
@@ -80,14 +80,14 @@ void main() {
           when(httpResponseMock.response).thenReturn(responseMock);
           when(responseMock.statusCode).thenReturn(200);
           when(httpResponseMock.data).thenReturn(
-            fakePoidsLast.toJson(),
+            fakeWeightLast.toJson(),
           );
           //WHEN
-          final result = await poidsRepository.postPoids(fakePoidsLast);
+          final result = await poidsRepository.postWeight(fakeWeightLast);
 
           //THEN
           expect(result is SuccessResponse, true);
-          expect(result.data, fakePoidsLast);
+          expect(result.data, fakeWeightLast);
         },
       );
 
@@ -95,12 +95,12 @@ void main() {
         'getLastWeight',
         () async {
           when(
-            backendApiMock.getLastPoids(),
+            backendApiMock.getLastWeight(),
           ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
           when(httpResponseMock.response).thenReturn(responseMock);
           when(responseMock.statusCode).thenReturn(200);
           when(httpResponseMock.data).thenReturn(
-            fakePoidsLast.toJson(),
+            fakeWeightLast.toJson(),
           );
           //WHEN
           final result = await poidsRepository.getLastWeight();
@@ -114,7 +114,7 @@ void main() {
         'getLastTwoWeight',
         () async {
           when(
-            backendApiMock.getLastTwoPoids(),
+            backendApiMock.getLastTwoWeight(),
           ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
           when(httpResponseMock.response).thenReturn(responseMock);
           when(responseMock.statusCode).thenReturn(200);

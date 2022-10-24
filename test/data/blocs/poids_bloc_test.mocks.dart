@@ -7,9 +7,9 @@ import 'dart:async' as _i5;
 
 import 'package:max_sports/data/backend_api.dart' as _i2;
 import 'package:max_sports/data/entities/api_response.dart' as _i3;
-import 'package:max_sports/data/entities/poids.dart' as _i6;
+import 'package:max_sports/data/entities/weight.dart' as _i6;
 import 'package:max_sports/data/entities/recap.dart' as _i7;
-import 'package:max_sports/data/repositories/poids_repository.dart' as _i4;
+import 'package:max_sports/data/repositories/weight_repository.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -37,7 +37,7 @@ class _FakeAPIResponse_1<T> extends _i1.SmartFake
 /// A class which mocks [PoidsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPoidsRepository extends _i1.Mock implements _i4.PoidsRepository {
+class MockPoidsRepository extends _i1.Mock implements _i4.WeightRepository {
   MockPoidsRepository() {
     _i1.throwOnMissingStub(this);
   }
@@ -47,26 +47,26 @@ class MockPoidsRepository extends _i1.Mock implements _i4.PoidsRepository {
           returnValue: _FakeBackendApi_0(this, Invocation.getter(#api)))
       as _i2.BackendApi);
   @override
-  _i5.Future<_i3.APIResponse<List<_i6.Poids>>> getPoids() =>
+  _i5.Future<_i3.APIResponse<List<_i6.Weight>>> getWeight() =>
       (super.noSuchMethod(Invocation.method(#getPoids, []),
-              returnValue: _i5.Future<_i3.APIResponse<List<_i6.Poids>>>.value(
-                  _FakeAPIResponse_1<List<_i6.Poids>>(
+              returnValue: _i5.Future<_i3.APIResponse<List<_i6.Weight>>>.value(
+                  _FakeAPIResponse_1<List<_i6.Weight>>(
                       this, Invocation.method(#getPoids, []))))
-          as _i5.Future<_i3.APIResponse<List<_i6.Poids>>>);
+          as _i5.Future<_i3.APIResponse<List<_i6.Weight>>>);
   @override
-  _i5.Future<_i3.APIResponse<_i6.Poids?>> postPoids(_i6.Poids? poids) =>
+  _i5.Future<_i3.APIResponse<_i6.Weight?>> postWeight(_i6.Weight? poids) =>
       (super.noSuchMethod(Invocation.method(#postPoids, [poids]),
-              returnValue: _i5.Future<_i3.APIResponse<_i6.Poids?>>.value(
-                  _FakeAPIResponse_1<_i6.Poids?>(
+              returnValue: _i5.Future<_i3.APIResponse<_i6.Weight?>>.value(
+                  _FakeAPIResponse_1<_i6.Weight?>(
                       this, Invocation.method(#postPoids, [poids]))))
-          as _i5.Future<_i3.APIResponse<_i6.Poids?>>);
+          as _i5.Future<_i3.APIResponse<_i6.Weight?>>);
   @override
-  _i5.Future<_i3.APIResponse<_i6.Poids?>> getLastWeight() =>
+  _i5.Future<_i3.APIResponse<_i6.Weight?>> getLastWeight() =>
       (super.noSuchMethod(Invocation.method(#getLastWeight, []),
-              returnValue: _i5.Future<_i3.APIResponse<_i6.Poids?>>.value(
-                  _FakeAPIResponse_1<_i6.Poids?>(
+              returnValue: _i5.Future<_i3.APIResponse<_i6.Weight?>>.value(
+                  _FakeAPIResponse_1<_i6.Weight?>(
                       this, Invocation.method(#getLastWeight, []))))
-          as _i5.Future<_i3.APIResponse<_i6.Poids?>>);
+          as _i5.Future<_i3.APIResponse<_i6.Weight?>>);
   @override
   _i5.Future<_i3.APIResponse<_i7.Recap?>> getLastTwoWeight() =>
       (super.noSuchMethod(Invocation.method(#getLastTwoWeight, []),

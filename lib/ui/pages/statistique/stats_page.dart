@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:max_design/objects/charts_data.dart';
 import 'package:max_design/widgets/others/design_charts.dart';
 import 'package:max_sports/data/blocs/stats_bloc.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/states/stats_state.dart';
 import 'package:max_sports/ui/pages/statistique/stats_page_provider.dart';
 
@@ -18,7 +18,7 @@ class StatsPage extends StatelessWidget {
     return StatsPageProvider(
       child: BlocBuilder<StatsBloc, StatsState>(
         builder: (context, state) {
-          List<Poids>? _list = state.currentListOfWeight;
+          List<Weight>? _list = state.currentListOfWeight;
           if (_list != null) {
             DateFormat format = DateFormat('dd/MM/yyyy');
             List<ChartData> datas = _list

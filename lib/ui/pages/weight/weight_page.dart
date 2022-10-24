@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:max_sports/data/blocs/poids_bloc.dart';
-import 'package:max_sports/data/entities/poids.dart';
-import 'package:max_sports/ui/pages/poids/poids_page_listener.dart';
+import 'package:max_sports/data/blocs/weight_bloc.dart';
+import 'package:max_sports/data/entities/weight.dart';
+import 'package:max_sports/ui/pages/weight/weight_page_listener.dart';
 
-class PoidsPage extends StatefulWidget {
-  const PoidsPage({Key? key}) : super(key: key);
+class WeightPage extends StatefulWidget {
+  const WeightPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return PoidsPageState();
+    return WeightPageState();
   }
 }
 
-class PoidsPageState extends State<PoidsPage> {
+class WeightPageState extends State<WeightPage> {
   DateTime selectedDate = DateTime.now();
 
   Color couleur = Colors.green;
@@ -32,7 +32,7 @@ class PoidsPageState extends State<PoidsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PoidsPageListener(
+    return WeightPageListener(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -85,8 +85,8 @@ class PoidsPageState extends State<PoidsPage> {
             style: ElevatedButton.styleFrom(
               primary: couleur,
             ),
-            onPressed: () => context.read<PoidsBloc>().sendPoids(
-                  Poids(
+            onPressed: () => context.read<WeightBloc>().sendWeight(
+                  Weight(
                     date: selectedDate,
                     poids: double.tryParse(
                           controller.text.replaceAll(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/data/entities/menu.dart';
 import 'package:max_sports/ui/pages/activite/activite_page.dart';
-import 'package:max_sports/ui/pages/poids/poids_page.dart';
 import 'package:max_sports/ui/pages/statistique/stats_page.dart';
 import 'package:max_sports/ui/pages/summary/summary_page.dart';
+import 'package:max_sports/ui/pages/weight/weight_page.dart';
 
 var summaryMenu = Menu(
   id: 1,
@@ -13,13 +13,13 @@ var summaryMenu = Menu(
   description: "",
   child: const SummaryPage(),
 );
-var poidsMenu = Menu(
+var weightMenu = Menu(
   id: 2,
   title: "Poids",
   icon: Icons.analytics,
   color: Colors.green,
   description: "Permet d'ajouter une mesure de poids !",
-  child: const PoidsPage(),
+  child: const WeightPage(),
 );
 var activiteMenu = Menu(
   id: 3,
@@ -47,11 +47,11 @@ final items = [
     color: summaryMenu.color,
   ),
   NavigationBarItem(
-    id: poidsMenu.id,
-    title: poidsMenu.title,
-    icon: poidsMenu.icon,
-    redirection: poidsMenu.child,
-    color: poidsMenu.color,
+    id: weightMenu.id,
+    title: weightMenu.title,
+    icon: weightMenu.icon,
+    redirection: weightMenu.child,
+    color: weightMenu.color,
   ),
   NavigationBarItem(
     id: activiteMenu.id,

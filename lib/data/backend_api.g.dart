@@ -16,7 +16,7 @@ class _BackendApi implements BackendApi {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<dynamic>> getPoids() async {
+  Future<HttpResponse<dynamic>> getWeight() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -32,12 +32,12 @@ class _BackendApi implements BackendApi {
   }
 
   @override
-  Future<HttpResponse<dynamic>> savePoids({required poids}) async {
+  Future<HttpResponse<dynamic>> saveWeight({required weight}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(poids.toJson());
+    _data.addAll(weight.toJson());
     final _result = await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(
         Options(method: 'POST', headers: _headers, extra: _extra)
             .compose(_dio.options, 'poids/save',
@@ -65,7 +65,7 @@ class _BackendApi implements BackendApi {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLastPoids() async {
+  Future<HttpResponse<dynamic>> getLastWeight() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -81,7 +81,7 @@ class _BackendApi implements BackendApi {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getLastTwoPoids() async {
+  Future<HttpResponse<dynamic>> getLastTwoWeight() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:max_sports/data/entities/api_error.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 
 part 'stats_state.freezed.dart';
 
@@ -13,17 +13,17 @@ class StatsState with _$StatsState {
   factory StatsState.getWeightsLoading() = StatsStateGetWeightsLoading;
 
   factory StatsState.getWeightsLoaded({
-    required List<Poids> poids,
+    required List<Weight> weight,
   }) = StatsStateGetWeightsLoaded;
 
   factory StatsState.failed({
     APIError? error,
   }) = StatsStateFailed;
 
-  List<Poids>? get currentListOfWeight => maybeMap(
+  List<Weight>? get currentListOfWeight => maybeMap(
         initial: (value) => [],
         getWeightsLoading: (value) => [],
-        getWeightsLoaded: (value) => value.poids,
+        getWeightsLoaded: (value) => value.weight,
         orElse: () => null,
       );
 }

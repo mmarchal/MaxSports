@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'poids.dart';
+part of 'weight.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Poids _$$_PoidsFromJson(Map<String, dynamic> json) => _$_Poids(
+_$_Weight _$$_WeightFromJson(Map<String, dynamic> json) => _$_Weight(
       id: json['id'] as int?,
       date: DateTime.parse(json['date'] as String),
       poids: (json['poids'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$_PoidsToJson(_$_Poids instance) => <String, dynamic>{
+Map<String, dynamic> _$$_WeightToJson(_$_Weight instance) => <String, dynamic>{
       'id': instance.id,
       'date': instance.date.toIso8601String(),
       'poids': instance.poids,

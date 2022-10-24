@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
 import 'package:max_sports/data/states/stats_state.dart';
 
 class StatsBloc extends Cubit<StatsState> {
-  final PoidsRepository poidsRepository;
+  final WeightRepository poidsRepository;
   StatsBloc({
     required this.poidsRepository,
   }) : super(StatsState.initial());
@@ -17,12 +17,12 @@ class StatsBloc extends Cubit<StatsState> {
       StatsState.getWeightsLoading(),
     );
 
-    final response = await poidsRepository.getPoids();
+    final response = await poidsRepository.getWeight();
 
     if (response.isSuccess && response.data!.isNotEmpty) {
       emit(
         StatsState.getWeightsLoaded(
-          poids: response.data!,
+          weight: response.data!,
         ),
       );
     } else {

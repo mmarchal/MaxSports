@@ -16,10 +16,10 @@ class NavigationBloc extends Cubit<NavigationState> {
     reinitState();
     int indexReturn = 0;
     switch (item) {
-      case NavbarItem.home:
+      case NavbarItem.summary:
         indexReturn = 0;
         break;
-      case NavbarItem.poids:
+      case NavbarItem.weight:
         indexReturn = 1;
         break;
       case NavbarItem.activite:
