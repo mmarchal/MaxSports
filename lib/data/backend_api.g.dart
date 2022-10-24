@@ -49,7 +49,7 @@ class _BackendApi implements BackendApi {
   }
 
   @override
-  Future<HttpResponse<dynamic>> getTypesActivites() async {
+  Future<HttpResponse<dynamic>> getTypesActivities() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -97,12 +97,12 @@ class _BackendApi implements BackendApi {
   }
 
   @override
-  Future<HttpResponse<dynamic>> saveActivite({required activite}) async {
+  Future<HttpResponse<dynamic>> saveActivity({required activity}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(activite.toJson());
+    _data.addAll(activity.toJson());
     final _result = await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(
         Options(method: 'POST', headers: _headers, extra: _extra)
             .compose(_dio.options, 'activite/save',

@@ -1,25 +1,25 @@
 import 'package:max_sports/core/utils/navbar_item.dart';
-import 'package:max_sports/data/entities/activite.dart';
+import 'package:max_sports/data/entities/activity.dart';
 import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/entities/recap.dart';
-import 'package:max_sports/data/entities/type_activite.dart';
+import 'package:max_sports/data/entities/type_activity.dart';
 
 const url = 'http://ns329111.ip-37-187-107.eu:3500/';
 
 const fakeItem = NavbarItem.weight;
 
-const fakeTypeActivite = TypeActivite(
+const fakeTypeActivity = TypeActivity(
   id: 1,
   type: 'Vélo',
   imagePath: 'upload/2022/06/17/20220617180624-9d10a4a5.jpg',
 );
 
-final fakeActiviteSuccess = Activite(
+final fakeActivitySuccess = Activity(
   distance: 10,
-  temps: 30,
+  duration: 30,
   date: DateTime(2022, 1, 1),
-  typeActivite: fakeTypeActivite,
+  typeActivity: fakeTypeActivity,
 );
 
 final Weight fakeWeightLast = Weight(

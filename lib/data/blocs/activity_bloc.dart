@@ -1,0 +1,75 @@
+import 'package:bloc/bloc.dart';
+import 'package:max_sports/data/entities/activity.dart';
+import 'package:max_sports/data/entities/type_activity.dart';
+import 'package:max_sports/data/repositories/activity_repository.dart';
+import 'package:max_sports/data/states/activity_state.dart';
+
+class ActivityBloc extends Cubit<ActivityState> {
+  final ActivityRepository activityRepository;
+  ActivityBloc({
+    required this.activityRepository,
+  }) : super(
+          ActivityState.initial(),
+        );
+
+  void idle() => emit(
+        ActivityState.initial(),
+      );
+
+  void selectActivity(TypeActivity type) async {
+    if (state is ActivityStateSelectActiviteInDropDown) {
+      idle();
+    }
+    emit(
+      ActivityState.selectActivityInDropDown(
+        type: type,
+        time: state.currentTime,
+        distance: state.currentDistance,
+      ),
+    );
+  }
+
+  void selectTime(int time) async {
+    emit(
+      ActivityState.inputTimeOfPractice(
+        type: state.currentSelectedType,
+        time: time,
+        distance: state.currentDistance,
+      ),
+    );
+  }
+
+  void selectDistance(double distance) {
+    emit(
+      ActivityState.inputDistanceOfPractice(
+        type: state.currentSelectedType,
+        time: state.currentTime,
+        distance: distance,
+      ),
+    );
+  }
+
+  void sendActivity(Activity activity) async {
+    emit(
+      ActivityState.postActivityLoading(
+        activite: activity,
+      ),
+    );
+
+    final response = await activityRepository.postActivity(activity);
+
+    if (response.isSuccess) {
+      emit(
+        ActivityState.postActivityLoaded(
+          activite: response.data!,
+        ),
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: response.error,
+        ),
+      );
+    }
+  }
+}

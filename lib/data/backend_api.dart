@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:max_sports/data/entities/activite.dart';
+import 'package:max_sports/data/entities/activity.dart';
 import 'package:max_sports/data/entities/weight.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -22,7 +22,7 @@ abstract class BackendApi {
   });
 
   @GET('typeActivite/all')
-  Future<HttpResponse> getTypesActivites();
+  Future<HttpResponse> getTypesActivities();
 
   @GET('poids/last')
   Future<HttpResponse> getLastWeight();
@@ -31,7 +31,7 @@ abstract class BackendApi {
   Future<HttpResponse> getLastTwoWeight();
 
   @POST('activite/save')
-  Future<HttpResponse> saveActivite({
-    @Body() required Activite activite,
+  Future<HttpResponse> saveActivity({
+    @Body() required Activity activity,
   });
 }
