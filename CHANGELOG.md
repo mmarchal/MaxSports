@@ -3,6 +3,7 @@
 _Fix_
 
 - Remove firebase folder
+- Change to english terms
 
 # 1.1.0
 

@@ -5,10 +5,10 @@ import 'package:max_sports/data/blocs/home_bloc.dart';
 import 'package:max_sports/data/states/home_state.dart';
 import 'package:max_sports/ui/widgets/app_loader.dart';
 
-class AccueilPageListener extends StatelessWidget {
+class SummaryPageListener extends StatelessWidget {
   final Widget child;
 
-  const AccueilPageListener({
+  const SummaryPageListener({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -23,7 +23,10 @@ class AccueilPageListener extends StatelessWidget {
             getWeightLoaded: (value) => hideLoaderOverlay(),
             failed: (value) {
               hideLoaderOverlay();
-              defaultErrorDialog(context: context, error: value.error);
+              defaultErrorDialog(
+                context: context,
+                error: value.error,
+              );
               return null;
             },
             orElse: () => null,

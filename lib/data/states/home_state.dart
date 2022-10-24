@@ -35,4 +35,9 @@ class HomeState with _$HomeState {
         failed: (value) => value.currentRecap,
         orElse: () => null,
       );
+
+  APIError? get currentApiError => maybeMap(
+        failed: (value) => value.error,
+        orElse: () => null,
+      );
 }
