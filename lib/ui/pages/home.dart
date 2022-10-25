@@ -15,9 +15,9 @@ class HomePage extends StatelessWidget {
       case 1:
         return NavbarItem.weight;
       case 2:
-        return NavbarItem.activite;
+        return NavbarItem.activity;
       case 3:
-        return NavbarItem.statistiques;
+        return NavbarItem.stats;
       default:
         return NavbarItem.summary;
     }

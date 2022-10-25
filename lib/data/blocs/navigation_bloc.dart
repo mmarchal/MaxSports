@@ -22,10 +22,10 @@ class NavigationBloc extends Cubit<NavigationState> {
       case NavbarItem.weight:
         indexReturn = 1;
         break;
-      case NavbarItem.activite:
+      case NavbarItem.activity:
         indexReturn = 2;
         break;
-      case NavbarItem.statistiques:
+      case NavbarItem.stats:
         indexReturn = 3;
         break;
     }

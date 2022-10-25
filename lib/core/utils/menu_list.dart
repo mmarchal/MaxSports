@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/data/entities/menu.dart';
 import 'package:max_sports/ui/pages/activity/activity_page.dart';
-import 'package:max_sports/ui/pages/statistique/stats_page.dart';
+import 'package:max_sports/ui/pages/stats/stats_page.dart';
 import 'package:max_sports/ui/pages/summary/summary_page.dart';
 import 'package:max_sports/ui/pages/weight/weight_page.dart';
 

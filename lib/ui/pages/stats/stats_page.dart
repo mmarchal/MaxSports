@@ -6,7 +6,7 @@ import 'package:max_design/widgets/others/design_charts.dart';
 import 'package:max_sports/data/blocs/stats_bloc.dart';
 import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/states/stats_state.dart';
-import 'package:max_sports/ui/pages/statistique/stats_page_provider.dart';
+import 'package:max_sports/ui/pages/stats/stats_page_provider.dart';
 
 class StatsPage extends StatelessWidget {
   const StatsPage({
