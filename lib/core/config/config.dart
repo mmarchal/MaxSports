@@ -5,11 +5,9 @@ part 'config.g.dart';
 
 @Freezed(makeCollectionsUnmodifiable: false)
 class Config with _$Config {
-  // ignore: invalid_annotation_target
   const factory Config({
     @Default("") String backendUrl,
     @Default("") String imageUrl,
-    //IN THE NEXT SPRINT : ADD blockInfo and depart document
   }) = _Config;
 
   const Config._();

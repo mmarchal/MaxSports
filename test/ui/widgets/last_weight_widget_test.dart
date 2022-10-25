@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/ui/widgets/last_weight_widget.dart';
 
 void main() {
-  final fakePoids = Poids(
+  final fakePoids = Weight(
     date: DateTime(2022, 1, 1),
     poids: 70,
   );

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:max_sports/data/entities/api_error.dart';
-import 'package:max_sports/data/entities/poids.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/entities/recap.dart';
 
 part 'home_state.freezed.dart';
@@ -14,7 +14,7 @@ class HomeState with _$HomeState {
   factory HomeState.getWeightLoading() = HomeStateGetWeightLoading;
 
   factory HomeState.getWeightLoaded({
-    required Poids poids,
+    required Weight weight,
     required Recap recap,
   }) = HomeStateGetWeightLoaded;
 
@@ -22,9 +22,9 @@ class HomeState with _$HomeState {
     APIError? error,
   }) = HomeStateFailed;
 
-  Poids? get currentLastPoids => maybeMap(
+  Weight? get currentLastPoids => maybeMap(
         getWeightLoading: (value) => null,
-        getWeightLoaded: (value) => value.poids,
+        getWeightLoaded: (value) => value.weight,
         failed: (value) => value.currentLastPoids,
         orElse: () => null,
       );
@@ -33,6 +33,11 @@ class HomeState with _$HomeState {
         getWeightLoading: (value) => null,
         getWeightLoaded: (value) => value.recap,
         failed: (value) => value.currentRecap,
+        orElse: () => null,
+      );
+
+  APIError? get currentApiError => maybeMap(
+        failed: (value) => value.error,
         orElse: () => null,
       );
 }

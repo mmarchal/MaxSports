@@ -11,15 +11,15 @@ class HomePage extends StatelessWidget {
   NavbarItem _getNavItem(int index) {
     switch (index) {
       case 0:
-        return NavbarItem.home;
+        return NavbarItem.summary;
       case 1:
-        return NavbarItem.poids;
+        return NavbarItem.weight;
       case 2:
-        return NavbarItem.activite;
+        return NavbarItem.activity;
       case 3:
-        return NavbarItem.statistiques;
+        return NavbarItem.stats;
       default:
-        return NavbarItem.home;
+        return NavbarItem.summary;
     }
   }
 

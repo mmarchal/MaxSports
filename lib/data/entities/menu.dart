@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class Menu {
   final int id;
-  final String titre;
+  final String title;
   final IconData icon;
-  final Color couleur;
+  final Color color;
   final String description;
-  final Widget redirection;
+  final Widget child;
 
   Menu({
     required this.id,
-    required this.titre,
+    required this.title,
     required this.icon,
-    required this.couleur,
+    required this.color,
     required this.description,
-    required this.redirection,
+    required this.child,
   });
 }

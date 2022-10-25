@@ -1,71 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/data/entities/menu.dart';
-import 'package:max_sports/ui/pages/accueil/accueil_page.dart';
-import 'package:max_sports/ui/pages/activite/activite_page.dart';
-import 'package:max_sports/ui/pages/poids/poids_page.dart';
-import 'package:max_sports/ui/pages/statistique/stats_page.dart';
+import 'package:max_sports/ui/pages/activity/activity_page.dart';
+import 'package:max_sports/ui/pages/stats/stats_page.dart';
+import 'package:max_sports/ui/pages/summary/summary_page.dart';
+import 'package:max_sports/ui/pages/weight/weight_page.dart';
 
-var homeMenu = Menu(
+var summaryMenu = Menu(
   id: 1,
-  titre: "Accueil",
+  title: "Accueil",
   icon: Icons.home,
-  couleur: Colors.purple,
+  color: Colors.purple,
   description: "",
-  redirection: const AccueilPage(),
+  child: const SummaryPage(),
 );
-var poidsMenu = Menu(
+var weightMenu = Menu(
   id: 2,
-  titre: "Poids",
+  title: "Poids",
   icon: Icons.analytics,
-  couleur: Colors.green,
+  color: Colors.green,
   description: "Permet d'ajouter une mesure de poids !",
-  redirection: const PoidsPage(),
+  child: const WeightPage(),
 );
-var activiteMenu = Menu(
+var activityMenu = Menu(
   id: 3,
-  titre: "Activité",
+  title: "Activité",
   icon: Icons.fitness_center,
-  couleur: Colors.lightBlue,
+  color: Colors.lightBlue,
   description: "Permet d'ajouter une activité !",
-  redirection: const ActivitePage(),
+  child: const ActivityPage(),
 );
 var statsMenu = Menu(
   id: 4,
-  titre: "Statistiques",
+  title: "Statistiques",
   icon: Icons.query_stats,
-  couleur: Colors.red.shade300,
+  color: Colors.red.shade300,
   description: "Permet de consulter les statistiques !",
-  redirection: const StatsPage(),
+  child: const StatsPage(),
 );
 
 final items = [
   NavigationBarItem(
-    id: homeMenu.id,
-    title: homeMenu.titre,
-    icon: homeMenu.icon,
-    redirection: homeMenu.redirection,
-    color: homeMenu.couleur,
+    id: summaryMenu.id,
+    title: summaryMenu.title,
+    icon: summaryMenu.icon,
+    redirection: summaryMenu.child,
+    color: summaryMenu.color,
   ),
   NavigationBarItem(
-    id: poidsMenu.id,
-    title: poidsMenu.titre,
-    icon: poidsMenu.icon,
-    redirection: poidsMenu.redirection,
-    color: poidsMenu.couleur,
+    id: weightMenu.id,
+    title: weightMenu.title,
+    icon: weightMenu.icon,
+    redirection: weightMenu.child,
+    color: weightMenu.color,
   ),
   NavigationBarItem(
-    id: activiteMenu.id,
-    title: activiteMenu.titre,
-    icon: activiteMenu.icon,
-    redirection: activiteMenu.redirection,
-    color: activiteMenu.couleur,
+    id: activityMenu.id,
+    title: activityMenu.title,
+    icon: activityMenu.icon,
+    redirection: activityMenu.child,
+    color: activityMenu.color,
   ),
   NavigationBarItem(
     id: statsMenu.id,
-    title: statsMenu.titre,
+    title: statsMenu.title,
     icon: statsMenu.icon,
-    redirection: statsMenu.redirection,
-    color: statsMenu.couleur,
+    redirection: statsMenu.child,
+    color: statsMenu.color,
   ),
 ];
 

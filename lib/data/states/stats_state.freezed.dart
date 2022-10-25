@@ -20,7 +20,7 @@ mixin _$StatsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightsLoading,
-    required TResult Function(List<Poids> poids) getWeightsLoaded,
+    required TResult Function(List<Weight> weight) getWeightsLoaded,
     required TResult Function(APIError? error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$StatsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$StatsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) =>
@@ -129,7 +129,7 @@ class _$StatsStateInitial extends StatsStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightsLoading,
-    required TResult Function(List<Poids> poids) getWeightsLoaded,
+    required TResult Function(List<Weight> weight) getWeightsLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return initial();
@@ -140,7 +140,7 @@ class _$StatsStateInitial extends StatsStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return initial?.call();
@@ -151,7 +151,7 @@ class _$StatsStateInitial extends StatsStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
@@ -253,7 +253,7 @@ class _$StatsStateGetWeightsLoading extends StatsStateGetWeightsLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightsLoading,
-    required TResult Function(List<Poids> poids) getWeightsLoaded,
+    required TResult Function(List<Weight> weight) getWeightsLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return getWeightsLoading();
@@ -264,7 +264,7 @@ class _$StatsStateGetWeightsLoading extends StatsStateGetWeightsLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return getWeightsLoading?.call();
@@ -275,7 +275,7 @@ class _$StatsStateGetWeightsLoading extends StatsStateGetWeightsLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
@@ -336,7 +336,7 @@ abstract class _$$StatsStateGetWeightsLoadedCopyWith<$Res> {
           _$StatsStateGetWeightsLoaded value,
           $Res Function(_$StatsStateGetWeightsLoaded) then) =
       __$$StatsStateGetWeightsLoadedCopyWithImpl<$Res>;
-  $Res call({List<Poids> poids});
+  $Res call({List<Weight> weight});
 }
 
 /// @nodoc
@@ -354,13 +354,13 @@ class __$$StatsStateGetWeightsLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? poids = freezed,
+    Object? weight = freezed,
   }) {
     return _then(_$StatsStateGetWeightsLoaded(
-      poids: poids == freezed
-          ? _value.poids
-          : poids // ignore: cast_nullable_to_non_nullable
-              as List<Poids>,
+      weight: weight == freezed
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as List<Weight>,
     ));
   }
 }
@@ -368,14 +368,14 @@ class __$$StatsStateGetWeightsLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
-  _$StatsStateGetWeightsLoaded({required this.poids}) : super._();
+  _$StatsStateGetWeightsLoaded({required this.weight}) : super._();
 
   @override
-  final List<Poids> poids;
+  final List<Weight> weight;
 
   @override
   String toString() {
-    return 'StatsState.getWeightsLoaded(poids: $poids)';
+    return 'StatsState.getWeightsLoaded(weight: $weight)';
   }
 
   @override
@@ -383,12 +383,12 @@ class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StatsStateGetWeightsLoaded &&
-            const DeepCollectionEquality().equals(other.poids, poids));
+            const DeepCollectionEquality().equals(other.weight, weight));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(poids));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(weight));
 
   @JsonKey(ignore: true)
   @override
@@ -401,10 +401,10 @@ class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightsLoading,
-    required TResult Function(List<Poids> poids) getWeightsLoaded,
+    required TResult Function(List<Weight> weight) getWeightsLoaded,
     required TResult Function(APIError? error) failed,
   }) {
-    return getWeightsLoaded(poids);
+    return getWeightsLoaded(weight);
   }
 
   @override
@@ -412,10 +412,10 @@ class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
   }) {
-    return getWeightsLoaded?.call(poids);
+    return getWeightsLoaded?.call(weight);
   }
 
   @override
@@ -423,12 +423,12 @@ class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {
     if (getWeightsLoaded != null) {
-      return getWeightsLoaded(poids);
+      return getWeightsLoaded(weight);
     }
     return orElse();
   }
@@ -474,11 +474,11 @@ class _$StatsStateGetWeightsLoaded extends StatsStateGetWeightsLoaded {
 }
 
 abstract class StatsStateGetWeightsLoaded extends StatsState {
-  factory StatsStateGetWeightsLoaded({required final List<Poids> poids}) =
+  factory StatsStateGetWeightsLoaded({required final List<Weight> weight}) =
       _$StatsStateGetWeightsLoaded;
   StatsStateGetWeightsLoaded._() : super._();
 
-  List<Poids> get poids;
+  List<Weight> get weight;
   @JsonKey(ignore: true)
   _$$StatsStateGetWeightsLoadedCopyWith<_$StatsStateGetWeightsLoaded>
       get copyWith => throw _privateConstructorUsedError;
@@ -564,7 +564,7 @@ class _$StatsStateFailed extends StatsStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() getWeightsLoading,
-    required TResult Function(List<Poids> poids) getWeightsLoaded,
+    required TResult Function(List<Weight> weight) getWeightsLoaded,
     required TResult Function(APIError? error) failed,
   }) {
     return failed(error);
@@ -575,7 +575,7 @@ class _$StatsStateFailed extends StatsStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
   }) {
     return failed?.call(error);
@@ -586,7 +586,7 @@ class _$StatsStateFailed extends StatsStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getWeightsLoading,
-    TResult Function(List<Poids> poids)? getWeightsLoaded,
+    TResult Function(List<Weight> weight)? getWeightsLoaded,
     TResult Function(APIError? error)? failed,
     required TResult orElse(),
   }) {

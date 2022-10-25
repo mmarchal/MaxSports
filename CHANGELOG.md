@@ -1,3 +1,9 @@
+# 1.1.2
+
+_Fix_
+
+- Change to english terms
+
 # 1.1.1
 
 _Fix_

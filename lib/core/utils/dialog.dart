@@ -16,7 +16,10 @@ void successToast(String message) {
   );
 }
 
-void defaultErrorDialog({required BuildContext context, APIError? error}) {
+void defaultErrorDialog({
+  required BuildContext context,
+  APIError? error,
+}) {
   errorDialog(
     context: context,
     title: error?.title ?? 'Erreur',

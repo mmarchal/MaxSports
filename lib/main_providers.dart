@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:max_sports/core/source/config_service.dart';
 import 'package:max_sports/data/backend_api.dart';
 import 'package:max_sports/data/blocs/navigation_bloc.dart';
-import 'package:max_sports/data/blocs/poids_bloc.dart';
-import 'package:max_sports/data/repositories/activite_repository.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
+import 'package:max_sports/data/blocs/weight_bloc.dart';
+import 'package:max_sports/data/repositories/activity_repository.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
 import 'package:provider/provider.dart';
 
 class MainProviders extends StatelessWidget {
@@ -41,22 +41,22 @@ class MainProviders extends StatelessWidget {
             baseUrl: context.read<ConfigService>().backendUrl ?? '',
           ),
         ),
-        Provider<PoidsRepository>(
-          create: (context) => PoidsRepository(
+        Provider<WeightRepository>(
+          create: (context) => WeightRepository(
             api: context.read(),
           ),
         ),
-        Provider<ActiviteRepository>(
-          create: (context) => ActiviteRepository(
+        Provider<ActivityRepository>(
+          create: (context) => ActivityRepository(
             api: context.read(),
           ),
         ),
         BlocProvider<NavigationBloc>(
           create: (context) => NavigationBloc(),
         ),
-        BlocProvider<PoidsBloc>(
-          create: (context) => PoidsBloc(
-            poidsRepository: context.read(),
+        BlocProvider<WeightBloc>(
+          create: (context) => WeightBloc(
+            weightRepository: context.read(),
           ),
         ),
       ],

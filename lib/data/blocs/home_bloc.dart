@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/data/repositories/poids_repository.dart';
+import 'package:max_sports/data/repositories/weight_repository.dart';
 import 'package:max_sports/data/states/home_state.dart';
 
 class HomeBloc extends Cubit<HomeState> {
-  final PoidsRepository poidsRepository;
+  final WeightRepository weightRepository;
   HomeBloc({
-    required this.poidsRepository,
+    required this.weightRepository,
   }) : super(
           HomeState.initial(),
         );
@@ -18,12 +18,12 @@ class HomeBloc extends Cubit<HomeState> {
     emit(
       HomeState.getWeightLoading(),
     );
-    final response = await poidsRepository.getLastWeight();
-    final recap = await poidsRepository.getLastTwoWeight();
+    final response = await weightRepository.getLastWeight();
+    final recap = await weightRepository.getLastTwoWeight();
     if (response.isSuccess && recap.isSuccess) {
       emit(
         HomeState.getWeightLoaded(
-          poids: response.data!,
+          weight: response.data!,
           recap: recap.data!,
         ),
       );

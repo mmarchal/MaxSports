@@ -1,1 +1,1 @@
-enum NavbarItem { home, poids, activite, statistiques }
+enum NavbarItem { summary, weight, activity, stats }
