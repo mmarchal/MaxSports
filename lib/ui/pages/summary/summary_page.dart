@@ -23,6 +23,7 @@ class SummaryPage extends StatelessWidget {
             children: <Widget>[
               const DesignText(
                 text: "Bienvenue sur Max Sports",
+                fontWeight: FontWeight.bold,
               ),
               const SizedBox(
                 height: 20,
@@ -30,6 +31,7 @@ class SummaryPage extends StatelessWidget {
               const DesignText(
                 text:
                     "Max Sports est un application qui permet de suivre vos performances sportives.",
+                fontStyle: FontStyle.italic,
               ),
               const SizedBox(
                 height: 20,

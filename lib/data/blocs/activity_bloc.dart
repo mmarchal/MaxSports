@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:max_sports/data/entities/activity.dart';
+import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/type_activity.dart';
 import 'package:max_sports/data/repositories/activity_repository.dart';
 import 'package:max_sports/data/states/activity_state.dart';
@@ -47,6 +48,52 @@ class ActivityBloc extends Cubit<ActivityState> {
         distance: distance,
       ),
     );
+  }
+
+  void postActivity() async {
+    late Activity activity;
+    TypeActivity? type = state.currentSelectedType;
+    int? time = state.currentTime;
+    double? distance = state.currentDistance;
+    if (type != null && time != null && distance != null) {
+      activity = Activity(
+        distance: distance,
+        duration: time.toDouble(),
+        date: DateTime.now(),
+        typeActivity: type,
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: const APIError(
+            title: 'Erreur',
+            content: 'Le type, le temps d\'exercice et la distance doivent être renseigné !',
+          ),
+        ),
+      );
+      return;
+    }
+    emit(
+      ActivityState.postActivityLoading(
+        activite: activity,
+      ),
+    );
+
+    final response = await activityRepository.postActivity(activity);
+
+    if (response.isSuccess) {
+      emit(
+        ActivityState.postActivityLoaded(
+          activite: response.data!,
+        ),
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: response.error,
+        ),
+      );
+    }
   }
 
   void sendActivity(Activity activity) async {

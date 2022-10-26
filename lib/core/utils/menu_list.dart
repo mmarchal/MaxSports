@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:max_sports/data/entities/menu.dart';
-import 'package:max_sports/ui/pages/activity/activity_page.dart';
+import 'package:max_sports/ui/pages/activity_v2/activity_v2.dart';
 import 'package:max_sports/ui/pages/stats/stats_page.dart';
 import 'package:max_sports/ui/pages/summary/summary_page.dart';
 import 'package:max_sports/ui/pages/weight/weight_page.dart';
@@ -27,7 +27,8 @@ var activityMenu = Menu(
   icon: Icons.fitness_center,
   color: Colors.lightBlue,
   description: "Permet d'ajouter une activité !",
-  child: const ActivityPage(),
+  //child: const ActivityPage(),
+  child: const ActivityPageV2(),
 );
 var statsMenu = Menu(
   id: 4,

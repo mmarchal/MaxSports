@@ -64,4 +64,17 @@ class ActivityState with _$ActivityState {
         inputDistanceOfPractice: (value) => value.type,
         orElse: () => null,
       );
+
+  bool get allDataIsFilled => maybeMap(
+        initial: (value) => false,
+        selectActivityInDropDown: (value) =>
+            value.distance != null &&
+            value.time != null &&
+            currentSelectedType != null,
+        inputTimeOfPractice: (value) =>
+            value.distance != null && value.type != null && currentTime != null,
+        inputDistanceOfPractice: (value) =>
+            value.time != null && value.type != null && currentDistance != null,
+        orElse: () => false,
+      );
 }

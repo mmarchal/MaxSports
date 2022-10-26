@@ -21,7 +21,7 @@ class ActivityDetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ActivityWidget(
-                typeActivite: activity.typeActivity,
+                typeActivity: activity.typeActivity,
               ),
             ],
           ),

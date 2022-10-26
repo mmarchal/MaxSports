@@ -29,6 +29,7 @@ dependencies:
   max_design:
     git:
       url: https://github.com/mmarchal/max_design.git
+      ref: 0.1.0
 
 dependency_overrides:
   # follow : https://github.com/dart-lang/mockito/issues/552

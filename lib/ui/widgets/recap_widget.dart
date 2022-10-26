@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:max_design/widgets/text/design_text.dart';
 import 'package:max_sports/data/entities/recap.dart';
 
 class RecapWidget extends StatelessWidget {
@@ -23,12 +24,9 @@ class RecapWidget extends StatelessWidget {
         color: recap!.etat.color,
         child: Column(
           children: <Widget>[
-            const Text(
-              "Les 2 dernières mesures",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            const DesignText(
+              text: "Les 2 dernières mesures",
+              fontWeight: FontWeight.bold,
             ),
             const SizedBox(
               height: 20,
@@ -36,45 +34,30 @@ class RecapWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  "Poids : ${recap!.poidsRecent} kg",
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                DesignText(
+                  text: "Poids : ${recap!.poidsRecent} kg",
                 ),
-                Text(
-                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateRecent)}",
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                DesignText(
+                  text: "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateRecent)}",
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  "Poids : ${recap!.poidsLate} kg",
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                DesignText(
+                  text: "Poids : ${recap!.poidsLate} kg",
                 ),
-                Text(
-                  "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateLate)}",
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                DesignText(
+                  text: "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateLate)}",
                 ),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
-            Text(
-              "Etat : ${recap!.etat.name} de ${recap!.difference} kg",
-              style: const TextStyle(
-                fontSize: 15,
-              ),
+            DesignText(
+              text: "Etat : ${recap!.etat.name} de ${recap!.difference} kg",
             ),
           ],
         ),

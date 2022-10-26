@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:max_design/objects/charts_data.dart';
 import 'package:max_design/widgets/others/design_charts.dart';
+import 'package:max_design/widgets/text/design_text.dart';
 import 'package:max_sports/data/blocs/stats_bloc.dart';
 import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/states/stats_state.dart';
@@ -40,7 +41,9 @@ class StatsPage extends StatelessWidget {
             );
           } else {
             return const Center(
-              child: Text('Aucune data enregistré !'),
+              child: DesignText(
+                text: 'Aucune data enregistré !',
+              ),
             );
           }
         },

@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:max_design/widgets/button/design_button.dart';
 import 'package:max_sports/data/blocs/activity_bloc.dart';
 
-class ButtonsTime extends StatefulWidget {
+class ButtonsTime extends StatelessWidget {
   final Function(int value) onButtonSelected;
 
-  const ButtonsTime({
-    Key? key,
-    required this.onButtonSelected,
-  }) : super(key: key);
-
-  @override
-  State<ButtonsTime> createState() => _ButtonsTimeState();
-}
-
-class _ButtonsTimeState extends State<ButtonsTime> {
   final Map<String, int> timeValue = {
     '10': 10,
     '15': 15,
@@ -26,6 +17,11 @@ class _ButtonsTimeState extends State<ButtonsTime> {
     '90': 90,
     'Personnalisé': 0
   };
+
+  ButtonsTime({
+    Key? key,
+    required this.onButtonSelected,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +36,7 @@ class _ButtonsTimeState extends State<ButtonsTime> {
             (e) {
               return Container(
                 margin: const EdgeInsets.only(right: 8, left: 8),
-                child: ElevatedButton(
+                child: DesignButton.simple(
                   style: ButtonStyle(
                     backgroundColor:
                         (currentTime != null && currentTime == timeValue[e])
@@ -48,13 +44,11 @@ class _ButtonsTimeState extends State<ButtonsTime> {
                             : MaterialStateProperty.all(Colors.blue),
                   ),
                   onPressed: () {
-                    widget.onButtonSelected(
+                    onButtonSelected(
                       timeValue[e]!,
                     );
                   },
-                  child: Text(
-                    e,
-                  ),
+                  text: e,
                 ),
               );
             },

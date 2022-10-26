@@ -28,16 +28,16 @@ class _ActivityPageState extends State<ActivityPage> {
       child: ActivityPageListener(
         child: Center(
           child: BlocBuilder<TypeActivityBloc, TypeActivityState>(
-              buildWhen: (previous, current) =>
-                  current is TypeActivityStateGetDatasLoaded,
-              builder: (context, state) {
-                if (state.currentListOfActivitesTypes != null) {
-                  return bodyWidget(
-                      context, state.currentListOfActivitesTypes!);
-                } else {
-                  return const CircularProgressIndicator();
-                }
-              }),
+            buildWhen: (previous, current) =>
+                current is TypeActivityStateGetDatasLoaded,
+            builder: (context, state) {
+              if (state.currentListOfActivitesTypes != null) {
+                return bodyWidget(context, state.currentListOfActivitesTypes!);
+              } else {
+                return const CircularProgressIndicator();
+              }
+            },
+          ),
         ),
       ),
     );
