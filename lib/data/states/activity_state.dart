@@ -11,6 +11,12 @@ class ActivityState with _$ActivityState {
 
   factory ActivityState.initial() = ActivityStateInitial;
 
+  factory ActivityState.loading() = ActivityStateLoading;
+
+  factory ActivityState.loaded({
+    required List<Activity> activities,
+  }) = ActivityStateLoaded;
+
   factory ActivityState.selectActivityInDropDown({
     required TypeActivity type,
     int? time,

@@ -17,6 +17,27 @@ class ActivityBloc extends Cubit<ActivityState> {
         ActivityState.initial(),
       );
 
+  void getActivities() async {
+    emit(
+      ActivityState.loading(),
+    );
+    final result = await activityRepository.getActivities();
+
+    if (result.isSuccess) {
+      emit(
+        ActivityState.loaded(
+          activities: result.data!,
+        ),
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: result.error,
+        ),
+      );
+    }
+  }
+
   void selectActivity(TypeActivity type) async {
     if (state is ActivityStateSelectActiviteInDropDown) {
       idle();
@@ -67,7 +88,8 @@ class ActivityBloc extends Cubit<ActivityState> {
         ActivityState.failed(
           error: const APIError(
             title: 'Erreur',
-            content: 'Le type, le temps d\'exercice et la distance doivent être renseigné !',
+            content:
+                'Le type, le temps d\'exercice et la distance doivent être renseigné !',
           ),
         ),
       );

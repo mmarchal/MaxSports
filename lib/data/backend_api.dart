@@ -30,6 +30,9 @@ abstract class BackendApi {
   @GET('poids/lastTwo')
   Future<HttpResponse> getLastTwoWeight();
 
+  @GET('activite/all')
+  Future<HttpResponse> getActivities();
+
   @POST('activite/save')
   Future<HttpResponse> saveActivity({
     @Body() required Activity activity,

@@ -94,6 +94,13 @@ class MockBackendApi extends _i1.Mock implements _i4.BackendApi {
                       this, Invocation.method(#getLastTwoWeight, []))))
           as _i5.Future<_i2.HttpResponse<dynamic>>);
   @override
+  _i5.Future<_i2.HttpResponse<dynamic>> getActivities() =>
+      (super.noSuchMethod(Invocation.method(#getActivities, []),
+              returnValue: _i5.Future<_i2.HttpResponse<dynamic>>.value(
+                  _FakeHttpResponse_0<dynamic>(
+                      this, Invocation.method(#getActivities, []))))
+          as _i5.Future<_i2.HttpResponse<dynamic>>);
+  @override
   _i5.Future<_i2.HttpResponse<dynamic>> saveActivity(
           {_i7.Activity? activity}) =>
       (super.noSuchMethod(

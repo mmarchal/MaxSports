@@ -1,53 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
-import 'package:max_design/objects/charts_data.dart';
-import 'package:max_design/widgets/others/design_charts.dart';
-import 'package:max_design/widgets/text/design_text.dart';
-import 'package:max_sports/data/blocs/stats_bloc.dart';
-import 'package:max_sports/data/entities/weight.dart';
-import 'package:max_sports/data/states/stats_state.dart';
 import 'package:max_sports/ui/pages/stats/stats_page_provider.dart';
+import 'package:max_sports/ui/pages/stats/widgets/stats_activity.dart';
+import 'package:max_sports/ui/pages/stats/widgets/stats_weight.dart';
 
-class StatsPage extends StatelessWidget {
+class StatsPage extends StatefulWidget {
   const StatsPage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<StatsPage> createState() => _StatsPageState();
+}
+
+class _StatsPageState extends State<StatsPage> with TickerProviderStateMixin {
+  late TabController _controller;
+
+  final List<StatsPageObject> _statsPageObjects = [
+    StatsPageObject(
+      title: "Poids",
+      child: const StatsWeight(),
+    ),
+    StatsPageObject(
+      title: "Activité",
+      child: StatsActivity(),
+    ),
+  ];
+
+  @override
+  void initState() {
+    _controller = TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StatsPageProvider(
-      child: BlocBuilder<StatsBloc, StatsState>(
-        builder: (context, state) {
-          List<Weight>? _list = state.currentListOfWeight;
-          if (_list != null) {
-            DateFormat format = DateFormat('dd/MM/yyyy');
-            List<ChartData> datas = _list
+      child: Column(
+        children: [
+          TabBar(
+            controller: _controller,
+            labelColor: Colors.red.shade300,
+            indicatorColor: Colors.red.shade300,
+            tabs: _statsPageObjects
                 .map(
-                  (e) => ChartData(format.format(e.date), e.poids),
-                )
-                .toList();
-            return Center(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
-                child: Card(
-                  elevation: 10,
-                  child: DesignCharts(
-                    datas: datas,
-                    chartType: ChartType.line,
+                  (e) => Tab(
+                    text: e.title,
                   ),
-                ),
-              ),
-            );
-          } else {
-            return const Center(
-              child: DesignText(
-                text: 'Aucune data enregistré !',
-              ),
-            );
-          }
-        },
+                )
+                .toList(),
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _controller,
+              children: _statsPageObjects
+                  .map(
+                    (e) => e.child,
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
+}
+
+class StatsPageObject {
+  final String title;
+  final Widget child;
+
+  StatsPageObject({
+    required this.title,
+    required this.child,
+  });
 }
