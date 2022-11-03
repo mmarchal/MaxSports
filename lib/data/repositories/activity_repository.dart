@@ -21,7 +21,7 @@ class ActivityRepository {
             .toList(),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 
@@ -35,7 +35,7 @@ class ActivityRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 
@@ -47,7 +47,7 @@ class ActivityRepository {
         response.data.map<Activity>((item) => Activity.fromJson(item)).toList(),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 }

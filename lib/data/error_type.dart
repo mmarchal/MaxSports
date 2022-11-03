@@ -27,12 +27,19 @@ getAPIType(int statusCode) {
   }
 }
 
-errorFunction(HttpResponse<dynamic> error) {
+errorHttp(HttpResponse<dynamic> error) {
   return FailResponse(
     error.response.statusCode!,
-    error: const APIError(
+    error: APIError(
       title: 'Erreur',
-      content: 'Une erreur est survenue',
+      content: error.response.statusMessage ?? 'Une erreur est survenue',
     ),
+  );
+}
+
+genericError({String? title, String? content}) {
+  return APIError(
+    title: title ?? 'Erreur',
+    content: content ?? 'Une erreur est survenue',
   );
 }

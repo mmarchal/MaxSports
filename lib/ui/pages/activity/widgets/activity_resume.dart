@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:max_design/widgets/button/design_button.dart';
 import 'package:max_design/widgets/text/design_text.dart';
 import 'package:max_sports/data/blocs/activity_bloc.dart';
+import 'package:max_sports/data/entities/activity.dart';
 import 'package:max_sports/data/states/activity_state.dart';
 
-class ActivityResume extends StatelessWidget {
+import '../../../../providers.dart';
+
+class ActivityResume extends ConsumerWidget {
   const ActivityResume({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BlocBuilder<ActivityBloc, ActivityState>(
       builder: (context, state) {
         return Center(
@@ -40,7 +44,17 @@ class ActivityResume extends StatelessWidget {
                   ),
                   text: 'Valider',
                   onPressed: (state.allDataIsFilled)
-                      ? () => context.read<ActivityBloc>().postActivity()
+                      ? () {
+                          Activity activity = Activity(
+                              typeActivity: state.currentSelectedType!,
+                              distance: state.currentDistance!,
+                              duration:
+                                  double.parse(state.currentTime!.toString()),
+                              date: DateTime.now());
+                          ref
+                              .read(activityProvider.notifier)
+                              .postActivity(activity);
+                        }
                       : null,
                 ),
               ),

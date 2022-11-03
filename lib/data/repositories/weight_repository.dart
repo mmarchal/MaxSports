@@ -1,7 +1,7 @@
 import 'package:max_sports/data/backend_api.dart';
 import 'package:max_sports/data/entities/api_response.dart';
-import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/entities/recap.dart';
+import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/data/error_type.dart';
 
 class WeightRepository {
@@ -14,12 +14,15 @@ class WeightRepository {
   Future<APIResponse<List<Weight>>> getWeight() async {
     final response = await api.getWeight();
     if (response.response.statusCode == 200) {
+      final data = response.response.data as List;
+      final weights = data.map((e) => Weight.fromJson(e)).toList();
+
       return SuccessResponse(
         200,
-        response.data.map<Weight>((item) => Weight.fromJson(item)).toList(),
+        weights,
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 
@@ -33,7 +36,7 @@ class WeightRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 
@@ -47,7 +50,7 @@ class WeightRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 
@@ -67,7 +70,7 @@ class WeightRepository {
         Recap.fromJson(json),
       );
     } else {
-      return errorFunction(response);
+      return errorHttp(response);
     }
   }
 }

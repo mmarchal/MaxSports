@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:max_design/widgets/text/design_text.dart';
-import 'package:max_sports/core/source/config_service.dart';
 import 'package:max_sports/data/blocs/activity_bloc.dart';
 import 'package:max_sports/data/entities/type_activity.dart';
+import 'package:max_sports/providers.dart';
 
-class ActivityCarousel extends StatelessWidget {
+class ActivityCarousel extends ConsumerWidget {
   final List<TypeActivity> activites;
 
   const ActivityCarousel({
@@ -14,7 +15,7 @@ class ActivityCarousel extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     if (activites.isNotEmpty) {
       context.read<ActivityBloc>().selectActivity(activites.first);
     }
@@ -31,7 +32,7 @@ class ActivityCarousel extends StatelessWidget {
           return Column(
             children: [
               Image.network(
-                "${context.read<ConfigService>().imageUrl}${type.imagePath}",
+                "${ref.watch(configProvider).imageUrl}${type.imagePath}",
                 fit: BoxFit.fill,
                 loadingBuilder: (context, child, loadingProgress) =>
                     loadingProgress == null
