@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:max_sports/core/source/config_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:max_sports/data/entities/type_activity.dart';
+import 'package:max_sports/providers.dart';
 
-class TypeActivityCard extends StatelessWidget {
+class TypeActivityCard extends ConsumerWidget {
   final TypeActivity type;
   final VoidCallback onTap;
 
@@ -14,7 +14,8 @@ class TypeActivityCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final config = ref.watch(configProvider);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -23,7 +24,7 @@ class TypeActivityCard extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              "${context.read<ConfigService>().imageUrl}/${type.imagePath}",
+              "${config.imageUrl}/${type.imagePath}",
             ),
             fit: BoxFit.cover,
           ),

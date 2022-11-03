@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:max_sports/core/utils/menu_list.dart';
 import 'package:max_sports/core/utils/navbar_item.dart';
-import 'package:max_sports/data/blocs/navigation_bloc.dart';
-import 'package:max_sports/data/states/navigation_state.dart';
+import 'package:max_sports/providers.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   NavbarItem _getNavItem(int index) {
@@ -24,58 +23,53 @@ class HomePage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<NavigationBloc, NavigationState>(
-      builder: (blocContext, blocState) {
-        int selectedIndex =
-            blocContext.read<NavigationBloc>().state.currentIndex;
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(items[selectedIndex].title),
-            centerTitle: true,
-            backgroundColor: items[selectedIndex].color,
-          ),
-          body: items[selectedIndex].redirection,
-          bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: Colors.black,
-            selectedItemColor: Colors.black,
-            currentIndex: selectedIndex,
-            onTap: (index) => context.read<NavigationBloc>().getNavBarItem(
-                  _getNavItem(index),
-                ),
-            unselectedLabelStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.black,
+  Widget build(BuildContext context, WidgetRef ref) {
+    int selectedIndex = ref.watch(navigationProvider);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(items[selectedIndex].title),
+        centerTitle: true,
+        backgroundColor: items[selectedIndex].color,
+      ),
+      body: items[selectedIndex].redirection,
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.black,
+        currentIndex: selectedIndex,
+        onTap: (index) => ref.read(navigationProvider.notifier).getNavbarItem(
+              _getNavItem(index),
             ),
-            selectedLabelStyle: const TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-            ),
-            items: items
-                .map(
-                  (item) => BottomNavigationBarItem(
-                    icon: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          style: BorderStyle.solid,
-                          width: 1.0,
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      padding: const EdgeInsets.all(8),
-                      child: Icon(
-                        item.icon,
-                        color: Colors.black,
-                      ),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+        ),
+        selectedLabelStyle: const TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+        ),
+        items: items
+            .map(
+              (item) => BottomNavigationBarItem(
+                icon: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      style: BorderStyle.solid,
+                      width: 1.0,
+                      color: Colors.transparent,
                     ),
-                    label: item.title,
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
-                )
-                .toList(),
-          ),
-        );
-      },
+                  padding: const EdgeInsets.all(8),
+                  child: Icon(
+                    item.icon,
+                    color: Colors.black,
+                  ),
+                ),
+                label: item.title,
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 }

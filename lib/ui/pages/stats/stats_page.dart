@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:max_sports/ui/pages/stats/stats_page_provider.dart';
 import 'package:max_sports/ui/pages/stats/widgets/stats_activity.dart';
 import 'package:max_sports/ui/pages/stats/widgets/stats_weight.dart';
 
@@ -34,33 +33,31 @@ class _StatsPageState extends State<StatsPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return StatsPageProvider(
-      child: Column(
-        children: [
-          TabBar(
+    return Column(
+      children: [
+        TabBar(
+          controller: _controller,
+          labelColor: Colors.red.shade300,
+          indicatorColor: Colors.red.shade300,
+          tabs: _statsPageObjects
+              .map(
+                (e) => Tab(
+                  text: e.title,
+                ),
+              )
+              .toList(),
+        ),
+        Expanded(
+          child: TabBarView(
             controller: _controller,
-            labelColor: Colors.red.shade300,
-            indicatorColor: Colors.red.shade300,
-            tabs: _statsPageObjects
+            children: _statsPageObjects
                 .map(
-                  (e) => Tab(
-                    text: e.title,
-                  ),
+                  (e) => e.child,
                 )
                 .toList(),
           ),
-          Expanded(
-            child: TabBarView(
-              controller: _controller,
-              children: _statsPageObjects
-                  .map(
-                    (e) => e.child,
-                  )
-                  .toList(),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
