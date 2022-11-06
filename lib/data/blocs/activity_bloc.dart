@@ -71,7 +71,7 @@ class ActivityBloc extends Cubit<ActivityState> {
     );
   }
 
-  void postActivity() async {
+  Future<void> postActivity() async {
     late Activity activity;
     TypeActivity? type = state.currentSelectedType;
     int? time = state.currentTime;
@@ -95,30 +95,6 @@ class ActivityBloc extends Cubit<ActivityState> {
       );
       return;
     }
-    emit(
-      ActivityState.postActivityLoading(
-        activite: activity,
-      ),
-    );
-
-    final response = await activityRepository.postActivity(activity);
-
-    if (response.isSuccess) {
-      emit(
-        ActivityState.postActivityLoaded(
-          activite: response.data!,
-        ),
-      );
-    } else {
-      emit(
-        ActivityState.failed(
-          error: response.error,
-        ),
-      );
-    }
-  }
-
-  void sendActivity(Activity activity) async {
     emit(
       ActivityState.postActivityLoading(
         activite: activity,

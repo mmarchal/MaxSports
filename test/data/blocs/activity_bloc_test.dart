@@ -91,7 +91,7 @@ void main() {
             ),
           );
         },
-        act: (bloc) => bloc.sendActivity(fakeActivitySuccess),
+        act: (bloc) => bloc.postActivity(),
         expect: () => [
           ActivityState.postActivityLoading(activite: fakeActivitySuccess),
           ActivityState.postActivityLoaded(activite: fakeActivitySuccess),

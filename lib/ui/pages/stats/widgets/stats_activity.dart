@@ -15,6 +15,7 @@ class StatsActivity extends StatelessWidget {
     return BlocBuilder<ActivityBloc, ActivityState>(
       builder: (context, state) {
         if (state is ActivityStateLoaded) {
+          state.activities.sort((a, b) => b.date.compareTo(a.date));
           return SingleChildScrollView(
             child: Column(
               children: [

@@ -73,7 +73,7 @@ class ActivityState with _$ActivityState {
         selectActivityInDropDown: (value) => value.type,
         inputTimeOfPractice: (value) => value.type,
         inputDistanceOfPractice: (value) => value.type,
-        orElse: () => null,
+        orElse: () => activities?.first.typeActivity,
       );
 
   bool get allDataIsFilled => maybeMap(
