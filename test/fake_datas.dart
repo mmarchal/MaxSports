@@ -18,7 +18,7 @@ const fakeTypeActivity = TypeActivity(
 final fakeActivitySuccess = Activity(
   distance: 10,
   duration: 30,
-  date: DateTime(2022, 1, 1),
+  date: DateTime.now(),
   typeActivity: fakeTypeActivity,
 );
 

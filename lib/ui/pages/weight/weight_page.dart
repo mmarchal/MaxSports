@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:max_design/widgets/input/design_text_field.dart';
+import 'package:max_design/widgets/text/design_text.dart';
 import 'package:max_sports/data/blocs/weight_bloc.dart';
 import 'package:max_sports/data/entities/weight.dart';
 import 'package:max_sports/ui/pages/weight/weight_page_listener.dart';
@@ -17,18 +19,9 @@ class WeightPage extends StatefulWidget {
 class WeightPageState extends State<WeightPage> {
   DateTime selectedDate = DateTime.now();
 
-  Color couleur = Colors.green;
+  Color color = Colors.green;
 
   final TextEditingController controller = TextEditingController();
-
-  OutlineInputBorder myinputborder() {
-    return const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      borderSide: BorderSide(
-        width: 1.5,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +33,7 @@ class WeightPageState extends State<WeightPage> {
             text: "Date de la mesure : ",
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: couleur,
+                backgroundColor: color,
               ),
               onPressed: () async {
                 final DateTime? selected = await showDatePicker(
@@ -56,8 +49,8 @@ class WeightPageState extends State<WeightPage> {
                 }
               },
               icon: const Icon(Icons.schedule),
-              label: Text(
-                DateFormat("dd/MM/yyyy").format(selectedDate),
+              label: DesignText(
+                text: DateFormat("dd/MM/yyyy").format(selectedDate),
               ),
             ),
           ),
@@ -68,14 +61,11 @@ class WeightPageState extends State<WeightPage> {
             text: "Poids mesuré : ",
             child: SizedBox(
               width: MediaQuery.of(context).size.width / 2,
-              child: TextField(
-                  keyboardType: TextInputType.number,
-                  controller: controller,
-                  decoration: InputDecoration(
-                    labelText: "Poids",
-                    border: myinputborder(),
-                    enabledBorder: myinputborder(),
-                  )),
+              child: DesignTextField(
+                controller: controller,
+                keyboardType: TextInputType.number,
+                hintText: "Poids en kg",
+              ),
             ),
           ),
           const SizedBox(
@@ -83,7 +73,7 @@ class WeightPageState extends State<WeightPage> {
           ),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              primary: couleur,
+              backgroundColor: color,
             ),
             onPressed: () => context.read<WeightBloc>().sendWeight(
                   Weight(
@@ -100,18 +90,21 @@ class WeightPageState extends State<WeightPage> {
             icon: const Icon(
               Icons.analytics,
             ),
-            label: const Text("Valider"),
+            label: const DesignText(text: "Valider"),
           ),
         ],
       ),
     );
   }
 
-  Widget rowInit({required String text, required Widget child}) {
+  Widget rowInit({
+    required String text,
+    required Widget child,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text),
+        DesignText(text: text),
         child,
       ],
     );

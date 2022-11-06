@@ -15,8 +15,8 @@ class NavigationState with _$NavigationState {
   }) = NavigationStateGetNavbarItem;
 
   int get currentIndex => maybeMap(
-        initial: (value) => 0,
+        initial: (value) => 2,
         getNavbarItem: (value) => value.index,
-        orElse: () => 0,
+        orElse: () => 2,
       );
 }

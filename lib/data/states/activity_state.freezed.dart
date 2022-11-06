@@ -19,6 +19,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -33,6 +35,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -47,6 +51,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -62,6 +68,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -78,6 +86,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -93,6 +103,8 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -167,6 +179,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -184,6 +198,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -201,6 +217,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -222,6 +240,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -241,6 +261,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -259,6 +281,8 @@ class _$ActivityStateInitial extends ActivityStateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -281,6 +305,378 @@ class _$ActivityStateInitial extends ActivityStateInitial {
 abstract class ActivityStateInitial extends ActivityState {
   factory ActivityStateInitial() = _$ActivityStateInitial;
   ActivityStateInitial._() : super._();
+}
+
+/// @nodoc
+abstract class _$$ActivityStateLoadingCopyWith<$Res> {
+  factory _$$ActivityStateLoadingCopyWith(_$ActivityStateLoading value,
+          $Res Function(_$ActivityStateLoading) then) =
+      __$$ActivityStateLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ActivityStateLoadingCopyWithImpl<$Res>
+    extends _$ActivityStateCopyWithImpl<$Res>
+    implements _$$ActivityStateLoadingCopyWith<$Res> {
+  __$$ActivityStateLoadingCopyWithImpl(_$ActivityStateLoading _value,
+      $Res Function(_$ActivityStateLoading) _then)
+      : super(_value, (v) => _then(v as _$ActivityStateLoading));
+
+  @override
+  _$ActivityStateLoading get _value => super._value as _$ActivityStateLoading;
+}
+
+/// @nodoc
+
+class _$ActivityStateLoading extends ActivityStateLoading {
+  _$ActivityStateLoading() : super._();
+
+  @override
+  String toString() {
+    return 'ActivityState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ActivityStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
+    required TResult Function(TypeActivity type, int? time, double? distance)
+        selectActivityInDropDown,
+    required TResult Function(int time, TypeActivity? type, double? distance)
+        inputTimeOfPractice,
+    required TResult Function(double distance, int? time, TypeActivity? type)
+        inputDistanceOfPractice,
+    required TResult Function(Activity activite) postActivityLoading,
+    required TResult Function(Activity activite) postActivityLoaded,
+    required TResult Function(APIError? error) failed,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
+    TResult Function(TypeActivity type, int? time, double? distance)?
+        selectActivityInDropDown,
+    TResult Function(int time, TypeActivity? type, double? distance)?
+        inputTimeOfPractice,
+    TResult Function(double distance, int? time, TypeActivity? type)?
+        inputDistanceOfPractice,
+    TResult Function(Activity activite)? postActivityLoading,
+    TResult Function(Activity activite)? postActivityLoaded,
+    TResult Function(APIError? error)? failed,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
+    TResult Function(TypeActivity type, int? time, double? distance)?
+        selectActivityInDropDown,
+    TResult Function(int time, TypeActivity? type, double? distance)?
+        inputTimeOfPractice,
+    TResult Function(double distance, int? time, TypeActivity? type)?
+        inputDistanceOfPractice,
+    TResult Function(Activity activite)? postActivityLoading,
+    TResult Function(Activity activite)? postActivityLoaded,
+    TResult Function(APIError? error)? failed,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
+    required TResult Function(ActivityStateSelectActiviteInDropDown value)
+        selectActivityInDropDown,
+    required TResult Function(ActivityStateInputTimeOfPractice value)
+        inputTimeOfPractice,
+    required TResult Function(ActivityStateInputDistanceOfPractice value)
+        inputDistanceOfPractice,
+    required TResult Function(ActivityStatePostActiviteLoading value)
+        postActivityLoading,
+    required TResult Function(ActivityStatePostActiviteLoaded value)
+        postActivityLoaded,
+    required TResult Function(ActivityStateFailed value) failed,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
+    TResult Function(ActivityStateSelectActiviteInDropDown value)?
+        selectActivityInDropDown,
+    TResult Function(ActivityStateInputTimeOfPractice value)?
+        inputTimeOfPractice,
+    TResult Function(ActivityStateInputDistanceOfPractice value)?
+        inputDistanceOfPractice,
+    TResult Function(ActivityStatePostActiviteLoading value)?
+        postActivityLoading,
+    TResult Function(ActivityStatePostActiviteLoaded value)? postActivityLoaded,
+    TResult Function(ActivityStateFailed value)? failed,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
+    TResult Function(ActivityStateSelectActiviteInDropDown value)?
+        selectActivityInDropDown,
+    TResult Function(ActivityStateInputTimeOfPractice value)?
+        inputTimeOfPractice,
+    TResult Function(ActivityStateInputDistanceOfPractice value)?
+        inputDistanceOfPractice,
+    TResult Function(ActivityStatePostActiviteLoading value)?
+        postActivityLoading,
+    TResult Function(ActivityStatePostActiviteLoaded value)? postActivityLoaded,
+    TResult Function(ActivityStateFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ActivityStateLoading extends ActivityState {
+  factory ActivityStateLoading() = _$ActivityStateLoading;
+  ActivityStateLoading._() : super._();
+}
+
+/// @nodoc
+abstract class _$$ActivityStateLoadedCopyWith<$Res> {
+  factory _$$ActivityStateLoadedCopyWith(_$ActivityStateLoaded value,
+          $Res Function(_$ActivityStateLoaded) then) =
+      __$$ActivityStateLoadedCopyWithImpl<$Res>;
+  $Res call({List<Activity> activities});
+}
+
+/// @nodoc
+class __$$ActivityStateLoadedCopyWithImpl<$Res>
+    extends _$ActivityStateCopyWithImpl<$Res>
+    implements _$$ActivityStateLoadedCopyWith<$Res> {
+  __$$ActivityStateLoadedCopyWithImpl(
+      _$ActivityStateLoaded _value, $Res Function(_$ActivityStateLoaded) _then)
+      : super(_value, (v) => _then(v as _$ActivityStateLoaded));
+
+  @override
+  _$ActivityStateLoaded get _value => super._value as _$ActivityStateLoaded;
+
+  @override
+  $Res call({
+    Object? activities = freezed,
+  }) {
+    return _then(_$ActivityStateLoaded(
+      activities: activities == freezed
+          ? _value.activities
+          : activities // ignore: cast_nullable_to_non_nullable
+              as List<Activity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ActivityStateLoaded extends ActivityStateLoaded {
+  _$ActivityStateLoaded({required this.activities}) : super._();
+
+  @override
+  final List<Activity> activities;
+
+  @override
+  String toString() {
+    return 'ActivityState.loaded(activities: $activities)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ActivityStateLoaded &&
+            const DeepCollectionEquality()
+                .equals(other.activities, activities));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(activities));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ActivityStateLoadedCopyWith<_$ActivityStateLoaded> get copyWith =>
+      __$$ActivityStateLoadedCopyWithImpl<_$ActivityStateLoaded>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
+    required TResult Function(TypeActivity type, int? time, double? distance)
+        selectActivityInDropDown,
+    required TResult Function(int time, TypeActivity? type, double? distance)
+        inputTimeOfPractice,
+    required TResult Function(double distance, int? time, TypeActivity? type)
+        inputDistanceOfPractice,
+    required TResult Function(Activity activite) postActivityLoading,
+    required TResult Function(Activity activite) postActivityLoaded,
+    required TResult Function(APIError? error) failed,
+  }) {
+    return loaded(activities);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
+    TResult Function(TypeActivity type, int? time, double? distance)?
+        selectActivityInDropDown,
+    TResult Function(int time, TypeActivity? type, double? distance)?
+        inputTimeOfPractice,
+    TResult Function(double distance, int? time, TypeActivity? type)?
+        inputDistanceOfPractice,
+    TResult Function(Activity activite)? postActivityLoading,
+    TResult Function(Activity activite)? postActivityLoaded,
+    TResult Function(APIError? error)? failed,
+  }) {
+    return loaded?.call(activities);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
+    TResult Function(TypeActivity type, int? time, double? distance)?
+        selectActivityInDropDown,
+    TResult Function(int time, TypeActivity? type, double? distance)?
+        inputTimeOfPractice,
+    TResult Function(double distance, int? time, TypeActivity? type)?
+        inputDistanceOfPractice,
+    TResult Function(Activity activite)? postActivityLoading,
+    TResult Function(Activity activite)? postActivityLoaded,
+    TResult Function(APIError? error)? failed,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(activities);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
+    required TResult Function(ActivityStateSelectActiviteInDropDown value)
+        selectActivityInDropDown,
+    required TResult Function(ActivityStateInputTimeOfPractice value)
+        inputTimeOfPractice,
+    required TResult Function(ActivityStateInputDistanceOfPractice value)
+        inputDistanceOfPractice,
+    required TResult Function(ActivityStatePostActiviteLoading value)
+        postActivityLoading,
+    required TResult Function(ActivityStatePostActiviteLoaded value)
+        postActivityLoaded,
+    required TResult Function(ActivityStateFailed value) failed,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
+    TResult Function(ActivityStateSelectActiviteInDropDown value)?
+        selectActivityInDropDown,
+    TResult Function(ActivityStateInputTimeOfPractice value)?
+        inputTimeOfPractice,
+    TResult Function(ActivityStateInputDistanceOfPractice value)?
+        inputDistanceOfPractice,
+    TResult Function(ActivityStatePostActiviteLoading value)?
+        postActivityLoading,
+    TResult Function(ActivityStatePostActiviteLoaded value)? postActivityLoaded,
+    TResult Function(ActivityStateFailed value)? failed,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
+    TResult Function(ActivityStateSelectActiviteInDropDown value)?
+        selectActivityInDropDown,
+    TResult Function(ActivityStateInputTimeOfPractice value)?
+        inputTimeOfPractice,
+    TResult Function(ActivityStateInputDistanceOfPractice value)?
+        inputDistanceOfPractice,
+    TResult Function(ActivityStatePostActiviteLoading value)?
+        postActivityLoading,
+    TResult Function(ActivityStatePostActiviteLoaded value)? postActivityLoaded,
+    TResult Function(ActivityStateFailed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ActivityStateLoaded extends ActivityState {
+  factory ActivityStateLoaded({required final List<Activity> activities}) =
+      _$ActivityStateLoaded;
+  ActivityStateLoaded._() : super._();
+
+  List<Activity> get activities;
+  @JsonKey(ignore: true)
+  _$$ActivityStateLoadedCopyWith<_$ActivityStateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -386,6 +782,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -403,6 +801,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -420,6 +820,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -441,6 +843,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -460,6 +864,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -478,6 +884,8 @@ class _$ActivityStateSelectActiviteInDropDown
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -619,6 +1027,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -636,6 +1046,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -653,6 +1065,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -674,6 +1088,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -693,6 +1109,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -711,6 +1129,8 @@ class _$ActivityStateInputTimeOfPractice
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -853,6 +1273,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -870,6 +1292,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -887,6 +1311,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -908,6 +1334,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -927,6 +1355,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -945,6 +1375,8 @@ class _$ActivityStateInputDistanceOfPractice
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1061,6 +1493,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -1078,6 +1512,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1095,6 +1531,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1116,6 +1554,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -1135,6 +1575,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1153,6 +1595,8 @@ class _$ActivityStatePostActiviteLoading
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1264,6 +1708,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -1281,6 +1727,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1298,6 +1746,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1319,6 +1769,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -1338,6 +1790,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1356,6 +1810,8 @@ class _$ActivityStatePostActiviteLoaded
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1466,6 +1922,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Activity> activities) loaded,
     required TResult Function(TypeActivity type, int? time, double? distance)
         selectActivityInDropDown,
     required TResult Function(int time, TypeActivity? type, double? distance)
@@ -1483,6 +1941,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1500,6 +1960,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Activity> activities)? loaded,
     TResult Function(TypeActivity type, int? time, double? distance)?
         selectActivityInDropDown,
     TResult Function(int time, TypeActivity? type, double? distance)?
@@ -1521,6 +1983,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ActivityStateInitial value) initial,
+    required TResult Function(ActivityStateLoading value) loading,
+    required TResult Function(ActivityStateLoaded value) loaded,
     required TResult Function(ActivityStateSelectActiviteInDropDown value)
         selectActivityInDropDown,
     required TResult Function(ActivityStateInputTimeOfPractice value)
@@ -1540,6 +2004,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?
@@ -1558,6 +2024,8 @@ class _$ActivityStateFailed extends ActivityStateFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ActivityStateInitial value)? initial,
+    TResult Function(ActivityStateLoading value)? loading,
+    TResult Function(ActivityStateLoaded value)? loaded,
     TResult Function(ActivityStateSelectActiviteInDropDown value)?
         selectActivityInDropDown,
     TResult Function(ActivityStateInputTimeOfPractice value)?

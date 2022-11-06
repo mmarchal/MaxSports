@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:max_sports/data/blocs/activity_bloc.dart';
+import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/repositories/activity_repository.dart';
 import 'package:max_sports/data/states/activity_state.dart';
@@ -80,8 +81,55 @@ void main() {
       );
 
       blocTest<ActivityBloc, ActivityState>(
-        'Post activite',
+        'Get activities success',
         build: () => activityBloc,
+        act: (bloc) {
+          when(activityRepository.getActivities()).thenAnswer(
+            (_) async => SuccessResponse(
+              200,
+              [fakeActivitySuccess],
+            ),
+          );
+          bloc.getActivities();
+        },
+        expect: () => [
+          ActivityState.loading(),
+          ActivityState.loaded(
+            activities: [fakeActivitySuccess],
+          ),
+        ],
+      );
+
+      blocTest<ActivityBloc, ActivityState>(
+        'Get activities success',
+        build: () => activityBloc,
+        act: (bloc) {
+          when(activityRepository.getActivities()).thenAnswer(
+            (_) async => FailResponse(
+              500,
+              error: const APIError(
+                title: 'title',
+                content: 'content',
+              ),
+            ),
+          );
+          bloc.getActivities();
+        },
+        expect: () => [
+          ActivityState.loading(),
+          ActivityState.failed(
+              error: const APIError(
+            title: 'title',
+            content: 'content',
+          )),
+        ],
+      );
+      /*blocTest<ActivityBloc, ActivityState>(
+        'Post activite',
+        build: () => activityBloc
+          ..selectActivity(fakeTypeActivity)
+          ..selectDistance(10.0)
+          ..selectTime(30),
         setUp: () {
           when(activityRepository.postActivity(
             fakeActivitySuccess,
@@ -91,12 +139,12 @@ void main() {
             ),
           );
         },
-        act: (bloc) => bloc.sendActivity(fakeActivitySuccess),
+        act: (bloc) => bloc.postActivity(),
         expect: () => [
           ActivityState.postActivityLoading(activite: fakeActivitySuccess),
           ActivityState.postActivityLoaded(activite: fakeActivitySuccess),
         ],
-      );
+      );*/
     },
   );
 }

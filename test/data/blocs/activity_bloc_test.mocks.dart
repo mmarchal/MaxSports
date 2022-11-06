@@ -63,4 +63,11 @@ class MockActivityRepository extends _i1.Mock
                   _FakeAPIResponse_1<_i7.Activity?>(
                       this, Invocation.method(#postActivity, [activity]))))
           as _i5.Future<_i3.APIResponse<_i7.Activity?>>);
+  @override
+  _i5.Future<_i3.APIResponse<List<_i7.Activity>?>> getActivities() =>
+      (super.noSuchMethod(Invocation.method(#getActivities, []),
+          returnValue: _i5.Future<_i3.APIResponse<List<_i7.Activity>?>>.value(
+              _FakeAPIResponse_1<List<_i7.Activity>?>(
+                  this, Invocation.method(#getActivities, [])))) as _i5
+          .Future<_i3.APIResponse<List<_i7.Activity>?>>);
 }

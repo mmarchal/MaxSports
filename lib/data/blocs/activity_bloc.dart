@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:max_sports/data/entities/activity.dart';
+import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/type_activity.dart';
 import 'package:max_sports/data/repositories/activity_repository.dart';
 import 'package:max_sports/data/states/activity_state.dart';
@@ -15,6 +16,27 @@ class ActivityBloc extends Cubit<ActivityState> {
   void idle() => emit(
         ActivityState.initial(),
       );
+
+  void getActivities() async {
+    emit(
+      ActivityState.loading(),
+    );
+    final result = await activityRepository.getActivities();
+
+    if (result.isSuccess) {
+      emit(
+        ActivityState.loaded(
+          activities: result.data!,
+        ),
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: result.error,
+        ),
+      );
+    }
+  }
 
   void selectActivity(TypeActivity type) async {
     if (state is ActivityStateSelectActiviteInDropDown) {
@@ -49,7 +71,30 @@ class ActivityBloc extends Cubit<ActivityState> {
     );
   }
 
-  void sendActivity(Activity activity) async {
+  Future<void> postActivity() async {
+    late Activity activity;
+    TypeActivity? type = state.currentSelectedType;
+    int? time = state.currentTime;
+    double? distance = state.currentDistance;
+    if (type != null && time != null && distance != null) {
+      activity = Activity(
+        distance: distance,
+        duration: time.toDouble(),
+        date: DateTime.now(),
+        typeActivity: type,
+      );
+    } else {
+      emit(
+        ActivityState.failed(
+          error: const APIError(
+            title: 'Erreur',
+            content:
+                'Le type, le temps d\'exercice et la distance doivent être renseigné !',
+          ),
+        ),
+      );
+      return;
+    }
     emit(
       ActivityState.postActivityLoading(
         activite: activity,

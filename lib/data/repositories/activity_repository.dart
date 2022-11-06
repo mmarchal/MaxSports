@@ -38,4 +38,16 @@ class ActivityRepository {
       return errorFunction(response);
     }
   }
+
+  Future<APIResponse<List<Activity>?>> getActivities() async {
+    final response = await api.getActivities();
+    if (response.response.statusCode == 200) {
+      return SuccessResponse(
+        200,
+        response.data.map<Activity>((item) => Activity.fromJson(item)).toList(),
+      );
+    } else {
+      return errorFunction(response);
+    }
+  }
 }

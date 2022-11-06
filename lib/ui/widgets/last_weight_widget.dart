@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:max_design/widgets/text/design_text.dart';
 import 'package:max_sports/data/entities/weight.dart';
 
 class LastWeightWidget extends StatelessWidget {
@@ -22,40 +23,28 @@ class LastWeightWidget extends StatelessWidget {
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
-                    "Dernière prise de poids",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const DesignText(
+                    text: "Dernière prise de poids",
+                    fontWeight: FontWeight.bold,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Date : ${DateFormat("dd/MM/yyyy").format(poids!.date)}",
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
+                  DesignText(
+                    text:
+                        "Date : ${DateFormat("dd/MM/yyyy").format(poids!.date)}",
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Poids : ${poids!.poids} kg",
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
+                  DesignText(
+                    text: "Poids : ${poids!.poids} kg",
                   ),
                 ],
               )
             : const Center(
-                child: Text(
-                  "Aucun poids enregistré",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: DesignText(
+                  text: "Aucun poids enregistré",
                 ),
               ),
       ),

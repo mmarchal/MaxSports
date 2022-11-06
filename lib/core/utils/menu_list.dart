@@ -27,6 +27,7 @@ var activityMenu = Menu(
   icon: Icons.fitness_center,
   color: Colors.lightBlue,
   description: "Permet d'ajouter une activité !",
+  //child: const ActivityPage(),
   child: const ActivityPage(),
 );
 var statsMenu = Menu(

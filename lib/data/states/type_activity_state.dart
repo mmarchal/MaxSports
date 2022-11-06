@@ -21,10 +21,10 @@ class TypeActivityState with _$TypeActivityState {
     APIError? error,
   }) = TypeActivityStateFailed;
 
-  List<TypeActivity>? get currentListOfActivitesTypes => maybeMap(
+  List<TypeActivity> get currentListOfActivitesTypes => maybeMap(
         initial: (value) => [],
         getDatasLoading: (value) => [],
         getDatasLoaded: (value) => value.types,
-        orElse: () => null,
+        orElse: () => [],
       );
 }
