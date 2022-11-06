@@ -38,7 +38,8 @@ class RecapWidget extends StatelessWidget {
                   text: "Poids : ${recap!.poidsRecent} kg",
                 ),
                 DesignText(
-                  text: "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateRecent)}",
+                  text:
+                      "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateRecent)}",
                 ),
               ],
             ),
@@ -49,7 +50,8 @@ class RecapWidget extends StatelessWidget {
                   text: "Poids : ${recap!.poidsLate} kg",
                 ),
                 DesignText(
-                  text: "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateLate)}",
+                  text:
+                      "Date : ${DateFormat("dd/MM/yyyy").format(recap!.dateLate)}",
                 ),
               ],
             ),

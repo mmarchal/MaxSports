@@ -47,9 +47,9 @@ class ActivityState with _$ActivityState {
     APIError? error,
   }) = ActivityStateFailed;
 
-  List<Activity>? get activities => maybeMap(
+  List<Activity> get activities => maybeMap(
         loaded: (state) => state.activities,
-        orElse: () => activities ?? [],
+        orElse: () => [],
       );
 
   int? get currentTime => maybeMap(
@@ -73,7 +73,7 @@ class ActivityState with _$ActivityState {
         selectActivityInDropDown: (value) => value.type,
         inputTimeOfPractice: (value) => value.type,
         inputDistanceOfPractice: (value) => value.type,
-        orElse: () => activities?.first.typeActivity,
+        orElse: () => null,
       );
 
   bool get allDataIsFilled => maybeMap(

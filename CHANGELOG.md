@@ -1,3 +1,10 @@
+# 1.2.0
+
+_Feat_
+
+- New activity page
+- Add activities stats in the stats page
+
 # 1.1.2
 
 _Fix_
