@@ -81,6 +81,25 @@ void main() {
               ),
             ],
           );
+
+          blocTest<WeightBloc, WeightState>(
+            'Failed',
+            build: () => weightBloc,
+            setUp: () {
+              when(repository.postWeight(
+                fakeWeightLast,
+              )).thenAnswer(
+                (realInvocation) => Future.value(
+                  FailResponse(400),
+                ),
+              );
+            },
+            act: (bloc) => bloc.sendWeight(fakeWeightLast),
+            expect: () => [
+              WeightState.sendWeightLoading(),
+              WeightState.failed(),
+            ],
+          );
         },
       );
     },

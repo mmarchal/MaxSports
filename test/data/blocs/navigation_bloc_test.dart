@@ -35,14 +35,40 @@ void main() {
               ]);
 
       blocTest<NavigationBloc, NavigationState>(
-        'get nav bar item',
+        'get nav bar item weight',
         build: () => navigationBloc,
-        act: (bloc) => bloc.getNavBarItem(fakeItem),
+        act: (bloc) => bloc.getNavBarItem(fakeItemWeight),
         expect: () => [
           NavigationState.initial(),
           NavigationState.getNavbarItem(
             index: 1,
-            item: fakeItem,
+            item: fakeItemWeight,
+          ),
+        ],
+      );
+
+      blocTest<NavigationBloc, NavigationState>(
+        'get nav bar item activity',
+        build: () => navigationBloc,
+        act: (bloc) => bloc.getNavBarItem(fakeItemActivity),
+        expect: () => [
+          NavigationState.initial(),
+          NavigationState.getNavbarItem(
+            index: 2,
+            item: fakeItemActivity,
+          ),
+        ],
+      );
+
+      blocTest<NavigationBloc, NavigationState>(
+        'get nav bar item stats',
+        build: () => navigationBloc,
+        act: (bloc) => bloc.getNavBarItem(fakeItemStats),
+        expect: () => [
+          NavigationState.initial(),
+          NavigationState.getNavbarItem(
+            index: 3,
+            item: fakeItemStats,
           ),
         ],
       );

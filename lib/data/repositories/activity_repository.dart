@@ -11,7 +11,7 @@ class ActivityRepository {
     required this.api,
   });
 
-  Future<APIResponse<List<TypeActivity>?>> getTypesActivities() async {
+  Future<APIResponse> getTypesActivities() async {
     final response = await api.getTypesActivities();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -21,11 +21,11 @@ class ActivityRepository {
             .toList(),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 
-  Future<APIResponse<Activity?>> postActivity(Activity activity) async {
+  Future<APIResponse> postActivity(Activity activity) async {
     final response = await api.saveActivity(activity: activity);
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -35,11 +35,11 @@ class ActivityRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 
-  Future<APIResponse<List<Activity>?>> getActivities() async {
+  Future<APIResponse> getActivities() async {
     final response = await api.getActivities();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -47,7 +47,7 @@ class ActivityRepository {
         response.data.map<Activity>((item) => Activity.fromJson(item)).toList(),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 }

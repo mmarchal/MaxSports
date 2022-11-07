@@ -49,7 +49,7 @@ void main() {
     'Weight repository',
     () {
       test(
-        'getWeight',
+        'getWeight success',
         () async {
           when(
             backendApiMock.getWeight(),
@@ -70,64 +70,136 @@ void main() {
       );
 
       test(
-        'postPoids success',
-        () async {
-          when(backendApiMock.saveWeight(weight: fakeWeightLast)).thenAnswer(
-            (realInvocation) => Future.value(
-              httpResponseMock,
-            ),
-          );
-          when(httpResponseMock.response).thenReturn(responseMock);
-          when(responseMock.statusCode).thenReturn(200);
-          when(httpResponseMock.data).thenReturn(
-            fakeWeightLast.toJson(),
-          );
-          //WHEN
-          final result = await poidsRepository.postWeight(fakeWeightLast);
-
-          //THEN
-          expect(result is SuccessResponse, true);
-          expect(result.data, fakeWeightLast);
-        },
-      );
-
-      test(
-        'getLastWeight',
+        'getWeight failed',
         () async {
           when(
-            backendApiMock.getLastWeight(),
+            backendApiMock.getWeight(),
           ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
           when(httpResponseMock.response).thenReturn(responseMock);
-          when(responseMock.statusCode).thenReturn(200);
-          when(httpResponseMock.data).thenReturn(
-            fakeWeightLast.toJson(),
-          );
+          when(responseMock.statusCode).thenReturn(400);
           //WHEN
-          final result = await poidsRepository.getLastWeight();
+          final result = await poidsRepository.getWeight();
 
           //THEN
-          expect(result is SuccessResponse, true);
+          expect(result is FailResponse, true);
         },
       );
 
-      test(
-        'getLastTwoWeight',
-        () async {
-          when(
-            backendApiMock.getLastTwoWeight(),
-          ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
-          when(httpResponseMock.response).thenReturn(responseMock);
-          when(responseMock.statusCode).thenReturn(200);
-          when(httpResponseMock.data).thenReturn(
-            fakeRecap.toJson(),
-          );
-          //WHEN
-          final result = await poidsRepository.getLastTwoWeight();
+      group('postPoids', () {
+        test(
+          'Success',
+          () async {
+            when(backendApiMock.saveWeight(weight: fakeWeightLast)).thenAnswer(
+              (realInvocation) => Future.value(
+                httpResponseMock,
+              ),
+            );
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(200);
+            when(httpResponseMock.data).thenReturn(
+              fakeWeightLast.toJson(),
+            );
+            //WHEN
+            final result = await poidsRepository.postWeight(fakeWeightLast);
 
-          //THEN
-          expect(result is SuccessResponse, true);
-        },
-      );
+            //THEN
+            expect(result is SuccessResponse, true);
+            expect(result.data, fakeWeightLast);
+          },
+        );
+
+        test(
+          'Failed',
+          () async {
+            when(backendApiMock.saveWeight(weight: null)).thenAnswer(
+              (realInvocation) => Future.value(
+                httpResponseMock,
+              ),
+            );
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(500);
+            //WHEN
+            final result = await poidsRepository.postWeight(fakeWeightLast);
+
+            //THEN
+            expect(result is FailResponse, true);
+          },
+        );
+      });
+
+      group('getLastWeight', () {
+        test(
+          'Success',
+          () async {
+            when(
+              backendApiMock.getLastWeight(),
+            ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(200);
+            when(httpResponseMock.data).thenReturn(
+              fakeWeightLast.toJson(),
+            );
+            //WHEN
+            final result = await poidsRepository.getLastWeight();
+
+            //THEN
+            expect(result is SuccessResponse, true);
+          },
+        );
+
+        test(
+          'Failed',
+          () async {
+            when(
+              backendApiMock.getLastWeight(),
+            ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(500);
+            //WHEN
+            final result = await poidsRepository.getLastWeight();
+
+            //THEN
+            expect(result is FailResponse, true);
+          },
+        );
+      });
+
+      group('getLastTwoWeight', () {
+        test(
+          'Success',
+          () async {
+            when(
+              backendApiMock.getLastTwoWeight(),
+            ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(200);
+            when(httpResponseMock.data).thenReturn(
+              fakeRecap.toJson(),
+            );
+            //WHEN
+            final result = await poidsRepository.getLastTwoWeight();
+
+            //THEN
+            expect(result is SuccessResponse, true);
+          },
+        );
+
+        test(
+          'Failed',
+          () async {
+            when(
+              backendApiMock.getLastTwoWeight(),
+            ).thenAnswer((realInvocation) => Future.value(httpResponseMock));
+            when(httpResponseMock.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(500);
+            //WHEN
+            final result = await poidsRepository.getLastTwoWeight();
+
+            //THEN
+            expect(result is FailResponse, true);
+          },
+        );
+      });
     },
   );
 }

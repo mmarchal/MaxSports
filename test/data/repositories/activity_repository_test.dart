@@ -48,26 +48,46 @@ void main() {
   group(
     "Activite repository ",
     () {
-      test(
-        "get all activites types success",
-        () async {
-          when(
-            backendApiMock.getTypesActivities(),
-          ).thenAnswer((realInvocation) => Future.value(httpResponseMockList));
-          when(httpResponseMockList.response).thenReturn(responseMock);
-          when(responseMock.statusCode).thenReturn(200);
-          when(httpResponseMockList.data).thenReturn(
-            [
-              fakeTypeActivity.toJson(),
-            ],
-          );
-          //WHEN
-          final result = await activityRepository.getTypesActivities();
+      group('get all activites types ', () {
+        test(
+          "Success",
+          () async {
+            when(
+              backendApiMock.getTypesActivities(),
+            ).thenAnswer(
+                (realInvocation) => Future.value(httpResponseMockList));
+            when(httpResponseMockList.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(200);
+            when(httpResponseMockList.data).thenReturn(
+              [
+                fakeTypeActivity.toJson(),
+              ],
+            );
+            //WHEN
+            final result = await activityRepository.getTypesActivities();
 
-          //THEN
-          expect(result is SuccessResponse, true);
-        },
-      );
+            //THEN
+            expect(result is SuccessResponse, true);
+          },
+        );
+
+        test(
+          "Failed",
+          () async {
+            when(
+              backendApiMock.getTypesActivities(),
+            ).thenAnswer(
+                (realInvocation) => Future.value(httpResponseMockList));
+            when(httpResponseMockList.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(500);
+            //WHEN
+            final result = await activityRepository.getTypesActivities();
+
+            //THEN
+            expect(result is FailResponse, true);
+          },
+        );
+      });
 
       group(
         'Post activite',
@@ -96,8 +116,70 @@ void main() {
               expect(result.data, fakeActivitySuccess);
             },
           );
+
+          test(
+            'Failed',
+            () async {
+              when(backendApiMock.saveActivity(
+                activity: null,
+              )).thenAnswer(
+                (realInvocation) => Future.value(
+                  httpResponseMock,
+                ),
+              );
+              when(httpResponseMock.response).thenReturn(responseMock);
+              when(responseMock.statusCode).thenReturn(500);
+              //WHEN
+              final result =
+                  await activityRepository.postActivity(fakeActivitySuccess);
+
+              //THEN
+              expect(result is FailResponse, true);
+            },
+          );
         },
       );
+
+      group('get all activites ', () {
+        test(
+          "Success",
+          () async {
+            when(
+              backendApiMock.getActivities(),
+            ).thenAnswer(
+                (realInvocation) => Future.value(httpResponseMockList));
+            when(httpResponseMockList.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(200);
+            when(httpResponseMockList.data).thenReturn(
+              [
+                fakeActivitySuccess.toJson(),
+              ],
+            );
+            //WHEN
+            final result = await activityRepository.getActivities();
+
+            //THEN
+            expect(result is SuccessResponse, true);
+          },
+        );
+
+        test(
+          "Failed",
+          () async {
+            when(
+              backendApiMock.getActivities(),
+            ).thenAnswer(
+                (realInvocation) => Future.value(httpResponseMockList));
+            when(httpResponseMockList.response).thenReturn(responseMock);
+            when(responseMock.statusCode).thenReturn(500);
+            //WHEN
+            final result = await activityRepository.getActivities();
+
+            //THEN
+            expect(result is FailResponse, true);
+          },
+        );
+      });
     },
   );
 }

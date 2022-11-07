@@ -35,4 +35,48 @@ void main() {
       expect(find.byType(Overlay), findsOneWidget);
     },
   );
+
+  group('LoaderOverlay method', () {
+    testWidgets(
+      'show',
+      (WidgetTester tester) async {
+        // showLoaderOverlay(context);
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Builder(
+              builder: (context) => ElevatedButton(
+                onPressed: () => showLoaderOverlay(context),
+                child: const Text('show'),
+              ),
+            ),
+          ),
+        );
+
+        await tester.tap(find.text('show'));
+        await tester.pump();
+
+        expect(find.byType(AppLoader), findsOneWidget);
+      },
+    );
+
+    testWidgets('hide', (WidgetTester tester) async {
+      // hideLoaderOverlay();
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => ElevatedButton(
+              key: const Key('hide'),
+              onPressed: () => hideLoaderOverlay(),
+              child: const Text('hide'),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byKey(const Key('hide')), warnIfMissed: false);
+      await tester.pump();
+
+      expect(find.byType(AppLoader), findsNothing);
+    });
+  });
 }

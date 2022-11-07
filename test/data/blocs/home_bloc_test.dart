@@ -45,7 +45,7 @@ void main() {
               ]);
 
       blocTest<HomeBloc, HomeState>(
-        'get Weight',
+        'get Weight success',
         build: () => homeBloc,
         setUp: () {
           when(weightRepository.getLastWeight()).thenAnswer(
@@ -72,6 +72,33 @@ void main() {
             weight: fakeWeightLast,
             recap: fakeRecap,
           ),
+        ],
+      );
+
+      blocTest<HomeBloc, HomeState>(
+        'get Weight failed',
+        build: () => homeBloc,
+        setUp: () {
+          when(weightRepository.getLastWeight()).thenAnswer(
+            (realInvocation) => Future.value(
+              FailResponse(
+                500,
+              ),
+            ),
+          );
+          when(weightRepository.getLastTwoWeight()).thenAnswer(
+            (realInvocation) => Future.value(
+              SuccessResponse(
+                200,
+                fakeRecap,
+              ),
+            ),
+          );
+        },
+        act: (bloc) => bloc.getWeights(),
+        expect: () => [
+          HomeState.getWeightLoading(),
+          HomeState.failed(),
         ],
       );
     },

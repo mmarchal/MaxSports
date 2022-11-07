@@ -23,7 +23,7 @@ abstract class APIResponse<T> {
 
   APIResponse({this.data, this.type, this.error});
 
-  bool get isSuccess => error == null;
+  bool get isSuccess => type == APIType.ok && error == null;
 
   bool get hasInternet => type != APIType.network;
 }

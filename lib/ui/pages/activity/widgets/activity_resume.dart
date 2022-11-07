@@ -40,7 +40,9 @@ class ActivityResume extends StatelessWidget {
                   ),
                   text: 'Valider',
                   onPressed: (state.allDataIsFilled)
-                      ? () => context.read<ActivityBloc>().postActivity()
+                      ? () => context
+                          .read<ActivityBloc>()
+                          .postActivity(DateTime.now())
                       : null,
                 ),
               ),
