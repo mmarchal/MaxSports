@@ -1,3 +1,14 @@
+# 1.3.0
+
+_Feat_
+
+- Add firebase datas to the app
+- Add firebase files in gitingore
+
+_Fix_
+
+- Fix default index in navigation
+
 # 1.2.0
 
 _Feat_
