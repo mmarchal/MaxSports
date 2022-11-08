@@ -18,4 +18,4 @@ jobs:
           dart pub global activate very_good_cli
           very_good test --coverage \
             --exclude-coverage "{**/*.g.dart,**/*.freezed.dart,**/entities/**,**/*_state.dart,**/core/**}" \
-            --min-coverage 80
+            --min-coverage 98.8

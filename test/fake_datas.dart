@@ -7,7 +7,9 @@ import 'package:max_sports/data/entities/type_activity.dart';
 
 const url = 'http://ns329111.ip-37-187-107.eu:3500/';
 
-const fakeItem = NavbarItem.weight;
+const fakeItemWeight = NavbarItem.weight;
+const fakeItemActivity = NavbarItem.activity;
+const fakeItemStats = NavbarItem.stats;
 
 const fakeTypeActivity = TypeActivity(
   id: 1,

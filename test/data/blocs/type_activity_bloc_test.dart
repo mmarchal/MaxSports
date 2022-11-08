@@ -47,27 +47,46 @@ void main() {
         ],
       );
 
-      blocTest<TypeActivityBloc, TypeActivityState>(
-        'get Types activites',
-        build: () => typeActiviteBloc,
-        setUp: () {
-          when(activityRepository.getTypesActivities()).thenAnswer(
-            (realInvocation) => Future.value(
-              SuccessResponse(
-                200,
-                [fakeTypeActivity],
+      group('get Types activites', () {
+        blocTest<TypeActivityBloc, TypeActivityState>(
+          'Success',
+          build: () => typeActiviteBloc,
+          setUp: () {
+            when(activityRepository.getTypesActivities()).thenAnswer(
+              (realInvocation) => Future.value(
+                SuccessResponse(
+                  200,
+                  [fakeTypeActivity],
+                ),
               ),
+            );
+          },
+          act: (bloc) => bloc.getAllTypes(),
+          expect: () => [
+            TypeActivityState.getDatasLoading(),
+            TypeActivityState.getDatasLoaded(
+              types: [fakeTypeActivity],
             ),
-          );
-        },
-        act: (bloc) => bloc.getAllTypes(),
-        expect: () => [
-          TypeActivityState.getDatasLoading(),
-          TypeActivityState.getDatasLoaded(
-            types: [fakeTypeActivity],
-          ),
-        ],
-      );
+          ],
+        );
+
+        blocTest<TypeActivityBloc, TypeActivityState>(
+          'Failed',
+          build: () => typeActiviteBloc,
+          setUp: () {
+            when(activityRepository.getTypesActivities()).thenAnswer(
+              (realInvocation) => Future.value(
+                FailResponse(500),
+              ),
+            );
+          },
+          act: (bloc) => bloc.getAllTypes(),
+          expect: () => [
+            TypeActivityState.getDatasLoading(),
+            TypeActivityState.failed(),
+          ],
+        );
+      });
     },
   );
 }

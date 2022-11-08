@@ -44,27 +44,46 @@ void main() {
                 StatsState.initial(),
               ]);
 
-      blocTest<StatsBloc, StatsState>(
-        'get Weight',
-        build: () => statsBloc,
-        setUp: () {
-          when(weightRepository.getWeight()).thenAnswer(
-            (realInvocation) => Future.value(
-              SuccessResponse(
-                200,
-                [fakeWeightLast],
+      group('get Weight', () {
+        blocTest<StatsBloc, StatsState>(
+          'Success',
+          build: () => statsBloc,
+          setUp: () {
+            when(weightRepository.getWeight()).thenAnswer(
+              (realInvocation) => Future.value(
+                SuccessResponse(
+                  200,
+                  [fakeWeightLast],
+                ),
               ),
+            );
+          },
+          act: (bloc) => bloc.getAllWeights(),
+          expect: () => [
+            StatsState.getWeightsLoading(),
+            StatsState.getWeightsLoaded(
+              weight: [fakeWeightLast],
             ),
-          );
-        },
-        act: (bloc) => bloc.getAllWeights(),
-        expect: () => [
-          StatsState.getWeightsLoading(),
-          StatsState.getWeightsLoaded(
-            weight: [fakeWeightLast],
-          ),
-        ],
-      );
+          ],
+        );
+
+        blocTest<StatsBloc, StatsState>(
+          'Failed',
+          build: () => statsBloc,
+          setUp: () {
+            when(weightRepository.getWeight()).thenAnswer(
+              (realInvocation) => Future.value(
+                FailResponse(500),
+              ),
+            );
+          },
+          act: (bloc) => bloc.getAllWeights(),
+          expect: () => [
+            StatsState.getWeightsLoading(),
+            StatsState.failed(),
+          ],
+        );
+      });
     },
   );
 }

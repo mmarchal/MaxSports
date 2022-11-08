@@ -4,6 +4,7 @@ _Feat_
 
 - New activity page
 - Add activities stats in the stats page
+- Up coverage to 100% and update Github actions
 
 # 1.1.2
 

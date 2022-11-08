@@ -17,6 +17,16 @@ class ActivityBloc extends Cubit<ActivityState> {
         ActivityState.initial(),
       );
 
+  void initDatas(int time, double distance, TypeActivity type) {
+    emit(
+      ActivityState.inputTimeOfPractice(
+        time: time,
+        distance: distance,
+        type: type,
+      ),
+    );
+  }
+
   void getActivities() async {
     emit(
       ActivityState.loading(),
@@ -71,7 +81,7 @@ class ActivityBloc extends Cubit<ActivityState> {
     );
   }
 
-  Future<void> postActivity() async {
+  Future<void> postActivity(DateTime dateTime) async {
     late Activity activity;
     TypeActivity? type = state.currentSelectedType;
     int? time = state.currentTime;
@@ -80,7 +90,7 @@ class ActivityBloc extends Cubit<ActivityState> {
       activity = Activity(
         distance: distance,
         duration: time.toDouble(),
-        date: DateTime.now(),
+        date: dateTime,
         typeActivity: type,
       );
     } else {

@@ -11,7 +11,7 @@ class WeightRepository {
     required this.api,
   });
 
-  Future<APIResponse<List<Weight>>> getWeight() async {
+  Future<APIResponse> getWeight() async {
     final response = await api.getWeight();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -19,11 +19,11 @@ class WeightRepository {
         response.data.map<Weight>((item) => Weight.fromJson(item)).toList(),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 
-  Future<APIResponse<Weight?>> postWeight(Weight weight) async {
+  Future<APIResponse> postWeight(Weight weight) async {
     final response = await api.saveWeight(weight: weight);
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -33,11 +33,11 @@ class WeightRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 
-  Future<APIResponse<Weight?>> getLastWeight() async {
+  Future<APIResponse> getLastWeight() async {
     final response = await api.getLastWeight();
     if (response.response.statusCode == 200) {
       return SuccessResponse(
@@ -47,11 +47,11 @@ class WeightRepository {
         ),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 
-  Future<APIResponse<Recap?>> getLastTwoWeight() async {
+  Future<APIResponse> getLastTwoWeight() async {
     final response = await api.getLastTwoWeight();
     if (response.response.statusCode == 200) {
       Map<String, dynamic> json = {
@@ -67,7 +67,7 @@ class WeightRepository {
         Recap.fromJson(json),
       );
     } else {
-      return errorFunction(response);
+      return errorFunction(response.response.statusCode ?? 500);
     }
   }
 }

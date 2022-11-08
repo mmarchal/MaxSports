@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:max_sports/data/blocs/activity_bloc.dart';
+import 'package:max_sports/data/entities/activity.dart';
 import 'package:max_sports/data/entities/api_error.dart';
 import 'package:max_sports/data/entities/api_response.dart';
 import 'package:max_sports/data/repositories/activity_repository.dart';
@@ -48,10 +49,25 @@ void main() {
       );
 
       blocTest<ActivityBloc, ActivityState>(
-        'Select activite',
+        'Select activity Success',
         build: () => activityBloc,
         act: (bloc) => bloc.selectActivity(fakeTypeActivity),
         expect: () => [
+          ActivityState.selectActivityInDropDown(
+            type: fakeTypeActivity,
+          ),
+        ],
+      );
+
+      blocTest<ActivityBloc, ActivityState>(
+        'Select activity State is Dropdown',
+        build: () => activityBloc,
+        seed: () => ActivityState.selectActivityInDropDown(
+          type: fakeTypeActivity,
+        ),
+        act: (bloc) => bloc.selectActivity(fakeTypeActivity),
+        expect: () => [
+          ActivityState.initial(),
           ActivityState.selectActivityInDropDown(
             type: fakeTypeActivity,
           ),
@@ -124,27 +140,94 @@ void main() {
           )),
         ],
       );
-      /*blocTest<ActivityBloc, ActivityState>(
-        'Post activite',
-        build: () => activityBloc
-          ..selectActivity(fakeTypeActivity)
-          ..selectDistance(10.0)
-          ..selectTime(30),
-        setUp: () {
-          when(activityRepository.postActivity(
-            fakeActivitySuccess,
-          )).thenAnswer(
-            (realInvocation) => Future.value(
-              SuccessResponse(200, fakeActivitySuccess),
+
+      group(
+        'Post activity',
+        () {
+          Activity activity = Activity(
+            typeActivity: fakeTypeActivity,
+            duration: 10,
+            distance: 20.0,
+            date: DateTime(2020, 1, 1),
+          );
+          blocTest<ActivityBloc, ActivityState>(
+            'Success',
+            build: () => activityBloc
+              ..initDatas(
+                activity.duration.toInt(),
+                activity.distance,
+                fakeTypeActivity,
+              ),
+            act: (bloc) {
+              when(activityRepository.postActivity(activity)).thenAnswer(
+                (_) async => SuccessResponse(
+                  200,
+                  activity,
+                ),
+              );
+              bloc.postActivity(activity.date);
+            },
+            expect: () => [
+              ActivityState.postActivityLoading(
+                activite: activity,
+              ),
+              ActivityState.postActivityLoaded(
+                activite: activity,
+              ),
+            ],
+          );
+
+          blocTest<ActivityBloc, ActivityState>(
+            'Api error',
+            build: () => activityBloc
+              ..initDatas(
+                activity.duration.toInt(),
+                activity.distance,
+                fakeTypeActivity,
+              ),
+            act: (bloc) {
+              when(activityRepository.postActivity(activity)).thenAnswer(
+                (_) async => FailResponse(
+                  500,
+                ),
+              );
+              bloc.postActivity(activity.date);
+            },
+            expect: () => [
+              ActivityState.postActivityLoading(
+                activite: activity,
+              ),
+              ActivityState.failed(),
+            ],
+          );
+
+          blocTest<ActivityBloc, ActivityState>(
+            'Failed',
+            build: () => activityBloc,
+            seed: () => ActivityState.selectActivityInDropDown(
+              type: fakeTypeActivity,
             ),
+            act: (bloc) {
+              when(activityRepository.postActivity(fakeActivitySuccess))
+                  .thenAnswer(
+                (_) async => SuccessResponse(
+                  200,
+                  fakeActivitySuccess,
+                ),
+              );
+              bloc.postActivity(activity.date);
+            },
+            expect: () => [
+              ActivityState.failed(
+                  error: const APIError(
+                title: 'Erreur',
+                content:
+                    'Le type, le temps d\'exercice et la distance doivent être renseigné !',
+              )),
+            ],
           );
         },
-        act: (bloc) => bloc.postActivity(),
-        expect: () => [
-          ActivityState.postActivityLoading(activite: fakeActivitySuccess),
-          ActivityState.postActivityLoaded(activite: fakeActivitySuccess),
-        ],
-      );*/
+      );
     },
   );
 }
