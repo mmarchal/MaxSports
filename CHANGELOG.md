@@ -4,6 +4,7 @@ _Feat_
 
 - Add firebase datas to the app
 - Add firebase files in gitingore
+- Add icon in the app
 
 _Fix_
 
